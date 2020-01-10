@@ -21,8 +21,7 @@ module.exports = merge(common, {
         path: path.resolve(__dirname, "dist")
     },
     plugins: [new HtmlWebpackPlugin({
-        template: "./public/template.html",
-        favicon: "./src/assets/favicon.png"
+        template: "./public/template.html"
     })],
     devtool: 'cheap-module-eval-source-map',
     devServer: {

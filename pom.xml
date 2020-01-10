@@ -12,7 +12,7 @@
     <artifactId>real-estate-booking-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>real-estate-booking-app</name>
-    <description>Full stack femo project for Spring REST API and React.js client</description>
+    <description>Full stack demo project for Spring REST API and React.js client</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -57,6 +57,27 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>src/main/webapp/node_modules/**</exclude>
+                        <exclude>src/main/webapp/public/**</exclude>
+                        <exclude>src/main/webapp/src/**</exclude>
+                        <exclude>src/main/webapp/*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>src/main/webapp/node_modules/**</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

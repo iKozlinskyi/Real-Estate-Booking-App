@@ -1,0 +1,31 @@
+.RealEstateList__RealEstateCard {
+    margin: 1.5em 0;
+}
+
+@media all and (min-width: 576px) {
+
+    .RealEstateList {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
+
+    .RealEstateList__RealEstateCard {
+        margin: 0.3em 0.3em;
+        flex-basis: calc(50% - 0.6em);
+    }
+}
+
+@media all and (min-width: 800px) {
+    .RealEstateList__RealEstateCard {
+        margin: 0.3em 0.3em;
+        flex-basis: calc(33% - 0.6em);
+    }
+}
+
+@media all and (min-width: 1100px) {
+    .RealEstateList__RealEstateCard {
+        flex-basis: calc(25% - 0.6em);
+    }
+}
+

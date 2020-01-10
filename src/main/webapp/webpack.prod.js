@@ -43,7 +43,6 @@ module.exports = merge(common, {
     ),
     new HtmlWebpackPlugin({
       template: "./public/template.html",
-      favicon: "./src/assets/favicon.png",
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
