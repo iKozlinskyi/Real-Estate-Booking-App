@@ -1,0 +1,13 @@
+.Main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.8em;
+}
+
+.Main__title {
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 3em;
+    text-align: center;
+    font-weight: 200;
+}
