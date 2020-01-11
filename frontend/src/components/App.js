@@ -8,20 +8,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      navBarCollapsed: false
+      navBarCollapsed: true
     };
 
     this.toggleNavBar = this.toggleNavBar.bind(this);
   }
 
   toggleNavBar() {
-    this.setState(!this.state.navBarCollapsed);
+    this.setState(curState => ({navBarCollapsed: !curState.navBarCollapsed}));
   }
 
   render() {
     return (
       <div className="App">
-        <NavBar isCollapsed={this.state.navBarCollapsed} toogleNavBar={this.toggleNavBar}/>
+        <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
         <Main />
       </div>
     );

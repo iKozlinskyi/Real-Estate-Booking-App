@@ -11,6 +11,7 @@
     text-align: center;
     padding: 0.9em 0;
     font-weight: 300;
+    vertical-align: middle;
 }
 
 .NavBar__item--first {
@@ -46,6 +47,7 @@
     padding-right: 1em;
     text-align: justify;
     border-bottom: none;
+    flex: 1 0 auto;
 }
 
 .NavBar__logo {
@@ -76,7 +78,7 @@
     }
 
     .NavBar__collapsible {
-        display: flex !important;
+        display: flex;
     }
 
     .collapsible__item {
