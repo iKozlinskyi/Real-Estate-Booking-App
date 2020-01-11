@@ -1,0 +1,87 @@
+.NavBar {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    overflow: hidden;
+    background-color: #deedfc;
+}
+
+.NavBar__item {
+    background-color: inherit;
+    text-align: center;
+    padding: 0.9em 0;
+    font-weight: 300;
+}
+
+.NavBar__item--first {
+    order: 1;
+}
+
+.NavBar__item--second {
+    order: 2;
+}
+
+.NavBar__item--third {
+    order: 3;
+}
+
+.NavBar__collapsible--hidden {
+    display: none;
+}
+
+.collapsible__item {
+    border-top: 1px solid black;
+}
+
+.NavBar__link {
+    text-decoration: none;
+    color: black;
+}
+
+.always-visible {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: justify;
+    border-bottom: none;
+}
+
+.NavBar__logo {
+    font-size: 1.3em;
+}
+
+.NavBar__button {
+    font-size: 1.3em;
+    color: black;
+    background-color: inherit;
+    margin: 0;
+    padding: 0.2em 0.5em;
+    border: none;
+    border-radius: 3px;
+
+}
+
+@media all and (min-width: 576px) {
+    .NavBar__button {
+        display: none;
+    }
+
+    .NavBar {
+        display: flex;
+        /*background-color: #c6def7;*/
+        justify-content: space-between;
+        padding: 0 1em;
+    }
+
+    .NavBar__collapsible {
+        display: flex !important;
+    }
+
+    .collapsible__item {
+        border: none;
+        width: 100px;
+    }
+
+}

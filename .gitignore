@@ -5,10 +5,10 @@ target/
 !**/src/test/**
 
 ### Node Modules ###
-src/main/webapp/node_modules
+frontend/node_modules
 
 ### Compiled Client App ###
-src/main/webapp/dist
+frontend/dist
 
 ### STS ###
 .apt_generated
