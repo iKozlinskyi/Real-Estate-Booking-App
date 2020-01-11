@@ -8,6 +8,6 @@ public class HomeController {
 
   @GetMapping("/")
   public String getBundle() {
-    return "/frontend/dist/index.html";
+    return "index.html";
   }
 }
