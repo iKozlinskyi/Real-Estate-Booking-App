@@ -1,0 +1,35 @@
+.comment-form__textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 1em;
+    border-radius: 3px;
+    display: block;
+    resize: none;
+    font-family: "Roboto", sans-serif;
+}
+
+.comment-form__button {
+    margin-top: 0.5em;
+}
+
+.comment-form__textarea--warning {
+    border-width: 2px;
+    border-color: #f4b5b5;
+}
+
+.comment-form__form-message {
+    margin-top: 0.5em;
+}
+
+.form-message {
+    background-color: #f4b5b5;
+    color: #cc5757;
+    text-align: center;
+    padding: 0.4em 0;
+    border-radius: 5px;
+}
+
+.form-message--danger {
+    background-color: #f4b5b5;
+    color: #cc5757;
+}

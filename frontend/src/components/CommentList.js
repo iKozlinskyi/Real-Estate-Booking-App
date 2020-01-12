@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Comment from "./Comment";
 import "./CommentList.css"
+import CommentForm from "./CommentForm";
 
 class CommentList extends Component {
 
@@ -10,7 +11,8 @@ class CommentList extends Component {
 
     // noinspection CheckTagEmptyBody
     return (
-        <section className="comments main__comments">
+        <section className="commentList main__comments">
+          <CommentForm />
           {comments}
         </section>
     );

@@ -12,7 +12,7 @@ class Comment extends Component {
     } = this.props;
 
     return (
-        <article className="comments__comment comment">
+        <article className="commentList__comment comment">
           <div className="comment__header">
             <div className="comment__author">
               <strong>{author}</strong>
