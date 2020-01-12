@@ -95,3 +95,9 @@ export const REAL_ESTATE_PAGE_DATA = [
     ]
   }
 ];
+
+export const findRealEstateById = (id) => {
+  for (let realEstate of REAL_ESTATE_PAGE_DATA) {
+    if (realEstate.id === id) return realEstate;
+  }
+};

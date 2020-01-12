@@ -3,6 +3,7 @@ import Main from "./Main";
 import NavBar from "./NavBar";
 import "./App.css"
 import RealEstateList from "./RealEstateList";
+import RealEstatePage from "./RealEstatePage";
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends Component {
       <div className="App">
         <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
         <Main>
-          <RealEstateList />
+          <RealEstatePage id={1} />
         </Main>
       </div>
     );
