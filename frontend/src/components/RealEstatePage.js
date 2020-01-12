@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Title from "./Title";
 import Button from "./Button";
-import Comment from "./Comment";
 import "./RealEstatePage.css"
 import {findRealEstateById} from "../utils/DataProvider";
 import CommentList from "./CommentList";
@@ -21,7 +20,8 @@ class RealEstatePage extends Component {
   }
 
   getRealEstateData() {
-    return findRealEstateById(this.props.id)
+    const id = parseInt(this.props.match.params.id);
+    return findRealEstateById(id);
   }
 
   render() {

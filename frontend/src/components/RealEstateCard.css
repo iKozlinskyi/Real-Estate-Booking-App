@@ -7,9 +7,9 @@
     box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
 }
 
-.RealEstateCard__RealEstateCard-link {
+.RealEstateCard a {
     text-decoration: none;
-    color: black;
+    color: #000000;
 }
 
 .RealEstateCard__body {
@@ -39,7 +39,6 @@
 
 @media all and (min-width: 576px) {
     .RealEstateCard {
-        background-color: #f6f7f9;
         display: flex;
         flex-direction: column;
         padding: 10px;

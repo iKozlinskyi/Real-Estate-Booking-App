@@ -3,7 +3,9 @@ import Main from "./Main";
 import NavBar from "./NavBar";
 import "./App.css"
 import RealEstateList from "./RealEstateList";
+import {Switch, Route} from "react-router-dom";
 import RealEstatePage from "./RealEstatePage";
+import LandingPage from "./LandingPage";
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +25,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
-        <Main>
-          <RealEstatePage id={1} />
-        </Main>
+        <Switch>
+          <Route exact path="/" children={<LandingPage/>} />
+          <Route>
+            <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
+            <Main>
+              <Switch>
+                <Route exact path="/real-estate/:id"
+                       children={(routerProps) => <RealEstatePage {...routerProps}/>}
+                />
+                <Route exact path="/real-estate" >
+                  <RealEstateList />
+                </Route>
+              </Switch>
+            </Main>
+          </Route>
+        </Switch>
       </div>
     );
   }

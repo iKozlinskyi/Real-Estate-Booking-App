@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import "./RealEstateCard.css"
+import {Link} from "react-router-dom";
 
 class RealEstateCard extends Component {
     render() {
+        const {id, name, imgUrl} = this.props;
+
         return (
             <li className="RealEstateCard RealEstateList__RealEstateCard">
-                <a href={this.props.link} className="RealEstateCard__RealEstateCard-link">
+                <Link to={`/real-estate/${id}`}>
                     <div className="img-area RealEstateCard__img-area">
-                        <img src={this.props.imgUrl} alt="" className="img-area__RealEstateCard-img" />
+                        <img src={imgUrl} alt="" className="img-area__RealEstateCard-img" />
                     </div>
                     <div className="RealEstateCard__body">
-                        <h3 className="RealEstateCard__title">{this.props.name}</h3>
+                        <h3 className="RealEstateCard__title">{name}</h3>
                     </div>
-                </a>
+                </Link>
             </li>
         );
     }
