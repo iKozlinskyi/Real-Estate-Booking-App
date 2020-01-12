@@ -4,6 +4,7 @@ import Button from "./Button";
 import Comment from "./Comment";
 import "./RealEstatePage.css"
 import {findRealEstateById} from "../utils/DataProvider";
+import CommentList from "./CommentList";
 
 class RealEstatePage extends Component {
 
@@ -16,11 +17,16 @@ class RealEstatePage extends Component {
   }
 
   componentDidMount() {
-    this.setState({realEstateData: findRealEstateById(this.props.id)})
+    this.setState({realEstateData: this.getRealEstateData()})
+  }
+
+  getRealEstateData() {
+    return findRealEstateById(this.props.id)
   }
 
   render() {
     const {
+      id,
       name,
       imgUrl,
       pricePerStay,
@@ -52,7 +58,7 @@ class RealEstatePage extends Component {
             <Button text="Delete" modifier="danger"/>
           </div>
         </article>
-          {comments && <Comment {...comments[0]} />}
+          {comments && <CommentList comments={comments}/>}
         </>
     );
   }

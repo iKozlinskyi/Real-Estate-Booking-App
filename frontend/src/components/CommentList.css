@@ -1,0 +1,12 @@
+.comments__comment:not(:first-child) {
+    margin-top: 30px;
+}
+
+.comments {
+    /*background-color: #f6f7f9;*/
+    padding: 10px;
+    border-radius: 5px;
+    /*-webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);*/
+    /*-moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);*/
+    /*box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);*/
+}
