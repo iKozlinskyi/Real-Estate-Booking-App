@@ -1,0 +1,20 @@
+.comment__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment__author {
+    font-weight: bold;
+}
+
+.comment__timestamp {
+    color: rgb(145, 145, 145);
+}
+
+.comment__text {
+    margin-top: 0.7em;
+}
+
+.comment__controls {
+    margin-top: 0.5em;
+}
