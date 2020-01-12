@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Main from "./Main";
-import "./App.css"
 import NavBar from "./NavBar";
+import RealEstatePage from "./RealEstatePage";
+import "./App.css"
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +23,9 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
-        <Main />
+        <Main>
+          <RealEstatePage />
+        </Main>
       </div>
     );
   }

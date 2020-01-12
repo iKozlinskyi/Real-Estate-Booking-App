@@ -9,6 +9,7 @@ frontend/node_modules
 
 ### Compiled Client App ###
 frontend/dist
+src/main/resources/static/
 
 ### STS ###
 .apt_generated

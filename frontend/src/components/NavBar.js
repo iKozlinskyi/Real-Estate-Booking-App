@@ -18,6 +18,7 @@ class NavBar extends Component {
 
     let {isLoggedIn} = this.props;
 
+    // noinspection CheckTagEmptyBody
     return (
         <nav className="NavBar">
           <div className="NavBar__item always-visible">
