@@ -7,6 +7,7 @@ import {Switch, Route} from "react-router-dom";
 import RealEstatePage from "./RealEstatePage";
 import LandingPage from "./LandingPage";
 import SignUpForm from "./SignUpForm";
+import LogInForm from "./LogInForm";
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +41,9 @@ class App extends Component {
                 </Route>
                 <Route exact path="/register" >
                   <SignUpForm elementClass="Main__Form"/>
+                </Route>
+                <Route exact path="/login" >
+                  <LogInForm elementClass="Main__Form"/>
                 </Route>
               </Switch>
             </Main>

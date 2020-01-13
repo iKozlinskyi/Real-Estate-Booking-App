@@ -42,7 +42,7 @@ class NavBar extends Component {
                 </> :
                 <>
                   <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
-                    <Link to="#" className="NavBar__link">Log In</Link>
+                    <Link to="/login" className="NavBar__link">Log In</Link>
                   </li>
                   <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
                     <Link to="/register" className="NavBar__link">Sign Up</Link>

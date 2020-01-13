@@ -32,10 +32,6 @@ class SignUpForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (this.state.commentText === "") {
-      this.showWarning()
-    }
-
     if (!this.state.isUsernameAvailable) {
       return undefined
     }
