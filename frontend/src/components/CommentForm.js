@@ -42,27 +42,26 @@ class CommentForm extends Component {
   }
 
   render() {
-
+    const elementClass = this.props.elementClass;
     // noinspection CheckTagEmptyBody
     return (
         <form action="#" method="post"
-              className="comment-form commentList__comment-form"
-              id="commentForm"
+              className={`CommentForm ${elementClass}`}
               onSubmit={this.handleSubmit}
         >
           <label htmlFor="commentText">Your comment:</label>
-          <textarea className="comment-form__textarea"
+          <textarea className="CommentForm__textarea"
                     name="commentText" id="commentText"
                     placeholder="Leave your comment here..."
                     onChange={this.handleChange}
           ></textarea>
 
           {this.state.isWarningVisible &&
-            <div className="form-message form-message--danger comment-form__form-message">
+            <div className="form-message form-message--danger CommentForm__form-message">
               Please, do not send empty comments
             </div>}
 
-          <input className="button button--link comment-form__button" type="submit" value="Send Comment"/>
+          <input className="button button--link CommentForm__button" type="submit" value="Send Comment"/>
         </form>
     );
   }

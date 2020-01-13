@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import "./NavBar.css"
 
 class NavBar extends Component {
@@ -21,35 +22,34 @@ class NavBar extends Component {
     // noinspection CheckTagEmptyBody
     return (
         <nav className="NavBar">
-          <div className="NavBar__item always-visible">
+          <div className="NavBar__item NavBar__item--always-visible">
             <div className="NavBar__logo">
-              <a href="#" className="NavBar__link"><i className="fas fa-home"></i> HouseFinder</a>
+              <Link to="/" className="NavBar__link"><i className="fas fa-home"></i> HouseFinder</Link>
             </div>
             <div className="">
-              <a href="#" className="NavBar__link">Logged in as "USERNAME"</a>
+              <Link to="#" className="NavBar__link">Logged in as "USERNAME"</Link>
             </div>
             <button id="toggleBtn" className="NavBar__button" onClick={this.handleClick}>☰</button>
           </div>
 
-          <ul id="collapsible"
-              className={`NavBar__collapsible ${this.props.isCollapsed && "NavBar__collapsible--hidden"}`}>
+          <ul className={`NavBar__collapsible-block ${this.props.isCollapsed && "NavBar__collapsible-block--hidden"}`}>
 
             {isLoggedIn ?
                 <>
-                  <li className="NavBar__item collapsible__item NavBar__item--third">
-                    <a href="#" className="NavBar__link">Log Out</a>
+                  <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
+                    <Link to="#" className="NavBar__link">Log Out</Link>
                   </li>
                 </> :
                 <>
-                  <li className="NavBar__item collapsible__item NavBar__item--third">
-                    <a href="#" className="NavBar__link">Log In</a>
+                  <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
+                    <Link to="#" className="NavBar__link">Log In</Link>
                   </li>
-                  <li className="NavBar__item collapsible__item NavBar__item--third">
-                    <a href="#" className="NavBar__link">Sign Up</a>
+                  <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
+                    <Link to="/register" className="NavBar__link">Sign Up</Link>
                   </li>
                 </>
             }
-            <li className="NavBar__item collapsible__item NavBar__item--second">
+            <li className="NavBar__item NavBar__item--collapsible NavBar__item--second">
               <a href="#" className="NavBar__link">Add Real Estate</a>
             </li>
           </ul>

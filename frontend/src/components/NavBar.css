@@ -26,11 +26,11 @@
     order: 3;
 }
 
-.NavBar__collapsible--hidden {
+.NavBar__collapsible-block--hidden {
     display: none;
 }
 
-.collapsible__item {
+.NavBar__item--collapsible {
     border-top: 1px solid black;
 }
 
@@ -39,7 +39,7 @@
     color: black;
 }
 
-.always-visible {
+.NavBar__item--always-visible {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -77,11 +77,11 @@
         padding: 0 1em;
     }
 
-    .NavBar__collapsible {
+    .NavBar__collapsible-block {
         display: flex;
     }
 
-    .collapsible__item {
+    .NavBar__item--collapsible {
         border: none;
         width: 100px;
     }

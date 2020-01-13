@@ -7,12 +7,18 @@ class CommentList extends Component {
 
   render() {
 
-    const comments = this.props.comments.map(commentData => <Comment key={commentData.id} {...commentData}/>);
+    const comments = this.props.comments.map(commentData =>
+            <Comment
+              key={commentData.id}
+              {...commentData}
+              elementClass="CommentList__Comment"
+            />
+        );
 
     // noinspection CheckTagEmptyBody
     return (
-        <section className="commentList main__comments">
-          <CommentForm />
+        <section className="CommentList" >
+          <CommentForm elementClass="CommentList__CommentForm" />
           {comments}
         </section>
     );

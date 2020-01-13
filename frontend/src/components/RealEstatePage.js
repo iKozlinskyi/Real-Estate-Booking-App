@@ -36,7 +36,7 @@ class RealEstatePage extends Component {
     } = this.state.realEstateData;
 
     return (
-        <>
+        <div className="RealEstatePage">
         <article className="RealEstate-card">
           <Title text={name}/>
           <div className="RealEstate-card__img-area img-area">
@@ -53,13 +53,13 @@ class RealEstatePage extends Component {
           <div className="description-block">
             <p className="description-block__text">{description}</p>
           </div>
-          <div className="RealEstate-card__controls">
-            <Button text="Edit" modifier="warning"/>
+          <div className="controls RealEstate-card__controls">
+            <Button text="Edit" modifier="warning" elementClass="controls__EditButton"/>
             <Button text="Delete" modifier="danger"/>
           </div>
         </article>
-          {comments && <CommentList comments={comments}/>}
-        </>
+          {comments && <CommentList comments={comments} elementClass="main__comments"/>}
+        </div>
     );
   }
 }

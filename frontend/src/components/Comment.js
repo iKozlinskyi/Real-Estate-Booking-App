@@ -8,23 +8,24 @@ class Comment extends Component {
       id,
       author,
       createdAt,
-      text
+      text,
+      elementClass
     } = this.props;
 
     return (
-        <article className="commentList__comment comment">
-          <div className="comment__header">
-            <div className="comment__author">
+        <article className={`${elementClass} Comment`}>
+          <div className="Comment__header">
+            <div className="Comment__author">
               <strong>{author}</strong>
             </div>
-            <div className="comment__timestamp">
+            <div className="Comment__timestamp">
               <sub>{createdAt}</sub>
             </div>
           </div>
-          <div className="comment__text">
+          <div className="Comment__text">
             {text}
           </div>
-          <div className="controls comment__controls">
+          <div className="controls Comment__controls">
             <Button modifier="danger" text="Delete" />
           </div>
         </article>

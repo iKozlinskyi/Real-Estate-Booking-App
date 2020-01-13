@@ -30,10 +30,10 @@
 .price-block {
     display: flex;
     justify-content: space-between;
+    font-size: 1.2em;
 }
 
 .RealEstate-card__price-block {
-    font-size: 1.2em;
     margin-top: 1rem;
 }
 
@@ -56,7 +56,7 @@
     text-align: right;
 }
 
-.RealEstate-card__controls > * {
+.controls__EditButton {
     margin-right: 5px;
 }
 

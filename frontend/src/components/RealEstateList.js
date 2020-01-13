@@ -23,7 +23,8 @@ class RealEstateList extends Component {
 
   render() {
 
-    const realEstateCards = this.state.realEstate.map(data => <RealEstateCard key={data.id} {...data} />);
+    const realEstateCards = this.state.realEstate.map(data =>
+        <RealEstateCard key={data.id} {...data} elementClass="RealEstateList__RealEstateCard"/>);
     return (
         <>
           <Title text="Available Real Estate" />

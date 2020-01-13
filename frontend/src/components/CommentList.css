@@ -1,8 +1,8 @@
-.commentList__comment:not(:first-child) {
+.CommentList__Comment:not(:first-child) {
     margin-top: 30px;
 }
 
-.commentList {
+.CommentList {
     /*background-color: #f6f7f9;*/
     padding: 10px;
     border-radius: 5px;
@@ -11,6 +11,6 @@
     /*box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);*/
 }
 
-.commentList__comment-form {
+.CommentList__CommentForm {
     margin-top: 1em;
 }
