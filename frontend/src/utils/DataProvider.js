@@ -115,8 +115,14 @@ export const REAL_ESTATE_PAGE_DATA = [
   }
 ];
 
+export const USERS = ["John84", "Andrew", "Anna"];
+
 export const findRealEstateById = (id) => {
   for (let realEstate of REAL_ESTATE_PAGE_DATA) {
     if (realEstate.id === id) return realEstate;
   }
+};
+
+export const isUsernameAvailable = checkedUsername => {
+  return !USERS.some(user => user.toLowerCase() === checkedUsername.toLowerCase())
 };

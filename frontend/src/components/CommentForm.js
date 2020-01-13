@@ -54,6 +54,7 @@ class CommentForm extends Component {
                     name="commentText" id="commentText"
                     placeholder="Leave your comment here..."
                     onChange={this.handleChange}
+                    value={this.state.commentText}
           ></textarea>
 
           {this.state.isWarningVisible &&

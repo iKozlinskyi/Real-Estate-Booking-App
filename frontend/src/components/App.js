@@ -6,6 +6,7 @@ import RealEstateList from "./RealEstateList";
 import {Switch, Route} from "react-router-dom";
 import RealEstatePage from "./RealEstatePage";
 import LandingPage from "./LandingPage";
+import SignUpForm from "./SignUpForm";
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" children={<LandingPage/>} />
           <Route>
-            <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn/>
+            <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn={false}/>
             <Main>
               <Switch>
                 <Route exact path="/real-estate/:id"
@@ -36,6 +37,9 @@ class App extends Component {
                 />
                 <Route exact path="/real-estate" >
                   <RealEstateList />
+                </Route>
+                <Route exact path="/register" >
+                  <SignUpForm elementClass="Main__Form"/>
                 </Route>
               </Switch>
             </Main>
