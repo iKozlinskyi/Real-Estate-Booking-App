@@ -43,7 +43,7 @@ class CommentForm extends Component {
 
   render() {
     const elementClass = this.props.elementClass;
-    // noinspection CheckTagEmptyBody
+
     return (
         <form action="#" method="post"
               className={`CommentForm ${elementClass}`}
@@ -55,7 +55,7 @@ class CommentForm extends Component {
                     placeholder="Leave your comment here..."
                     onChange={this.handleChange}
                     value={this.state.commentText}
-          ></textarea>
+          />
 
           {this.state.isWarningVisible &&
             <div className="form-message form-message--danger CommentForm__form-message">

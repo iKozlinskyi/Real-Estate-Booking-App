@@ -50,7 +50,7 @@ class NavBar extends Component {
                 </>
             }
             <li className="NavBar__item NavBar__item--collapsible NavBar__item--second">
-              <a href="#" className="NavBar__link">Add Real Estate</a>
+              <Link to="/real-estate/new" className="NavBar__link">Add Real Estate</Link>
             </li>
           </ul>
         </nav>

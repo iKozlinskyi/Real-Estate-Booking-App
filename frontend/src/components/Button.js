@@ -4,7 +4,7 @@ import "./Button.css"
 class Button extends Component {
   render() {
 
-    let elementClass = this.props.hasOwnProperty("elementClass") ? this.props.elementClass : "";
+    let elementClass = this.props.elementClass || "";
 
     let {modifier, text} = this.props;
     let modifierClass = modifier && `button--${modifier}`;

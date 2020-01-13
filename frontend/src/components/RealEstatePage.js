@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Title from "./Title";
-import Button from "./Button";
 import "./RealEstatePage.css"
 import {findRealEstateById} from "../utils/DataProvider";
 import CommentList from "./CommentList";
+import {Link, withRouter} from "react-router-dom";
 
 class RealEstatePage extends Component {
 
@@ -35,6 +35,8 @@ class RealEstatePage extends Component {
       comments
     } = this.state.realEstateData;
 
+    const pagePathName = this.props.location.pathname;
+
     return (
         <div className="RealEstatePage">
         <article className="RealEstate-card">
@@ -54,8 +56,10 @@ class RealEstatePage extends Component {
             <p className="description-block__text">{description}</p>
           </div>
           <div className="controls RealEstate-card__controls">
-            <Button text="Edit" modifier="warning" elementClass="controls__EditButton"/>
-            <Button text="Delete" modifier="danger"/>
+            <Link className="button RealEstate-card__button button--warning controls__EditButton"
+                  to={pagePathName + "/edit"}
+            >Edit</Link>
+            <Link className="button RealEstate-card__button button--danger controls__DeleteButton" to="/">Delete</Link>
           </div>
         </article>
           {comments && <CommentList comments={comments} elementClass="main__comments"/>}
@@ -64,4 +68,4 @@ class RealEstatePage extends Component {
   }
 }
 
-export default RealEstatePage;
+export default withRouter(RealEstatePage);

@@ -8,6 +8,8 @@ import RealEstatePage from "./RealEstatePage";
 import LandingPage from "./LandingPage";
 import SignUpForm from "./SignUpForm";
 import LogInForm from "./LogInForm";
+import CreateRealEstateForm from "./CreateRealEstate";
+import UpdateRealEstate from "./UpdateRealEstate";
 
 class App extends Component {
   constructor(props) {
@@ -33,9 +35,6 @@ class App extends Component {
             <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn={false}/>
             <Main>
               <Switch>
-                <Route exact path="/real-estate/:id"
-                       children={(routerProps) => <RealEstatePage {...routerProps}/>}
-                />
                 <Route exact path="/real-estate" >
                   <RealEstateList />
                 </Route>
@@ -45,6 +44,15 @@ class App extends Component {
                 <Route exact path="/login" >
                   <LogInForm elementClass="Main__Form"/>
                 </Route>
+                <Route exact path="/real-estate/new" >
+                  <CreateRealEstateForm elementClass="Main__Form"/>
+                </Route>
+                <Route exact path="/real-estate/:id/edit" >
+                  <UpdateRealEstate elementClass="Main__Form"/>
+                </Route>
+                <Route exact path="/real-estate/:id"
+                       children={(routerProps) => <RealEstatePage {...routerProps}/>}
+                />
               </Switch>
             </Main>
           </Route>
