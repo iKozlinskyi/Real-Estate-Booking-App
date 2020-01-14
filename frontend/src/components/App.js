@@ -8,8 +8,8 @@ import RealEstatePage from "./RealEstatePage";
 import LandingPage from "./LandingPage";
 import SignUpForm from "./SignUpForm";
 import LogInForm from "./LogInForm";
-import CreateRealEstateForm from "./CreateRealEstate";
-import UpdateRealEstate from "./UpdateRealEstate";
+import CreateRealEstateForm from "./CreateRealEstateForm";
+import UpdateRealEstate from "./UpdateRealEstateForm";
 
 class App extends Component {
   constructor(props) {

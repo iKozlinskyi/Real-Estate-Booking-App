@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
+import {withRouter} from "react-router-dom";
+import {findRealEstateById} from "../utils/DataProvider";
 
-class UpdateRealEstate extends Component {
+class UpdateRealEstateForm extends Component {
+
+  static defaultProps = {
+    elementClass: ""
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      name: props.name || "",
-      imgUrl: props.imgUrl || "",
-      price: props.price || "",
-      description: props.description || ""
+      name: "",
+      imgUrl: "",
+      price: "",
+      description: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,9 +32,19 @@ class UpdateRealEstate extends Component {
     evt.preventDefault();
   }
 
+  fetchData() {
+    const id = parseInt(this.props.match.params.id);
+    const {name, imgUrl, pricePerStay, description} = findRealEstateById(id);
+    this.setState({name, imgUrl, price: pricePerStay, description});
+  }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
   render() {
 
-    const elementClass = this.props.elementClass || "";
+    const elementClass = this.props.elementClass;
 
     return (
         <form action="#" method="post" className={`Form ${elementClass}`}>
@@ -71,4 +88,4 @@ class UpdateRealEstate extends Component {
   }
 }
 
-export default UpdateRealEstate;
+export default withRouter(UpdateRealEstateForm);
