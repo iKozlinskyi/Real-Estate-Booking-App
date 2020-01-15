@@ -10,7 +10,6 @@ class PageMap extends Component {
     return (
         <Map
             google={this.props.google}
-            // style={{ width: "100%", margin: "auto" }}
             zoom={14}
             initialCenter={position}
         >

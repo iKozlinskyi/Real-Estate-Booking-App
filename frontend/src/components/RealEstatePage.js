@@ -63,7 +63,7 @@ class RealEstatePage extends Component {
             >Edit</Link>
             <Link className="button RealEstate-card__button button--danger controls__DeleteButton" to="/">Delete</Link>
           </div>
-          <div className="map RealEstatePage__map" style={{position: "relative", width: "100%", height: "400px"}}>
+          <div className="map RealEstatePage__map">
             <PageMap position={position} name={name}/>
           </div>
 
