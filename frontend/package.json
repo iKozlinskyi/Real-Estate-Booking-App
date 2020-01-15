@@ -29,6 +29,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "google-maps-react": "^2.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2"

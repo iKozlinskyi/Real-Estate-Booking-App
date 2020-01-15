@@ -56,9 +56,21 @@
     text-align: right;
 }
 
+.RealEstatePage__map {
+    margin-top: 3em;
+}
+
 .controls__EditButton {
     margin-right: 5px;
 }
+
+.map {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+
 
 
 @media all and (min-width: 576px) {

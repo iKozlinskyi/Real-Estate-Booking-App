@@ -4,6 +4,7 @@ import "./RealEstatePage.css"
 import {findRealEstateById} from "../utils/DataProvider";
 import CommentList from "./CommentList";
 import {Link, withRouter} from "react-router-dom";
+import PageMap from "./PageMap";
 
 class RealEstatePage extends Component {
 
@@ -32,7 +33,8 @@ class RealEstatePage extends Component {
       pricePerStay,
       author,
       description,
-      comments
+      comments,
+      position
     } = this.state.realEstateData;
 
     const pagePathName = this.props.location.pathname;
@@ -61,8 +63,12 @@ class RealEstatePage extends Component {
             >Edit</Link>
             <Link className="button RealEstate-card__button button--danger controls__DeleteButton" to="/">Delete</Link>
           </div>
+          <div className="map RealEstatePage__map" style={{position: "relative", width: "100%", height: "400px"}}>
+            <PageMap position={position} name={name}/>
+          </div>
+
         </article>
-          {comments && <CommentList comments={comments} elementClass="main__comments"/>}
+          {comments && <CommentList comments={comments} />}
         </div>
     );
   }

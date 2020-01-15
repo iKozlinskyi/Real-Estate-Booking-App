@@ -82,6 +82,10 @@ export const REAL_ESTATE_PAGE_DATA = [
     pricePerStay: 50,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    position: {
+      lat: 37.778519,
+      lng: -122.40564
+    },
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -101,6 +105,10 @@ export const REAL_ESTATE_PAGE_DATA = [
     pricePerStay: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    position: {
+      lat: 28,
+      lng: -102
+    },
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
