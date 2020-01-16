@@ -32,8 +32,8 @@ class LogInForm extends Component {
     const elementClass = this.props.elementClass;
 
     return (
-        <form action="#" method="post" className={`Form ${elementClass}`}>
-          <h2 className="Form__title">Sign Up</h2>
+        <form action="#" method="post" className={`Form ${elementClass} Form--auth`}>
+          <h2 className="Form__title">Log In</h2>
           <div className="message">
             Don`t have an account? <Link to="/register">Sign Up here</Link>
           </div>

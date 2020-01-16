@@ -98,10 +98,31 @@
     width: 100%;
 }
 
+.Form__address-block {
+    margin-top: 1.5em;
+}
+
+.Form--auth {
+    max-width: 450px;
+}
+
+.address-block__address-label {
+    margin-bottom: 0.5em;
+}
+
+.centering-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 @media all and (min-width: 500px) {
     .Form {
         -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         -moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+    }
+
+    .Form__button {
+        width: 300px;
     }
 }

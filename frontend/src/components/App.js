@@ -8,8 +8,7 @@ import RealEstatePage from "./RealEstatePage";
 import LandingPage from "./LandingPage";
 import SignUpForm from "./SignUpForm";
 import LogInForm from "./LogInForm";
-import CreateRealEstateForm from "./CreateRealEstateForm";
-import UpdateRealEstate from "./UpdateRealEstateForm";
+import CreateOrUpdateEstateForm from "./CreateOrUpdateEstateForm";
 
 class App extends Component {
   constructor(props) {
@@ -39,16 +38,24 @@ class App extends Component {
                   <RealEstateList />
                 </Route>
                 <Route exact path="/register" >
-                  <SignUpForm elementClass="Main__Form"/>
+                  <div className="form-wrapper">
+                    <SignUpForm elementClass="Main__login-form"/>
+                  </div>
                 </Route>
                 <Route exact path="/login" >
-                  <LogInForm elementClass="Main__Form"/>
+                  <div className="form-wrapper">
+                    <LogInForm elementClass="Main__login-form"/>
+                  </div>
                 </Route>
                 <Route exact path="/real-estate/new" >
-                  <CreateRealEstateForm elementClass="Main__Form"/>
+                  <div className="form-wrapper">
+                    <CreateOrUpdateEstateForm elementClass="Main__Form"/>
+                  </div>
                 </Route>
                 <Route exact path="/real-estate/:id/edit" >
-                  <UpdateRealEstate elementClass="Main__Form"/>
+                  <div className="form-wrapper">
+                    <CreateOrUpdateEstateForm elementClass="Main__Form" isUpdateForm={true}/>
+                  </div>
                 </Route>
                 <Route exact path="/real-estate/:id"
                        children={(routerProps) => <RealEstatePage {...routerProps}/>}

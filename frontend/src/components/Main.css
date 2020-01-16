@@ -1,10 +1,9 @@
 .Main {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0.8em;
 }
 
-.Main__Form {
+.Main__login-form {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -13,12 +12,5 @@
 @media all and (min-width: 500px) {
     .Main {
         background-color: white;
-    }
-
-    .Main__Form {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 400px;
-        max-width: 500px;
     }
 }

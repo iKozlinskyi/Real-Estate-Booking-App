@@ -65,7 +65,7 @@ class SignUpForm extends Component {
         </div>;
 
     return (
-        <form action="#" method="post" className={`Form ${elementClass}`}>
+        <form action="#" method="post" className={`Form ${elementClass} Form--auth`}>
           <h2 className="Form__title">Sign Up</h2>
           <div className="message">
             Already have an account? <Link to="/login">LogIn here</Link>

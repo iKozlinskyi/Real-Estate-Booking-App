@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
+
+import "./Form.css"
+import FormMap from "./FormMap";
 import {withRouter} from "react-router-dom";
 import {findRealEstateById} from "../utils/DataProvider";
 
-class UpdateRealEstateForm extends Component {
-
-  static defaultProps = {
-    elementClass: ""
-  };
-
+class CreateOrUpdateEstateForm extends Component {
   constructor(props) {
     super(props);
 
@@ -15,11 +13,13 @@ class UpdateRealEstateForm extends Component {
       name: "",
       imgUrl: "",
       price: "",
-      description: ""
+      description: "",
+      markerCoords: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setMarker = this.setMarker.bind(this);
   }
 
   handleChange(evt) {
@@ -32,23 +32,39 @@ class UpdateRealEstateForm extends Component {
     evt.preventDefault();
   }
 
+  setMarker(newMarkerCoords) {
+    this.setState({markerCoords: newMarkerCoords})
+  }
+
   fetchData() {
     const id = parseInt(this.props.match.params.id);
-    const {name, imgUrl, pricePerStay, description} = findRealEstateById(id);
-    this.setState({name, imgUrl, price: pricePerStay, description});
+    const {name, imgUrl, pricePerStay, description, position} = findRealEstateById(id);
+    this.setState(
+        {
+          name,
+          imgUrl,
+          price: pricePerStay,
+          description,
+          markerCoords: position
+        }
+    );
   }
 
   componentDidMount() {
-    this.fetchData()
+    const isUpdateForm = this.props.match.path === "/real-estate/:id/edit";
+
+    if (isUpdateForm) {
+      this.fetchData()
+    }
   }
 
   render() {
-
-    const elementClass = this.props.elementClass;
+    const elementClass = this.props.elementClass || "";
+    const titleVerb = this.props.isUpdateForm ? "Edit" : "Add";
 
     return (
         <form action="#" method="post" className={`Form ${elementClass}`}>
-          <h2 className="Form__title">Edit Real Estate</h2>
+          <h2 className="Form__title">{titleVerb} Real Estate</h2>
           <input type="text"
                  placeholder="Real Estate Name"
                  name="name"
@@ -79,6 +95,13 @@ class UpdateRealEstateForm extends Component {
                     onChange={this.handleChange}
                     value={this.state.description}
           />
+          <div className="Form__address-block address-block">
+            <div className="address-block__address-label">Address:</div>
+            <FormMap
+                handleClick={this.setMarker}
+                markerCoords={this.state.markerCoords}
+            />
+          </div>
           <input type="submit"
                  className="button button--link Form__button"
                  value="Submit"
@@ -88,4 +111,4 @@ class UpdateRealEstateForm extends Component {
   }
 }
 
-export default withRouter(UpdateRealEstateForm);
+export default withRouter(CreateOrUpdateEstateForm);
