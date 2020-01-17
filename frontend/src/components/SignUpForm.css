@@ -1,0 +1,71 @@
+.SignUpForm {
+    padding: 1em;
+}
+
+.SignUpForm__title {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+    margin: 1rem;
+}
+
+.input-field {
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.SignUpForm__input-field {
+    margin-top: 1em;
+    width: 100%;
+}
+
+.SignUpForm__button {
+    margin-top: 2em;
+    width: 100%;
+    cursor: pointer;
+}
+
+.SignUpForm__SignUpForm-message {
+    margin-top: 0.5em;
+}
+
+
+.message {
+    text-align: center;
+}
+
+.SignUpForm-message {
+    text-align: center;
+    padding: 0.6em 0;
+    border-radius: 5px;
+}
+
+.SignUpForm-message--warning {
+    background-color: #fcf283;
+    color: #7c7845;
+}
+
+.SignUpForm-message--success {
+    background-color: #dafcc0;
+    color: #7c7845;
+}
+
+.SignUpForm--auth {
+    max-width: 450px;
+}
+
+.centering-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+@media all and (min-width: 500px) {
+    .SignUpForm {
+        -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+        -moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+        box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+    }
+}

@@ -1,10 +1,29 @@
+.RealEstateList {
+    padding-bottom: 3em;
+}
+
 .RealEstateList__RealEstateCard {
     margin: 1.5em 0;
 }
 
+.right-positioning-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button--success {
+    background-color: #69ff5c;
+}
+
+.RealEstateList__change-layout-button {
+    border-radius: 0.6em;
+    cursor: pointer;
+    margin: 0.3em;
+}
+
 @media all and (min-width: 576px) {
 
-    .RealEstateList {
+    .cards-list {
         display: flex;
         flex-wrap: wrap;
         margin-top: 0.5rem;

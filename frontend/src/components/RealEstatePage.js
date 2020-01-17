@@ -5,6 +5,7 @@ import {findRealEstateById} from "../utils/DataProvider";
 import CommentList from "./CommentList";
 import {Link, withRouter} from "react-router-dom";
 import PageMap from "./PageMap";
+import "./Button.css"
 
 class RealEstatePage extends Component {
 

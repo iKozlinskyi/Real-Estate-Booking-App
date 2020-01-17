@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
-import "./Map.css"
-
-const KYIV_CENTER_COORDS = {lat: 50.450141, lng: 30.523871};
+import "./FormMap.css"
+import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../utils/constants";
 
 class FormMap extends Component {
 
@@ -29,7 +28,7 @@ class FormMap extends Component {
         KYIV_CENTER_COORDS;
 
     return (
-        <div className="FormMap Map">
+        <div className="FormMap">
           <Map
               google={this.props.google}
               zoom={12}
@@ -49,5 +48,5 @@ class FormMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAZFNUpDKGfnUHlINzlqZaUssmbfk0QA8M"
+  apiKey: GOOGLE_MAP_API_KEY
 })(FormMap);

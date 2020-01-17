@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 
-import "./Form.css"
+import "./CreateOrUpdateEstateForm.css"
 import FormMap from "./FormMap";
 import {withRouter} from "react-router-dom";
 import {findRealEstateById} from "../utils/DataProvider";
+import {withElementClassName} from "./withElementClassName";
+import "./Button.css"
 
 class CreateOrUpdateEstateForm extends Component {
   constructor(props) {
@@ -59,23 +61,23 @@ class CreateOrUpdateEstateForm extends Component {
   }
 
   render() {
-    const elementClass = this.props.elementClass || "";
+    const elementClassName = this.props.elementClassName;
     const titleVerb = this.props.isUpdateForm ? "Edit" : "Add";
 
     return (
-        <form action="#" method="post" className={`Form ${elementClass}`}>
-          <h2 className="Form__title">{titleVerb} Real Estate</h2>
+        <form action="#" method="post" className={`CreateOrUpdateRealEstateForm ${elementClassName}`}>
+          <h2 className="CreateOrUpdateRealEstateForm__title">{titleVerb} Real Estate</h2>
           <input type="text"
                  placeholder="Real Estate Name"
                  name="name"
-                 className="input-field Form__input-field"
+                 className="input-field CreateOrUpdateRealEstateForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.name}
                  required/>
           <input type="text"
                  placeholder="Image URL"
                  name="imgUrl"
-                 className="input-field Form__input-field"
+                 className="input-field CreateOrUpdateRealEstateForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.imgUrl}
                  required
@@ -83,27 +85,30 @@ class CreateOrUpdateEstateForm extends Component {
           <input type="text"
                  placeholder="Price per night"
                  name="price"
-                 className="input-field Form__input-field"
+                 className="input-field CreateOrUpdateRealEstateForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.price}
                  pattern="^\d{1,6}\.?\d{1,2}?$"
                  required
           />
           <textarea name="description"
-                    className="textarea Form__textarea"
+                    className="textarea CreateOrUpdateRealEstateForm__textarea"
                     placeholder="Real Estate description"
                     onChange={this.handleChange}
                     value={this.state.description}
           />
-          <div className="Form__address-block address-block">
+          <div className="CreateOrUpdateRealEstateForm__address-block address-block">
             <div className="address-block__address-label">Address:</div>
-            <FormMap
-                handleClick={this.setMarker}
-                markerCoords={this.state.markerCoords}
-            />
+            <div className="CreateOrUpdateRealEstateForm__FormMap">
+              <FormMap
+                  handleClick={this.setMarker}
+                  markerCoords={this.state.markerCoords}
+
+              />
+            </div>
           </div>
           <input type="submit"
-                 className="button button--link Form__button"
+                 className="button button--link CreateOrUpdateRealEstateForm__button"
                  value="Submit"
           />
         </form>
@@ -111,4 +116,4 @@ class CreateOrUpdateEstateForm extends Component {
   }
 }
 
-export default withRouter(CreateOrUpdateEstateForm);
+export default withElementClassName(withRouter(CreateOrUpdateEstateForm));

@@ -2,15 +2,19 @@ import React, {Component} from 'react';
 import RealEstateCard from "./RealEstateCard";
 import "./RealEstateList.css"
 import Title from "./Title";
-import {REAL_ESTATE_PREVIEW_DATA} from "../utils/DataProvider";
+import {REAL_ESTATE_PAGE_DATA} from "../utils/DataProvider";
+import MultiMarkerMap from "./MultiMarkerMap";
 
 class RealEstateList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      realEstate: []
-    }
+      realEstate: [],
+      isListOfCards: true
+    };
+
+    this.toggleView = this.toggleView.bind(this);
   }
 
   componentDidMount() {
@@ -18,20 +22,51 @@ class RealEstateList extends Component {
   }
 
   fetchRealEstateData() {
-    return REAL_ESTATE_PREVIEW_DATA;
+    return REAL_ESTATE_PAGE_DATA;
+  }
+
+  extractMarkerData() {
+    return this.state.realEstate.map(data => ({
+      id: data.id,
+      title: data.name,
+      name: data.name,
+      position: data.position
+    }))
+  }
+
+  toggleView() {
+    this.setState(curState => ({isListOfCards: !curState.isListOfCards}))
   }
 
   render() {
 
-    const realEstateCards = this.state.realEstate.map(data =>
-        <RealEstateCard key={data.id} {...data} elementClass="RealEstateList__RealEstateCard"/>);
+    let realEstateCards;
+    if (this.state.isListOfCards) {
+      realEstateCards = this.state.realEstate.map(data =>
+          <RealEstateCard key={data.id} {...data} elementClass="RealEstateList__RealEstateCard"/>);
+    }
+
+    // noinspection CheckTagEmptyBody
     return (
-        <>
-          <Title text="Available Real Estate" />
-          <ul className="RealEstateList">
-            {realEstateCards}
-          </ul>
-        </>
+        <div className="RealEstateList">
+          <Title text="Available Real Estate"/>
+
+          <div className="right-positioning-wrapper">
+            <button
+                className="button button--success RealEstateList__change-layout-button"
+                onClick={this.toggleView}
+            >
+              {this.state.isListOfCards ?
+                  <><i className="fas fa-map-marked-alt"></i> Show On a Map</> :
+                  <><i className="fas fa-th"></i> Show As a List</>}
+            </button>
+          </div>
+          {this.state.isListOfCards ?
+              <ul className="cards-list">
+                {realEstateCards}
+              </ul> :
+              <MultiMarkerMap markerData={this.extractMarkerData()}/>}
+        </div>
     );
   }
 }

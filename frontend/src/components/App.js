@@ -39,22 +39,22 @@ class App extends Component {
                 </Route>
                 <Route exact path="/register" >
                   <div className="form-wrapper">
-                    <SignUpForm elementClass="Main__login-form"/>
+                    <SignUpForm elementClassName="Main__login-form"/>
                   </div>
                 </Route>
                 <Route exact path="/login" >
                   <div className="form-wrapper">
-                    <LogInForm elementClass="Main__login-form"/>
+                    <LogInForm elementClassName="Main__login-form"/>
                   </div>
                 </Route>
                 <Route exact path="/real-estate/new" >
                   <div className="form-wrapper">
-                    <CreateOrUpdateEstateForm elementClass="Main__Form"/>
+                    <CreateOrUpdateEstateForm elementClassName="Main__Form"/>
                   </div>
                 </Route>
                 <Route exact path="/real-estate/:id/edit" >
                   <div className="form-wrapper">
-                    <CreateOrUpdateEstateForm elementClass="Main__Form" isUpdateForm={true}/>
+                    <CreateOrUpdateEstateForm elementClassName="Main__Form" isUpdateForm={true}/>
                   </div>
                 </Route>
                 <Route exact path="/real-estate/:id"

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import "./Form.css"
+import "./SignUpForm.css"
 import {isUsernameAvailable} from "../utils/DataProvider";
+import {withElementClassName} from "./withElementClassName";
+import "./Button.css"
 
 class SignUpForm extends Component {
 
@@ -50,29 +52,29 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const elementClass = this.props.elementClass;
-    const {isWarningVisible, isUsernameAvailable} = this.state;
+    const elementClassName = this.props.elementClassName;
 
+    const {isWarningVisible, isUsernameAvailable} = this.state;
     const isUsernameAvailabilityMessageShown = this.state.username !== "";
 
     const usernameAvailabilityMessage = isUsernameAvailable ?
-        <div className="form-message Form__form-message form-message--success">
+        <div className="form-message SignUpForm__form-message form-message--success">
           Good, your username is unique!
         </div>
         :
-        <div className="form-message Form__form-message form-message--warning">
+        <div className="form-message SignUpForm__form-message form-message--warning">
           Looks like your username has been taken. Try another one!
         </div>;
 
     return (
-        <form action="#" method="post" className={`Form ${elementClass} Form--auth`}>
-          <h2 className="Form__title">Sign Up</h2>
+        <form action="#" method="post" className={`SignUpForm ${elementClassName} SignUpForm--auth`}>
+          <h2 className="SignUpForm__title">Sign Up</h2>
           <div className="message">
             Already have an account? <Link to="/login">LogIn here</Link>
           </div>
 
           {isWarningVisible &&
-          <div className="form-message Form__form-message">
+          <div className="form-message SignUpForm__form-message">
             Please, fill in all fields
           </div>}
 
@@ -81,20 +83,20 @@ class SignUpForm extends Component {
           <input type="text"
                  placeholder="Username"
                  name="username"
-                 className="input-field Form__input-field"
+                 className="input-field SignUpForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.username}
                  required/>
           <input type="password"
                  placeholder="Password"
                  name="password"
-                 className="input-field Form__input-field"
+                 className="input-field SignUpForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.password}
                  required
           />
           <input type="submit"
-                 className="button button--link Form__button"
+                 className="button button--link SignUpForm__button"
                  value="Submit"
           />
         </form>
@@ -102,4 +104,4 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+export default withElementClassName(SignUpForm);

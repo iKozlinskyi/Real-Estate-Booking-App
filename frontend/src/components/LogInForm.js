@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import "./Form.css"
+import "./LogInForm.css"
+import {withElementClassName} from "./withElementClassName";
+import "./Button.css"
 
 class LogInForm extends Component {
-
 
   constructor() {
     super();
@@ -29,11 +30,11 @@ class LogInForm extends Component {
 
   render() {
 
-    const elementClass = this.props.elementClass;
+    const elementClassName = this.props.elementClassName;
 
     return (
-        <form action="#" method="post" className={`Form ${elementClass} Form--auth`}>
-          <h2 className="Form__title">Log In</h2>
+        <form action="#" method="post" className={`LogInForm ${elementClassName} LogInForm--auth`}>
+          <h2 className="LogInForm__title">Log In</h2>
           <div className="message">
             Don`t have an account? <Link to="/register">Sign Up here</Link>
           </div>
@@ -41,20 +42,20 @@ class LogInForm extends Component {
           <input type="text"
                  placeholder="Username"
                  name="username"
-                 className="input-field Form__input-field"
+                 className="input-field LogInForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.username}
                  required/>
           <input type="password"
                  placeholder="Password"
                  name="password"
-                 className="input-field Form__input-field"
+                 className="input-field LogInForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.password}
                  required
           />
           <input type="submit"
-                 className="button button--link Form__button"
+                 className="button button--link LogInForm__button"
                  value="Submit"
           />
         </form>
@@ -62,4 +63,4 @@ class LogInForm extends Component {
   }
 }
 
-export default LogInForm;
+export default withElementClassName(LogInForm);

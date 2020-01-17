@@ -1,8 +1,8 @@
-.Form {
+.CreateOrUpdateRealEstateForm {
     padding: 1em;
 }
 
-.Form__title {
+.CreateOrUpdateRealEstateForm__title {
     font-size: 3em;
     font-weight: 300;
     text-align: center;
@@ -17,7 +17,7 @@
     font-size: 1em;
 }
 
-.Form__input-field {
+.CreateOrUpdateRealEstateForm__input-field {
     margin-top: 1em;
     width: 100%;
 }
@@ -33,31 +33,18 @@
     font-family: "Roboto", sans-serif;
 }
 
-.Form__textarea {
+.CreateOrUpdateRealEstateForm__textarea {
     margin-top: 1em;
     width: 100%;
 }
 
-.button {
-    border: none;
-    display: inline-block;
-    padding: 0.8em 0.8em;
-    font-size: 0.9em;
-}
-
-.button--link {
-    color: white;
-    border-radius: 3px;
-    background-color: #2562fc;
-}
-
-.Form__button {
+.CreateOrUpdateRealEstateForm__button {
     margin-top: 2em;
     width: 100%;
     cursor: pointer;
 }
 
-.Form__form-message {
+.CreateOrUpdateRealEstateForm__CreateOrUpdateRealEstateForm-message {
     margin-top: 0.5em;
 }
 
@@ -66,18 +53,18 @@
     text-align: center;
 }
 
-.form-message {
+.CreateOrUpdateRealEstateForm-message {
     text-align: center;
     padding: 0.6em 0;
     border-radius: 5px;
 }
 
-.form-message--warning {
+.CreateOrUpdateRealEstateForm-message--warning {
     background-color: #fcf283;
     color: #7c7845;
 }
 
-.form-message--success {
+.CreateOrUpdateRealEstateForm-message--success {
     background-color: #dafcc0;
     color: #7c7845;
 }
@@ -93,17 +80,21 @@
     font-family: "Roboto", sans-serif;
 }
 
-.Form__textarea {
+.CreateOrUpdateRealEstateForm__textarea {
     margin-top: 1em;
     width: 100%;
 }
 
-.Form__address-block {
+.CreateOrUpdateRealEstateForm__address-block {
     margin-top: 1.5em;
 }
 
-.Form--auth {
+.CreateOrUpdateRealEstateForm--auth {
     max-width: 450px;
+}
+
+.CreateOrUpdateRealEstateForm__FormMap {
+    height: 400px;
 }
 
 .address-block__address-label {
@@ -116,13 +107,13 @@
 }
 
 @media all and (min-width: 500px) {
-    .Form {
+    .CreateOrUpdateRealEstateForm {
         -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         -moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
     }
 
-    .Form__button {
+    .CreateOrUpdateRealEstateForm__button {
         width: 300px;
     }
 }
