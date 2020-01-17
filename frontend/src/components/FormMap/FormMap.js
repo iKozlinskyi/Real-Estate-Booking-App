@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
 import "./FormMap.css"
-import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../utils/constants";
+import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../../utils/constants";
 
 class FormMap extends Component {
 

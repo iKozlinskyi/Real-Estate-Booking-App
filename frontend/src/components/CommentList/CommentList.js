@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Comment from "./Comment";
+import Comment from "../Comment/Comment";
 import "./CommentList.css"
-import CommentForm from "./CommentForm";
+import CommentForm from "../CommentForm/CommentForm";
 
 class CommentList extends Component {
 

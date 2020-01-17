@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import RealEstateCard from "./RealEstateCard";
+import RealEstateCard from "../RealEstateCard/RealEstateCard";
 import "./RealEstateList.css"
-import Title from "./Title";
-import {REAL_ESTATE_PAGE_DATA} from "../utils/DataProvider";
-import MultiMarkerMap from "./MultiMarkerMap";
+import {REAL_ESTATE_PAGE_DATA} from "../../utils/DataProvider";
+import MultiMarkerMap from "./../MultiMarkerMap/MultiMarkerMap";
+import "../Styles/Title.css"
 
 class RealEstateList extends Component {
   constructor(props) {
@@ -49,8 +49,7 @@ class RealEstateList extends Component {
     // noinspection CheckTagEmptyBody
     return (
         <div className="RealEstateList">
-          <Title text="Available Real Estate"/>
-
+          <h2 className="title">"Available Real Estate"</h2>
           <div className="right-positioning-wrapper">
             <button
                 className="button button--success RealEstateList__change-layout-button"

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
-import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../utils/constants";
+import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../../utils/constants";
 import "./MultiMarkerMap.css"
 
 class MultiMarkerMap extends Component {
@@ -28,7 +28,6 @@ class MultiMarkerMap extends Component {
               initialCenter={KYIV_CENTER_COORDS}
               centerAroundCurrentLocation={true}
               center={this.state.mapCenterCoords}
-              // onClick={this.onMapClicked}
           >
             {this.props.markerData.map(marker => {
               return <Marker

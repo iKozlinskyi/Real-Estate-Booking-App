@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 
 import "./CreateOrUpdateEstateForm.css"
-import FormMap from "./FormMap";
+import FormMap from "../FormMap/FormMap";
 import {withRouter} from "react-router-dom";
-import {findRealEstateById} from "../utils/DataProvider";
-import {withElementClassName} from "./withElementClassName";
-import "./Button.css"
+import {findRealEstateById} from "../../utils/DataProvider";
+import {withElementClassName} from "../HOCs/withElementClassName.js";
+import "../Styles/Button.css"
 
 class CreateOrUpdateEstateForm extends Component {
   constructor(props) {

@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import Main from "./Main";
-import NavBar from "./NavBar";
+import React, {Component} from 'react';
+import Main from "./Main/Main";
+import NavBar from "./NavBar/NavBar";
 import "./App.css"
-import RealEstateList from "./RealEstateList";
-import {Switch, Route} from "react-router-dom";
-import RealEstatePage from "./RealEstatePage";
-import LandingPage from "./LandingPage";
-import SignUpForm from "./SignUpForm";
-import LogInForm from "./LogInForm";
-import CreateOrUpdateEstateForm from "./CreateOrUpdateEstateForm";
+import RealEstateList from "./RealEstateList/RealEstateList";
+import {Route, Switch} from "react-router-dom";
+import RealEstatePage from "./RealEstatePage/RealEstatePage";
+import LandingPage from "./LandingPage/LandingPage";
+import SignUpForm from "./SignUpForm/SignUpForm";
+import LogInForm from "./LogInForm/LogInForm";
+import CreateOrUpdateEstateForm from "./CreateOrUpdateEstateForm/CreateOrUpdateEstateForm";
 
 class App extends Component {
   constructor(props) {

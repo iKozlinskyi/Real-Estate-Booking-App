@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import Title from "./Title";
 import "./RealEstatePage.css"
-import {findRealEstateById} from "../utils/DataProvider";
-import CommentList from "./CommentList";
+import {findRealEstateById} from "../../utils/DataProvider";
+import CommentList from "../CommentList/CommentList";
 import {Link, withRouter} from "react-router-dom";
-import PageMap from "./PageMap";
-import "./Button.css"
+import PageMap from "../PageMap/PageMap";
+import "../Styles/Button.css"
 
 class RealEstatePage extends Component {
 
@@ -43,7 +42,7 @@ class RealEstatePage extends Component {
     return (
         <div className="RealEstatePage">
         <article className="RealEstate-card">
-          <Title text={name}/>
+          <h2 className="title">{name}</h2>
           <div className="RealEstate-card__img-area img-area">
             <img
                 src={imgUrl}

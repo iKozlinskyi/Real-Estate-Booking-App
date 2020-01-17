@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "./LogInForm.css"
-import {withElementClassName} from "./withElementClassName";
-import "./Button.css"
+import {withElementClassName} from "../HOCs/withElementClassName";
+import "../Styles/Button.css"
 
 class LogInForm extends Component {
 

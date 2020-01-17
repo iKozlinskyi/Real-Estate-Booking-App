@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import "./CommentForm.css"
-import "./Button.css"
+import "../Styles/Button.css"
 
 class CommentForm extends Component {
 

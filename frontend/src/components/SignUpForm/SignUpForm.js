@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "./SignUpForm.css"
-import {isUsernameAvailable} from "../utils/DataProvider";
-import {withElementClassName} from "./withElementClassName";
-import "./Button.css"
+import {isUsernameAvailable} from "../../utils/DataProvider";
+import {withElementClassName} from "../HOCs/withElementClassName";
+import "../Styles/Button.css"
 
 class SignUpForm extends Component {
 

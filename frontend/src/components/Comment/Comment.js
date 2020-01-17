@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Button from "./Button";
 import "./Comment.css"
 
 class Comment extends Component {
@@ -26,7 +25,7 @@ class Comment extends Component {
             {text}
           </div>
           <div className="controls Comment__controls">
-            <Button modifier="danger" text="Delete" />
+            <button className="button RealEstate-card__button button--danger">Delete</button>
           </div>
         </article>
     );
