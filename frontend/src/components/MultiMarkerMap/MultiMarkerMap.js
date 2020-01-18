@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {GoogleApiWrapper, Map, Marker} from "google-maps-react";
+import {GoogleApiWrapper, InfoWindow, Map, Marker} from "google-maps-react";
 import {GOOGLE_MAP_API_KEY, KYIV_CENTER_COORDS} from "../../utils/constants";
 import "./MultiMarkerMap.css"
 
@@ -9,15 +9,41 @@ class MultiMarkerMap extends Component {
     super();
 
     this.state = {
-      mapCenterCoords: KYIV_CENTER_COORDS
+      activeMarker: {},
+      selectedPlace: {},
+      showingInfoWindow: false
     };
 
-    this.handleMarkerClick = this.handleMarkerClick.bind(this);
+    this.onMapClicked = this.onMapClicked.bind(this);
+    this.onMarkerHovered = this.onMarkerHovered.bind(this);
+    this.onInfoWindowClose = this.onInfoWindowClose.bind(this);
   }
 
-  handleMarkerClick(markerData) {
-    this.setState({mapCenterCoords: markerData.position})
+  onMarkerHovered(props, marker) {
+    this.setState({
+      activeMarker: marker,
+      selectedPlace: props,
+      showingInfoWindow: true
+    });
   }
+
+
+  onInfoWindowClose() {
+    this.setState({
+      activeMarker: null,
+      showingInfoWindow: false
+    });
+  }
+
+
+  onMapClicked() {
+    if (this.state.showingInfoWindow)
+
+      this.setState({
+        activeMarker: null,
+        showingInfoWindow: false
+      });
+  };
 
   render() {
     return (
@@ -27,17 +53,30 @@ class MultiMarkerMap extends Component {
               zoom={12}
               initialCenter={KYIV_CENTER_COORDS}
               centerAroundCurrentLocation={true}
-              center={this.state.mapCenterCoords}
+              onClick={this.onMapClicked}
           >
             {this.props.markerData.map(marker => {
               return <Marker
                   key={marker.id}
-                  // title={marker.title}
+                  id={marker.id}
                   name={marker.name}
                   position={marker.position}
-                  onClick={this.handleMarkerClick}
-              />;
+                  onMouseover={this.onMarkerHovered}
+              />
+
+
             })}
+            <InfoWindow
+                marker={this.state.activeMarker}
+                visible={this.state.showingInfoWindow}
+                onClose={this.onInfoWindowClose}
+            >
+              <div>
+                  <h3>
+                    {this.state.selectedPlace.name}
+                  </h3>
+              </div>
+            </InfoWindow>
           </Map>
         </div>
     );
