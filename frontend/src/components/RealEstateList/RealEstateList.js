@@ -49,7 +49,7 @@ class RealEstateList extends Component {
     // noinspection CheckTagEmptyBody
     return (
         <div className="RealEstateList">
-          <h2 className="title">"Available Real Estate"</h2>
+          <h2 className="title">Available Real Estate</h2>
           <div className="right-positioning-wrapper">
             <button
                 className="button button--success RealEstateList__change-layout-button"
