@@ -96,6 +96,28 @@ export const REAL_ESTATE_PAGE_DATA = [
         createdAt: "2019-09-28, 12:46",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       }
+    ],
+    slides: [
+      {
+        id: 1,
+        imgSrc: "https://a0.muscache.com/im/pictures/bd544e3f-31f3-4d17-a339-373620b4037a.jpg?aki_policy=xx_large",
+        name: "Living Room"
+      },
+      {
+        id: 2,
+        imgSrc: "https://a0.muscache.com/im/pictures/dc0c8a1f-19fd-4f29-bea2-15246186ed12.jpg?aki_policy=xx_large",
+        name: "Kitchen"
+      },
+      {
+        id: 3,
+        imgSrc: "https://a0.muscache.com/im/pictures/f4751e1b-9869-4c9d-814f-38d4771f9ccb.jpg?aki_policy=xx_large",
+        name: "Kitchen"
+      },
+      {
+        id: 4,
+        imgSrc: "https://a0.muscache.com/im/pictures/a73f25a4-0e1d-4cd6-898e-144edd2cf2cf.jpg?aki_policy=xx_large",
+        name: "Bedroom"
+      },
     ]
   },
   {
@@ -119,6 +141,28 @@ export const REAL_ESTATE_PAGE_DATA = [
         createdAt: "2019-09-28, 12:46",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       }
+    ],
+    slides: [
+      {
+        id: 1,
+        imgSrc: "https://a0.muscache.com/im/pictures/18812907/6da085bc_original.jpg?aki_policy=xx_large",
+        name: "Eat-in kitchen"
+      },
+      {
+        id: 2,
+        imgSrc: "https://a0.muscache.com/im/pictures/18812995/675c8b27_original.jpg?aki_policy=xx_large",
+        name: "Backyard"
+      },
+      {
+        id: 3,
+        imgSrc: "https://a0.muscache.com/im/pictures/18812888/c835e65b_original.jpg?aki_policy=xx_large",
+        name: "Living room with Fireplace"
+      },
+      {
+        id: 4,
+        imgSrc: "https://a0.muscache.com/im/pictures/18812447/5986f14c_original.jpg?aki_policy=xx_large",
+        name: "Ascetic bedroom"
+      },
     ]
   },
   {
@@ -142,6 +186,28 @@ export const REAL_ESTATE_PAGE_DATA = [
         createdAt: "2019-09-28, 12:46",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
       }
+    ],
+    slides: [
+      {
+        id: 1,
+        imgSrc: "https://a0.muscache.com/im/pictures/79452273/12bc436d_original.jpg?aki_policy=xx_large",
+        name: "Spacious Living Room"
+      },
+      {
+        id: 2,
+        imgSrc: "https://a0.muscache.com/im/pictures/79451711/24dda9d9_original.jpg?aki_policy=xx_large",
+        name: "Living space layout"
+      },
+      {
+        id: 3,
+        imgSrc: "https://a0.muscache.com/im/pictures/79453174/32d76a4c_original.jpg?aki_policy=xx_large",
+        name: "Kitchen"
+      },
+      {
+        id: 4,
+        imgSrc: "https://a0.muscache.com/im/pictures/79453383/ec9ae2da_original.jpg?aki_policy=xx_large",
+        name: "Bedroom"
+      },
     ]
   }
 ];

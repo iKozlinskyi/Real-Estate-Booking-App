@@ -13,7 +13,7 @@
     color: #fff;
 }
 
-.landing__carousel {
+.landing__landing-carousel {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -23,7 +23,7 @@
     list-style: none;
 }
 
-.carousel__slide {
+.landing-carousel__landing-slide {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -31,7 +31,7 @@
     left: 0;
 }
 
-.slide {
+.landing-slide {
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -57,22 +57,22 @@
     }
 }
 
-.slide:nth-child(1) {
+.landing-slide:nth-child(1) {
     background-image: url(https://a0.muscache.com/im/pictures/51f4d564-3273-4f25-843d-54e17f6a8783.jpg?aki_policy=xx_large);
 }
-.slide:nth-child(2) {
+.landing-slide:nth-child(2) {
     background-image: url(https://a0.muscache.com/im/pictures/1faf9a4c-f839-44da-bd37-65ddc928379e.jpg?aki_policy=xx_large);
     animation-delay: 10s;
 }
-.slide:nth-child(3) {
+.landing-slide:nth-child(3) {
     background-image: url(https://images.unsplash.com/photo-1577381838108-0d096c9db20a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
     animation-delay: 20s;
 }
-.slide:nth-child(4) {
+.landing-slide:nth-child(4) {
     background-image: url(https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
     animation-delay: 30s;
 }
-.slide:nth-child(5) {
+.landing-slide:nth-child(5) {
     background-image: url(https://a0.muscache.com/im/pictures/45880516/93bb5931_original.jpg?aki_policy=xx_large);
     animation-delay: 40s;
 }

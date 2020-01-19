@@ -12,12 +12,12 @@ class LandingPage extends Component {
             <h1 className="landing__title">Welcome to FindHome!</h1>
             <Link to="/real-estate" className="button landing__button button--link">Browse Real Estate</Link>
           </div>
-          <ul className="carousel landing__carousel">
-            <li className="carousel__slide slide"></li>
-            <li className="carousel__slide slide"></li>
-            <li className="carousel__slide slide"></li>
-            <li className="carousel__slide slide"></li>
-            <li className="carousel__slide slide"></li>
+          <ul className="landing-carousel landing__landing-carousel">
+            <li className="landing-carousel__landing-slide landing-slide"></li>
+            <li className="landing-carousel__landing-slide landing-slide"></li>
+            <li className="landing-carousel__landing-slide landing-slide"></li>
+            <li className="landing-carousel__landing-slide landing-slide"></li>
+            <li className="landing-carousel__landing-slide landing-slide"></li>
           </ul>
         </main>
     );
