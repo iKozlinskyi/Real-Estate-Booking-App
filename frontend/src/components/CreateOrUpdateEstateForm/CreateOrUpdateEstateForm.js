@@ -86,13 +86,16 @@ class CreateOrUpdateEstateForm extends Component {
   handleDeleteInputClick(evt) {
     evt.preventDefault();
 
-    const numberOfInput = parseInt(evt.target.dataset.inputNumber);
+    if (evt.currentTarget.tagName === "BUTTON") {
 
-    this.setState(curState => ({
-      imgLinks: curState.imgLinks.filter((link, idx) => {
-        return idx !== numberOfInput
-      })
-    }));
+      const numberOfInput = parseInt(evt.currentTarget.dataset.inputNumber);
+
+      this.setState(curState => ({
+        imgLinks: curState.imgLinks.filter((link, idx) => {
+          return idx !== numberOfInput
+        })
+      }));
+    }
   }
 
   render() {
@@ -105,7 +108,6 @@ class CreateOrUpdateEstateForm extends Component {
           <div className="input-group">
             <input type="text"
                    placeholder="http://"
-                   name="imgUrl"
                    className="input-field CreateOrUpdateRealEstateForm__input-field"
                    onChange={this.handleChange}
                    value={link}
@@ -134,7 +136,7 @@ class CreateOrUpdateEstateForm extends Component {
             </div>}
           </div>
         </div>
-    ))
+    ));
 
     return (
         <form action="#" method="post" className={`CreateOrUpdateRealEstateForm ${elementClassName}`}>
