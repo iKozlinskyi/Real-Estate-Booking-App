@@ -4,8 +4,8 @@ import "./carousel-styles-forked.css"
 import {withElementClassName} from "../HOCs/withElementClassName";
 
 class RealEstateCarousel extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleSliderChange = this.handleSliderChange.bind(this);
   }
@@ -15,7 +15,7 @@ class RealEstateCarousel extends Component {
   }
 
   render() {
-    const slides = this.props.slides;
+
     return (
           <Carousel
               showStatus={false}
@@ -25,7 +25,7 @@ class RealEstateCarousel extends Component {
               onChange={this.handleSliderChange}
               selectedItem={this.props.slideNumber}
           >
-            {slides.map(slide => (
+            {this.props.slides.map(slide => (
                 <div key={slide.id}>
                   <img src={slide.imgSrc} alt={slide.name}/>
                   <p className="legend">{slide.name}</p>

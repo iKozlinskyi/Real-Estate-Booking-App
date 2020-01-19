@@ -18,7 +18,7 @@
 }
 
 .CreateOrUpdateRealEstateForm__input-field {
-    margin-top: 1em;
+    margin-bottom: 1em;
     width: 100%;
 }
 
@@ -31,11 +31,6 @@
     font-size: 1em;
     resize: none;
     font-family: "Roboto", sans-serif;
-}
-
-.CreateOrUpdateRealEstateForm__textarea {
-    margin-top: 1em;
-    width: 100%;
 }
 
 .CreateOrUpdateRealEstateForm__button {
@@ -81,7 +76,7 @@
 }
 
 .CreateOrUpdateRealEstateForm__textarea {
-    margin-top: 1em;
+    margin-bottom: 1em;
     width: 100%;
 }
 
@@ -97,8 +92,38 @@
     height: 400px;
 }
 
-.address-block__address-label {
+.CreateOrUpdateRealEstateForm__input-label {
     margin-bottom: 0.5em;
+}
+
+.input-number-button {
+    margin-left: 0.3em;
+    line-height: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    font-size: 1.5em;
+    cursor: pointer;
+    -webkit-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.input-number-button__text {
+    margin-bottom: 3px;
+}
+
+.input-number-button--add-input {
+    background-color: #50e3a3;
+}
+
+.input-number-button--delete-input {
+    background-color: #FF895A;
+}
+
+.input-group {
+    display: flex;
 }
 
 .centering-wrapper {

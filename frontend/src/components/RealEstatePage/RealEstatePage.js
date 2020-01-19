@@ -55,7 +55,7 @@ class RealEstatePage extends Component {
       description,
       comments,
       position,
-      slides
+      photos
     } = this.state.realEstateData;
 
     const pagePathName = this.props.location.pathname;
@@ -74,14 +74,14 @@ class RealEstatePage extends Component {
                 <button className="popup__exit" onClick={this.onClosePopupClick}></button>
                 }
 
-                {slides &&
+                {photos &&
                 <RealEstateCarousel
                     elementClassName={`${carouselFullScreen &&
                     "RealEstate-card__RealEstateCarousel"}`}
                     onSlideClick={this.onSlideClick}
                     slideNumber={currentSlideNumber}
                     onSlideChange={this.handleSlideChange}
-                    slides={slides}
+                    slides={photos}
                 />}
 
               </div>
