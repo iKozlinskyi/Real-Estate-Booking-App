@@ -13,6 +13,7 @@ class CreateOrUpdateEstateForm extends Component {
 
     this.state = {
       name: "",
+      city: "",
       imgLinks: [""],
       price: "",
       description: "",
@@ -24,6 +25,7 @@ class CreateOrUpdateEstateForm extends Component {
     this.setMarker = this.setMarker.bind(this);
     this.handleAddInputClick = this.handleAddInputClick.bind(this);
     this.handleDeleteInputClick = this.handleDeleteInputClick.bind(this);
+    this.handlePriceChange = this.handlePriceChange.bind(this);
   }
 
   handleChange(evt) {
@@ -45,6 +47,17 @@ class CreateOrUpdateEstateForm extends Component {
 
     this.setState({
       [evt.target.name]: evt.target.value
+    });
+  }
+
+  handlePriceChange(evt) {
+    const testRegEx = /^\d{0,6}\.?\d{1,2}?$/;
+    const {name, value} = evt.target;
+
+    if (!testRegEx.test(value)) return;
+
+    this.setState({
+      [name]: value
     });
   }
 
@@ -151,6 +164,19 @@ class CreateOrUpdateEstateForm extends Component {
                  required
           />
 
+          <div className="CreateOrUpdateRealEstateForm__input-label">City:</div>
+          <select
+              name="city"
+              className="filter-input-field FilterPanel__filter-input-field"
+              value={this.props.city}
+              onChange={this.handleChange}
+          >
+            <option value="">All Cities</option>
+            <option value="Kyiv">Kyiv</option>
+            <option value="Lviv">Lviv</option>
+            <option value="Odessa">Odessa</option>
+          </select>
+
           {imageLinkInputFields}
 
           <div className="CreateOrUpdateRealEstateForm__input-label">Price Per Night</div>
@@ -158,7 +184,7 @@ class CreateOrUpdateEstateForm extends Component {
                  placeholder="12"
                  name="price"
                  className="input-field CreateOrUpdateRealEstateForm__input-field"
-                 onChange={this.handleChange}
+                 onChange={this.handlePriceChange}
                  value={this.state.price}
                  pattern="^\d{1,6}\.?\d{1,2}?$"
                  required

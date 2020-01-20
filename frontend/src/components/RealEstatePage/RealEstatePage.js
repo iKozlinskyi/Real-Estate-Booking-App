@@ -51,6 +51,7 @@ class RealEstatePage extends Component {
       name,
       price,
       author,
+      city,
       description,
       comments,
       position,
@@ -85,11 +86,17 @@ class RealEstatePage extends Component {
 
               </div>
               <div className="info-block">
-                <div className="price-block RealEstate-card__price-block">
-                  <div className="price-block__description">
+                <div className="info-item info-block__info-item">
+                  <div className="info-item__text">
                     Price per stay:
                   </div>
-                  <div className="price-block__price">{price}</div>
+                  <div className="info-item__value info-item__value--bright">{price}$</div>
+                </div>
+                <div className="info-item info-block__info-item">
+                  <div className="info-item__text">
+                    City:
+                  </div>
+                  <div className="info-item__value">{city}</div>
                 </div>
                 <div className="description-block">
                   <p className="description-block__text">{description}</p>

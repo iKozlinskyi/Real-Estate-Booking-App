@@ -8,7 +8,7 @@
 }
 
 .img-area {
-    display: flex;
+    display: block;
     border-radius: 5px;
 }
 
@@ -27,19 +27,18 @@
     letter-spacing: 0.05em;
 }
 
-.price-block {
+.info-item {
     display: flex;
     justify-content: space-between;
     font-size: 1.2em;
 }
 
-.RealEstate-card__price-block {
-    margin-top: 1rem;
+.info-item__value {
+    font-weight: bold;
 }
 
-.price-block__price {
+.info-item__value--bright {
     color: #e34a5d;
-    font-weight: bold;
 }
 
 .RealEstate-card__button {
@@ -125,11 +124,11 @@
 }
 
 @media all and (min-width: 576px) {
-    .price-block {
-        justify-content: flex-end;
+    .info-item {
+        justify-content: flex-start;
     }
 
-    .price-block__price {
+    .info-item__value {
         margin-left: 0.5em;
     }
 
@@ -152,8 +151,8 @@
         margin-right: 3%;
     }
 
-    .RealEstate-card__price-block {
-        margin-top: 0;
+    .info-block__info-item {
+        margin-bottom: 0.3em;
     }
 
     .RealEstate-card__controls {
