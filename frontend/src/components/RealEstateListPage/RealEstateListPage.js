@@ -96,6 +96,7 @@ class RealEstateListPage extends Component {
   resetForm() {
     this.setState(curState => ({
       ...curState,
+      filteredData: curState.realEstate,
       filters: {
         realEstateName: "",
         city: "",
