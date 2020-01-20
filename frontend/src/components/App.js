@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
 import "./App.css"
-import RealEstateList from "./RealEstateList/RealEstateList";
+import RealEstateListPage from "./RealEstateListPage/RealEstateListPage";
 import {Route, Switch} from "react-router-dom";
 import RealEstatePage from "./RealEstatePage/RealEstatePage";
 import LandingPage from "./LandingPage/LandingPage";
@@ -35,7 +35,7 @@ class App extends Component {
             <Main>
               <Switch>
                 <Route exact path="/real-estate" >
-                  <RealEstateList />
+                  <RealEstateListPage />
                 </Route>
                 <Route exact path="/register" >
                   <div className="form-wrapper">
