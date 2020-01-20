@@ -82,7 +82,7 @@
     }
 
     .RealEstateListPage__RealEstateList {
-        height: 90vh;
+        max-height: 90vh;
         overflow: auto;
     }
 
@@ -119,7 +119,7 @@
     }
 
     .RealEstateListPage__RealEstateList {
-        height: 80vh;
+        max-height: 80vh;
     }
 }
 

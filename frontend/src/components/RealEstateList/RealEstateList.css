@@ -8,16 +8,47 @@
     width: 100%;
 }
 
+.paging-control-block {
+    width: 45%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.paging-control-block__page-status {
+    padding-top: 0.1em;
+}
+
+.page-status {
+    font-size: 1.2em;
+}
+
+.paging-button {
+    background-color: transparent;
+    border: none;
+    color: #75bcff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.RealEstateList__paging-control-block {
+    margin-top: 1em;
+}
+
 @media all and (min-width: 576px) {
     .RealEstateList__RealEstateCard {
-        margin: 0 0.3em;
+        margin: 0.3em 0.3em;
         flex-basis: calc(50% - 0.6em);
+    }
+
+    .RealEstateList__paging-control-block {
+        margin-top: 2.5em;
     }
 }
 
 @media all and (min-width: 1100px) {
     .RealEstateList__RealEstateCard {
-        margin: 0.3em 0.3em;
         flex-basis: calc(33% - 0.6em);
     }
 }
