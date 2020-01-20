@@ -1,0 +1,59 @@
+.FilterPanel {
+    padding: 1em;
+}
+
+.FilterPanel__title {
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.filter-input-field {
+    padding: 7px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.FilterPanel__filter-input-field {
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+.price-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-group__text {
+    font-size: 1em;
+    margin-right: 0.5em;
+}
+
+.price-group__filter-input-field {
+    width: 100%;
+}
+
+.price-group__price-from,  .price-group__price-to{
+    width: 47%;
+    display: flex;
+    align-items: center;
+}
+
+.FilterPanel__reset-button {
+    margin-top: 1em;
+}
+
+@media all and (min-width: 576px) {
+    .FilterPanel {
+        -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+        -moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+        box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
+    }
+
+    .FilterPanel__button {
+        width: 300px;
+    }
+}

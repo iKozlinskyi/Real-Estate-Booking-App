@@ -21,8 +21,36 @@
     margin: 0.3em;
 }
 
-@media all and (min-width: 576px) {
+.map-wrapper {
+    margin-top: 0.3em;
+    width: 100vw;
+    padding: 0 0.3em;
+}
 
+.button-wrapper {
+    padding: 0 0.5em;
+}
+
+.toggle-filterList-button {
+    border: none;
+    display: inline-block;
+    padding: 0.8em 0.8em;
+    font-size: 1.1em;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #f9f9f9 linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+}
+
+.RealEstateList__toggle-filterList-button {
+    width: 100%;
+}
+
+.RealEstateList__FilterPanel--collapsed {
+    display: none;
+}
+
+@media all and (min-width: 576px) {
     .cards-list {
         display: flex;
         flex-wrap: wrap;
@@ -33,18 +61,63 @@
         margin: 0.3em 0.3em;
         flex-basis: calc(50% - 0.6em);
     }
+
+    .RealEstateList__result-block {
+        margin-top: 0.7em;
+    }
 }
 
 @media all and (min-width: 800px) {
-    .RealEstateList__RealEstateCard {
-        margin: 0.3em 0.3em;
-        flex-basis: calc(33% - 0.6em);
+    .flex-wrapper {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .RealEstateList__FilterPanel {
+        flex-basis: 250px;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .RealEstateList__FilterPanel--collapsed {
+        display: block;
+    }
+
+    .RealEstateList__toggle-filterList-button {
+        display: none;
+    }
+
+    .cards-list {
+        height: 90vh;
+        overflow: auto;
     }
 }
 
 @media all and (min-width: 1100px) {
     .RealEstateList__RealEstateCard {
-        flex-basis: calc(25% - 0.6em);
+            margin: 0.3em 0.3em;
+            flex-basis: calc(33% - 0.6em);
+        /*flex-basis: calc(25% - 0.6em);*/
+    }
+
+    .RealEstateList__FilterPanel {
+        flex-basis: 300px;
+    }
+
+    .RealEstateList__result-block {
+        flex-basis: calc(100% - 300px);
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .centering-wrapper {
+        width: 80%;
+    }
+
+    .cards-list {
+        height: 80vh;
     }
 }
 

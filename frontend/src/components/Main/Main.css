@@ -1,7 +1,7 @@
-.Main {
-    max-width: 1100px;
-    margin: 0 auto;
-}
+/*.Main {*/
+/*    max-width: 1100px;*/
+/*    margin: 0 auto;*/
+/*}*/
 
 .Main__login-form {
     position: absolute;
@@ -12,5 +12,12 @@
 @media all and (min-width: 500px) {
     .Main {
         background-color: white;
+    }
+}
+
+@media all and (min-width: 1100px) {
+    .Main {
+        width: 97vw;
+        margin: 0 auto;
     }
 }
