@@ -79,13 +79,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 1,
     name: "Multi Flat Family Building",
     imgUrl: "https://www.real-estate.lviv.ua/img/complex/400x300/46/d0/46d050ee46a740501a980efe84a291d1.jpg",
-    pricePerStay: 50,
+    price: 50,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.452339,
       lng: 30.502709
-    },
+    },city: "Kyiv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -124,13 +124,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 2,
     name: "Estate at Radical Factory",
     imgUrl: "https://www.real-estate.lviv.ua/img/objects/400x300/12/44/1244105cd3bacf0924324f7ea967f6b6.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.425209,
       lng: 30.498965
-    },
+    },city: "Lviv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -169,13 +169,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 3,
     name: "Great House Near Shore",
     imgUrl: "http://www.ongoingthemes.com/homelist/wp-content/uploads/2017/07/slide2.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.435277,
       lng: 30.549913
-    },
+    },city: "Kyiv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -214,13 +214,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 4,
     name: "Multi Flat Family Building",
     imgUrl: "https://www.real-estate.lviv.ua/img/complex/400x300/46/d0/46d050ee46a740501a980efe84a291d1.jpg",
-    pricePerStay: 50,
+    price: 50,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.452339,
       lng: 30.502709
-    },
+    },city: "Kyiv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -259,13 +259,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 5,
     name: "Estate at Radical Factory",
     imgUrl: "https://www.real-estate.lviv.ua/img/objects/400x300/12/44/1244105cd3bacf0924324f7ea967f6b6.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.425209,
       lng: 30.498965
-    },
+    },city: "Lviv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -304,13 +304,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 6,
     name: "Great House Near Shore",
     imgUrl: "http://www.ongoingthemes.com/homelist/wp-content/uploads/2017/07/slide2.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.435277,
       lng: 30.549913
-    },
+    },city: "Odessa",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -349,13 +349,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 7,
     name: "Multi Flat Family Building",
     imgUrl: "https://www.real-estate.lviv.ua/img/complex/400x300/46/d0/46d050ee46a740501a980efe84a291d1.jpg",
-    pricePerStay: 50,
+    price: 50,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.452339,
       lng: 30.502709
-    },
+    },city: "Odessa",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -394,13 +394,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 8,
     name: "Estate at Radical Factory",
     imgUrl: "https://www.real-estate.lviv.ua/img/objects/400x300/12/44/1244105cd3bacf0924324f7ea967f6b6.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.425209,
       lng: 30.498965
-    },
+    },city: "Kyiv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},
@@ -439,13 +439,13 @@ export const REAL_ESTATE_PAGE_DATA = [
     id: 9,
     name: "Great House Near Shore",
     imgUrl: "http://www.ongoingthemes.com/homelist/wp-content/uploads/2017/07/slide2.jpg",
-    pricePerStay: 30,
+    price: 30,
     author: "Andrey88",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     position: {
       lat: 50.435277,
       lng: 30.549913
-    },
+    },city: "Kyiv",
     comments: [
       {id: 1, author: "John81", createdAt: "2019-12-25, 14:37", text: "Great place, loved it"},
       {id: 2, author: "Limaso323", createdAt: "2019-11-23, 14:37", text: "Well, I`ve seen better"},

@@ -49,8 +49,7 @@ class RealEstatePage extends Component {
     const {
       id,
       name,
-      imgUrl,
-      pricePerStay,
+      price,
       author,
       description,
       comments,
@@ -90,7 +89,7 @@ class RealEstatePage extends Component {
                   <div className="price-block__description">
                     Price per stay:
                   </div>
-                  <div className="price-block__price">{pricePerStay}</div>
+                  <div className="price-block__price">{price}</div>
                 </div>
                 <div className="description-block">
                   <p className="description-block__text">{description}</p>

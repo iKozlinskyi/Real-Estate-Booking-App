@@ -23,7 +23,8 @@ class RealEstateList extends Component {
           from: "",
           to: ""
         }
-      }
+      },
+      filteredData: [],
     };
 
     this.toggleView = this.toggleView.bind(this);
@@ -34,7 +35,12 @@ class RealEstateList extends Component {
   }
 
   componentDidMount() {
-    this.setState({realEstate: this.fetchRealEstateData()});
+    const fetchedData = this.fetchRealEstateData();
+    this.setState(
+        {
+          realEstate: fetchedData,
+          filteredData: fetchedData
+        });
   }
 
   fetchRealEstateData() {
@@ -61,13 +67,19 @@ class RealEstateList extends Component {
         ...curState.filters,
         [propName]: propValue
       }
-    }))
+    }), () => this.handleFilterChange())
   }
 
   onPriceFiltersChange(propName, propValue) {
     const testRegEx = /^([1-9]\d*)?$/;
+    const {from: currentFrom, to: currentTo} = this.state.filters.price;
 
     if (!testRegEx.test(propValue)) return;
+    if ((propName === "from" && propValue >= currentTo) ||
+        (propName === "to" && propValue <= currentFrom)) {
+      // this.showFilterFormMessage(text);
+    }
+
 
     this.setState(curState => ({
       ...curState,
@@ -78,7 +90,7 @@ class RealEstateList extends Component {
           [propName]: propValue
         }
       }
-    }))
+    }), () => this.handleFilterChange())
   }
 
   resetForm() {
@@ -101,11 +113,47 @@ class RealEstateList extends Component {
     }))
   }
 
+  handleFilterChange() {
+    const {
+      realEstateName,
+      city,
+      price: {
+            from: priceFrom,
+            to: priceTo
+          }
+    } = this.state.filters;
+
+    if (realEstateName === "" && city === "") {
+      this.setState(curState => ({
+        filteredData: curState.realEstate
+      }))
+    }
+
+    let filteredResult = this.state.realEstate;
+
+    if (realEstateName !== "") {
+      filteredResult = filteredResult.filter(item => item.name.toLowerCase()
+          .includes(realEstateName.toLocaleLowerCase()));
+    }
+    if (city !== "") {
+      filteredResult = filteredResult.filter(item => item.city === city)
+    }
+    if (priceFrom !== "" && priceTo !== "") {
+      filteredResult = filteredResult.filter(
+          item => parseInt(item.price) >= priceFrom && item.price <= priceTo
+      );
+    }
+
+    this.setState({
+      filteredData: filteredResult
+    })
+  }
+
   render() {
 
     let realEstateCards;
     if (this.state.isListOfCards) {
-      realEstateCards = this.state.realEstate.map(data =>
+      realEstateCards = this.state.filteredData.map(data =>
           <RealEstateCard key={data.id} {...data} elementClass="RealEstateList__RealEstateCard"/>);
     }
 
@@ -127,7 +175,7 @@ class RealEstateList extends Component {
           <div className="flex-wrapper">
             <FilterPanel
                 elementClassName={`RealEstateList__FilterPanel
-                 ${ this.state.isFilterPanelCollapsed && 
+                 ${this.state.isFilterPanelCollapsed &&
                 "RealEstateList__FilterPanel--collapsed"}`}
 
                 onFiltersChange={this.onFiltersChange}
@@ -158,11 +206,11 @@ class RealEstateList extends Component {
                       <div className="map-wrapper">
                         <MultiMarkerMap markerData={this.extractMarkerData()}/>
                       </div>
-                      }
+                  }
                 </div>
               </div>
             </div>
-            </div>
+          </div>
         </div>
     );
   }
