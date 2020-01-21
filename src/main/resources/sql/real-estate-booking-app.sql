@@ -3,21 +3,41 @@ USE `real-estate-booking-app`;
 
 SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS `position`;
+DROP TABLE IF EXISTS `positions`;
 
-CREATE TABLE `position` (
+CREATE TABLE `positions` (
   `id` int NOT NULL AUTO_INCREMENT,
   `lat` double DEFAULT NULL,
   `lng` double DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `position`(lat, lng) VALUES
+INSERT INTO `positions`(lat, lng) VALUES
 	('50.452339', '30.502709'),
     ('50.425209', '30.498965'),
     ('50.435277', '30.549913'),
     ('50.405277', '30.589913'),
     ('50.642778', '30.279913');
+
+DROP TABLE IF EXISTS `comments`;
+
+CREATE TABLE `comments` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `author` varchar(255) default null,
+                            `text` text DEFAULT NULL,
+                            `created_at` timestamp default NOW(),
+                            `real_estate_id` int NOT NULL,
+                            PRIMARY KEY (`id`),
+                            foreign key(`real_estate_id`) references `real_estate`(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `comments`(author, text, real_estate_id)
+VALUES
+('John81', 'Great place, loved it', 1),
+('Limaso323', 'Well, I`ve seen better', 1),
+('PotatoHead', 'Would definitely visit once more!', 1),
+('Mannam', 'Price is good', 2);
+
 
 DROP TABLE IF EXISTS `real_estate`;
 
@@ -29,7 +49,7 @@ CREATE TABLE `real_estate` (
   `author` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `position_id` int DEFAULT NULL,
-  foreign key(`position_id`) references `position`(`id`),
+  foreign key(`position_id`) references `positions`(`id`),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 

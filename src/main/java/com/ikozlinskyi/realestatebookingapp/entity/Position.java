@@ -3,7 +3,7 @@ package com.ikozlinskyi.realestatebookingapp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="position")
+@Table(name="positions")
 public class Position {
 
   @Id

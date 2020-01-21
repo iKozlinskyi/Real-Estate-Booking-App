@@ -1,45 +1,52 @@
 package com.ikozlinskyi.realestatebookingapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="real_estate")
 public class RealEstate {
 
   @Id
-  @GeneratedValue(strategy= GenerationType.IDENTITY)
-  @Column(name="id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private int id;
 
-  @Column(name="name")
+  @Column(name = "name")
   private String name;
 
-  @Column(name="price")
+  @Column(name = "price")
   private double price;
 
-  @Column(name="city")
+  @Column(name = "city")
   private String city;
 
-  @Column(name="author")
+  @Column(name = "author")
   private String author;
 
-  @Column(name="description")
+  @Column(name = "description")
   private String description;
 
-  @OneToOne(cascade=CascadeType.ALL)
-  @JoinColumn(name="position_id")
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "position_id")
   private Position position;
+
+  @OneToMany(mappedBy = "realEstate",
+      cascade = CascadeType.ALL)
+  private List<Comment> comments;
 
   public RealEstate() {
   }
 
-  public RealEstate(String name, double price, String city, String author, String description, Position position) {
+  public RealEstate(String name, double price, String city, String author, String description) {
     this.name = name;
     this.price = price;
     this.city = city;
     this.author = author;
     this.description = description;
-    this.position = position;
   }
 
   public int getId() {
@@ -96,5 +103,22 @@ public class RealEstate {
 
   public void setPosition(Position position) {
     this.position = position;
+  }
+
+  public List<Comment> getComments() {
+    return comments;
+  }
+
+  public void setComments(List<Comment> comments) {
+    this.comments = comments;
+  }
+
+  public void addComment(Comment newComment) {
+    if (this.comments == null) {
+      comments = new ArrayList<>();
+    }
+
+    newComment.setRealEstate(this);
+    comments.add(newComment);
   }
 }
