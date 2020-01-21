@@ -26,15 +26,20 @@ public class RealEstate {
   @Column(name="description")
   private String description;
 
+  @OneToOne(cascade=CascadeType.ALL)
+  @JoinColumn(name="position_id")
+  private Position position;
+
   public RealEstate() {
   }
 
-  public RealEstate(String name, double price, String city, String author, String description) {
+  public RealEstate(String name, double price, String city, String author, String description, Position position) {
     this.name = name;
     this.price = price;
     this.city = city;
     this.author = author;
     this.description = description;
+    this.position = position;
   }
 
   public int getId() {
@@ -83,5 +88,13 @@ public class RealEstate {
 
   public void setCity(String city) {
     this.city = city;
+  }
+
+  public Position getPosition() {
+    return position;
+  }
+
+  public void setPosition(Position position) {
+    this.position = position;
   }
 }
