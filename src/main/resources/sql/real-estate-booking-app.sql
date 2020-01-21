@@ -38,6 +38,24 @@ VALUES
 ('PotatoHead', 'Would definitely visit once more!', 1),
 ('Mannam', 'Price is good', 2);
 
+DROP TABLE IF EXISTS `photos`;
+
+CREATE TABLE `photos` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `img_src` varchar(255) default null,
+                            `real_estate_id` int NOT NULL,
+                            PRIMARY KEY (`id`),
+                            foreign key(`real_estate_id`) references `real_estate`(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `photos`(img_src, real_estate_id)
+VALUES
+('https://a0.muscache.com/im/pictures/bd544e3f-31f3-4d17-a339-373620b4037a.jpg?aki_policy=xx_large', 1),
+('https://a0.muscache.com/im/pictures/dc0c8a1f-19fd-4f29-bea2-15246186ed12.jpg?aki_policy=xx_large', 1),
+('https://a0.muscache.com/im/pictures/f4751e1b-9869-4c9d-814f-38d4771f9ccb.jpg?aki_policy=xx_large', 1),
+('https://a0.muscache.com/im/pictures/a73f25a4-0e1d-4cd6-898e-144edd2cf2cf.jpg?aki_policy=xx_large', 1),
+('https://a0.muscache.com/im/pictures/18812907/6da085bc_original.jpg?aki_policy=xx_large', 2);
+
 
 DROP TABLE IF EXISTS `real_estate`;
 

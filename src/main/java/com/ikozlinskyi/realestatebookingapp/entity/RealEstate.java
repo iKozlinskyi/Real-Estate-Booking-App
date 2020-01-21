@@ -1,7 +1,5 @@
 package com.ikozlinskyi.realestatebookingapp.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +35,10 @@ public class RealEstate {
   @OneToMany(mappedBy = "realEstate",
       cascade = CascadeType.ALL)
   private List<Comment> comments;
+
+  @OneToMany(mappedBy = "realEstate",
+      cascade = CascadeType.ALL)
+  private List<Photo> photos;
 
   public RealEstate() {
   }
@@ -111,6 +113,14 @@ public class RealEstate {
 
   public void setComments(List<Comment> comments) {
     this.comments = comments;
+  }
+
+  public List<Photo> getPhotos() {
+    return photos;
+  }
+
+  public void setPhotos(List<Photo> photos) {
+    this.photos = photos;
   }
 
   public void addComment(Comment newComment) {
