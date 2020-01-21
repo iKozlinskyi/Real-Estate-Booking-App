@@ -1,12 +1,12 @@
-#Real-Estate-Booking-App
+# Real-Estate-Booking-App
 
-####Brief description:
+#### Brief description:
 
 A user can browse available real estate, filter it by name, price, location, see result of search on a map.
 
 So far, the main work (~80%) is done for the front end part, the back end is yet to finish.
 
-##How To Run The App
+## How To Run The App
 
 To get the frontend running locally:
 
