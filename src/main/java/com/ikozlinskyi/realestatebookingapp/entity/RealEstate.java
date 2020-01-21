@@ -17,6 +17,9 @@ public class RealEstate {
   @Column(name="price")
   private double price;
 
+  @Column(name="city")
+  private String city;
+
   @Column(name="author")
   private String author;
 
@@ -26,9 +29,10 @@ public class RealEstate {
   public RealEstate() {
   }
 
-  public RealEstate(String name, double price, String author, String description) {
+  public RealEstate(String name, double price, String city, String author, String description) {
     this.name = name;
     this.price = price;
+    this.city = city;
     this.author = author;
     this.description = description;
   }
@@ -71,5 +75,13 @@ public class RealEstate {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public String getCity() {
+    return city;
+  }
+
+  public void setCity(String city) {
+    this.city = city;
   }
 }
