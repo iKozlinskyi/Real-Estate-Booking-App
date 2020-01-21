@@ -2,6 +2,7 @@ package com.ikozlinskyi.realestatebookingapp.controller;
 
 import com.ikozlinskyi.realestatebookingapp.entity.Comment;
 import com.ikozlinskyi.realestatebookingapp.entity.RealEstate;
+import com.ikozlinskyi.realestatebookingapp.entity.User;
 import com.ikozlinskyi.realestatebookingapp.service.CommentServiceImpl;
 import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,20 +24,28 @@ public class CommentRestController {
   @PostMapping("/comments")
   public Comment addComment(@PathVariable int realEstateId,
                             @RequestBody Comment newComment) {
-    RealEstate foundRealEstate = this.realEstateService.findById(realEstateId);
 
+    newComment.setId(0);
+
+    //This user is a stub for future Spring Security User
+    User stubUser = new User("John", "john_donn", (byte) 1);
+    newComment.setAuthor(stubUser);
+
+    RealEstate foundRealEstate = this.realEstateService.findById(realEstateId);
     foundRealEstate.addComment(newComment);
+
     commentService.save(newComment);
+
     return newComment;
   }
 
   @DeleteMapping("/comments/{commentId}")
   public String removeComment(@PathVariable int commentId) {
 
-    Comment tempRealEstate = commentService.findById(commentId);
+    Comment tempComment = commentService.findById(commentId);
 
-    if (tempRealEstate == null) {
-      throw new RuntimeException("RealEstate id not found - " + commentId);
+    if (tempComment == null) {
+      throw new RuntimeException("Comment id not found - " + commentId);
     }
 
     commentService.deleteById(commentId);

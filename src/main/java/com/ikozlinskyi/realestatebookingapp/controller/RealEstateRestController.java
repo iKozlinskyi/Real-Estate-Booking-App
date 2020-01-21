@@ -1,6 +1,6 @@
 package com.ikozlinskyi.realestatebookingapp.controller;
 
-import com.ikozlinskyi.realestatebookingapp.entity.RealEstate;
+import com.ikozlinskyi.realestatebookingapp.entity.*;
 import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,20 +29,42 @@ public class RealEstateRestController {
   }
 
   @PostMapping("real-estate")
-  public RealEstate addRealEstate(@RequestBody RealEstate realEstate) {
-    realEstate.setId(0);
+  public RealEstate addRealEstate(@RequestBody RealEstate newRealEstate) {
+    newRealEstate.setId(0);
 
-    realEstateService.save(realEstate);
+    List<Photo> newPhotos = newRealEstate.getPhotos();
+    newPhotos.forEach(photo -> photo.setRealEstate(newRealEstate));
 
-    return realEstate;
+    //This user is a stub for future Spring Security User
+    User stubUser = new User("John", "john_donn", (byte) 1);
+    newRealEstate.setAuthor(stubUser);
+
+    realEstateService.save(newRealEstate);
+
+    return newRealEstate;
   }
 
-  @PutMapping("/real-estate")
-  public RealEstate updateRealEstate(@RequestBody RealEstate realEstate) {
+  @PutMapping("/real-estate/{realEstateId}")
+  public RealEstate updateRealEstate(@PathVariable int realEstateId,
+                                     @RequestBody RealEstate editedRealEstate) {
+    RealEstate storedRealEstate = this.realEstateService.findById(realEstateId);
 
-    realEstateService.save(realEstate);
+    if (storedRealEstate == null) {
+      throw new RuntimeException("Didn`t find real estate with given id: " + realEstateId);
+    }
 
-    return realEstate;
+    editedRealEstate.setId(realEstateId);
+
+    List<Photo> editedPhotos = editedRealEstate.getPhotos();
+    editedPhotos.forEach(photo -> photo.setRealEstate(editedRealEstate));
+
+    //This user is a stub for future Spring Security User
+    User stubUser = new User("John", "john_donn", (byte) 1);
+    editedRealEstate.setAuthor(stubUser);
+
+    realEstateService.save(editedRealEstate);
+
+    return editedRealEstate;
   }
 
 
