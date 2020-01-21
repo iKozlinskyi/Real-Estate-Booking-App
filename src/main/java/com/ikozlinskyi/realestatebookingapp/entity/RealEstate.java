@@ -22,8 +22,10 @@ public class RealEstate {
   @Column(name = "city")
   private String city;
 
-  @Column(name = "author")
-  private String author;
+  @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,
+      CascadeType.MERGE, CascadeType.REFRESH})
+  @JoinColumn(name="author_id")
+  private User author;
 
   @Column(name = "description")
   private String description;
@@ -43,7 +45,7 @@ public class RealEstate {
   public RealEstate() {
   }
 
-  public RealEstate(String name, double price, String city, String author, String description) {
+  public RealEstate(String name, double price, String city, User author, String description) {
     this.name = name;
     this.price = price;
     this.city = city;
@@ -75,11 +77,11 @@ public class RealEstate {
     this.price = price;
   }
 
-  public String getAuthor() {
+  public User getAuthor() {
     return author;
   }
 
-  public void setAuthor(String author) {
+  public void setAuthor(User author) {
     this.author = author;
   }
 

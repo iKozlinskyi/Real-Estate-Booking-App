@@ -16,8 +16,10 @@ public class Comment {
   @Column(name="id")
   private int id;
 
-  @Column(name="author")
-  private String author;
+  @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,
+      CascadeType.MERGE, CascadeType.REFRESH})
+  @JoinColumn(name="author_id")
+  private User author;
 
   @Column(name="text")
   private String text;
@@ -35,7 +37,7 @@ public class Comment {
   public Comment() {
   }
 
-  public Comment(String author, String text, Date createdAt) {
+  public Comment(User author, String text, Date createdAt) {
     this.author = author;
     this.text = text;
     this.createdAt = createdAt;
@@ -49,11 +51,11 @@ public class Comment {
     this.id = id;
   }
 
-  public String getAuthor() {
+  public User getAuthor() {
     return author;
   }
 
-  public void setAuthor(String author) {
+  public void setAuthor(User author) {
     this.author = author;
   }
 
