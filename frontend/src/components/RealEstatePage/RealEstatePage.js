@@ -33,6 +33,7 @@ class RealEstatePage extends Component {
     this.onCommentSend = this.onCommentSend.bind(this);
     this.resetMessage = this.resetMessage.bind(this);
     this.handleCommentFormChange = this.handleCommentFormChange.bind(this);
+    this.handleCommentDelete = this.handleCommentDelete.bind(this);
   }
 
   componentDidMount() {
@@ -146,6 +147,16 @@ class RealEstatePage extends Component {
     });
   }
 
+  handleCommentDelete(commentId) {
+    const id = parseInt(this.props.match.params.id);
+
+    axios.delete(`${BASE_API_URL}/real-estate/${id}/comments/${commentId}`)
+        .then(() => this.getRealEstateData())
+        .then(() => this.showTimedFormMessage(
+            "Successfully deleted comment!",
+            "success"
+        ))
+  }
 
   render() {
 
@@ -230,6 +241,7 @@ class RealEstatePage extends Component {
               message={message}
               type={type}
               handleCommentFormChange={this.handleCommentFormChange}
+              handleCommentDelete={this.handleCommentDelete}
           />}
 
         </>

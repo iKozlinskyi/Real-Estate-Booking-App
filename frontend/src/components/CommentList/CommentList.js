@@ -15,6 +15,7 @@ class CommentList extends Component {
               {...commentData}
               author={commentData.author.userName}
               elementClass="CommentList__Comment"
+              handleCommentDelete={this.props.handleCommentDelete}
             />
         );
 

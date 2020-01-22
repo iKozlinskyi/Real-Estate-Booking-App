@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import "./Comment.css"
+import "../Styles/Button.css"
 
 class Comment extends Component {
+
+  constructor() {
+    super();
+
+    this.onCommentDelete = this.onCommentDelete.bind(this);
+  }
+
+  onCommentDelete() {
+    this.props.handleCommentDelete(this.props.id);
+  }
+
   render() {
     const {
       id,
@@ -25,7 +37,12 @@ class Comment extends Component {
             {text}
           </div>
           <div className="controls Comment__controls">
-            <button className="button RealEstate-card__button button--danger">Delete</button>
+            <button
+                className="button RealEstate-card__button button--danger"
+                onClick={this.onCommentDelete}
+            >
+              Delete
+            </button>
           </div>
         </article>
     );
