@@ -3,9 +3,10 @@ import React, {Component} from 'react';
 import "./CreateOrUpdateEstateForm.css"
 import FormMap from "../FormMap/FormMap";
 import {withRouter} from "react-router-dom";
-import {findRealEstateById} from "../../utils/DataProvider";
 import {withElementClassName} from "../HOCs/withElementClassName.js";
+import axios from "axios";
 import "../Styles/Button.css"
+import {BASE_API_URL} from "../../utils/constants";
 
 class CreateOrUpdateEstateForm extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class CreateOrUpdateEstateForm extends Component {
     this.handleAddInputClick = this.handleAddInputClick.bind(this);
     this.handleDeleteInputClick = this.handleDeleteInputClick.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
   handleChange(evt) {
@@ -63,6 +65,12 @@ class CreateOrUpdateEstateForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+
+    if (this.props.isUpdateForm) {
+      this.putData();
+    } else {
+      this.postData();
+    }
   }
 
   setMarker(newMarkerCoords) {
@@ -71,22 +79,22 @@ class CreateOrUpdateEstateForm extends Component {
 
   fetchData() {
     const id = parseInt(this.props.match.params.id);
-    const {name, photos, pricePerStay, description, position} = findRealEstateById(id);
-    this.setState(
-        {
-          name,
-          imgLinks: photos.map(p => p.imgSrc),
-          price: pricePerStay,
-          description,
-          markerCoords: position
-        }
-    );
+    axios
+        .get(`${BASE_API_URL}/real-estate/${id}`)
+        .then(response => response.data)
+        .then(fetchedData => {
+          this.setState({
+            name: fetchedData.name,
+            imgLinks: fetchedData.photos.map(p => p.imgSrc),
+            price: fetchedData.price,
+            description: fetchedData.description,
+            markerCoords: fetchedData.position
+          })
+        });
   }
 
   componentDidMount() {
-    const isUpdateForm = this.props.match.path === "/real-estate/:id/edit";
-
-    if (isUpdateForm) {
+    if (this.props.isUpdateForm) {
       this.fetchData()
     }
   }
@@ -109,6 +117,50 @@ class CreateOrUpdateEstateForm extends Component {
         })
       }));
     }
+  }
+
+  extractRealEstateData() {
+    const {
+      name,
+      city,
+      imgLinks,
+      price,
+      description,
+      markerCoords
+    } = this.state;
+
+    return {
+      name,
+      city,
+      photos: imgLinks,
+      price,
+      description,
+      position: markerCoords
+    };
+  }
+
+  resetForm() {
+    this.setState({
+      name: "",
+      city: "",
+      imgLinks: [""],
+      price: "",
+      description: "",
+      markerCoords: {}
+    })
+  }
+
+  postData() {
+    const realEstateData = this.extractRealEstateData();
+
+    axios.post(`${BASE_API_URL}/real-estate`,{...realEstateData})
+  }
+
+  putData() {
+    const realEstateData = this.extractRealEstateData();
+    const id = parseInt(this.props.match.params.id);
+
+    axios.put(`${BASE_API_URL}/real-estate/${id}`,{...realEstateData})
   }
 
   render() {
@@ -152,7 +204,10 @@ class CreateOrUpdateEstateForm extends Component {
     ));
 
     return (
-        <form action="#" method="post" className={`CreateOrUpdateRealEstateForm ${elementClassName}`}>
+        <form action="#"
+              className={`CreateOrUpdateRealEstateForm ${elementClassName}`}
+              onSubmit={this.handleSubmit}
+        >
           <h2 className="CreateOrUpdateRealEstateForm__title">{titleVerb} Real Estate</h2>
           <div className="CreateOrUpdateRealEstateForm__input-label">Real Estate Name</div>
           <input type="text"
@@ -180,13 +235,12 @@ class CreateOrUpdateEstateForm extends Component {
           {imageLinkInputFields}
 
           <div className="CreateOrUpdateRealEstateForm__input-label">Price Per Night</div>
-          <input type="text"
+          <input type="number"
                  placeholder="12"
                  name="price"
                  className="input-field CreateOrUpdateRealEstateForm__input-field"
                  onChange={this.handlePriceChange}
-                 value={this.state.price}
-                 pattern="^\d{1,6}\.?\d{1,2}?$"
+                 value={this.state.price ||""}
                  required
           />
           <div className="CreateOrUpdateRealEstateForm__input-label">Description</div>

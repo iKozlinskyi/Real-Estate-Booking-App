@@ -17,7 +17,7 @@ public class Photo {
   @Column(name="img_src")
   private String imgSrc;
 
-  @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,
+  @ManyToOne(cascade={CascadeType.DETACH,
       CascadeType.MERGE, CascadeType.REFRESH})
   @JoinColumn(name="real_estate_id")
   private RealEstate realEstate;

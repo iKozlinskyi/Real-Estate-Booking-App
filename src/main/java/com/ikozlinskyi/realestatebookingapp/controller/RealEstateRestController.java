@@ -1,6 +1,7 @@
 package com.ikozlinskyi.realestatebookingapp.controller;
 
 import com.ikozlinskyi.realestatebookingapp.entity.*;
+import com.ikozlinskyi.realestatebookingapp.service.PhotoServiceImpl;
 import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,12 @@ import java.util.List;
 public class RealEstateRestController {
 
   private RealEstateServiceImpl realEstateService;
+  private PhotoServiceImpl photoService;
 
   @Autowired
-  public RealEstateRestController(RealEstateServiceImpl realEstateService) {
+  public RealEstateRestController(RealEstateServiceImpl realEstateService, PhotoServiceImpl photoService) {
     this.realEstateService = realEstateService;
+    this.photoService = photoService;
   }
 
   @GetMapping("/real-estate")
@@ -54,8 +57,14 @@ public class RealEstateRestController {
       throw new RuntimeException("Didn`t find real estate with given id: " + realEstateId);
     }
 
+    //Deleting saved photos
+    List<Photo> storedPhotos = storedRealEstate.getPhotos();
+    storedPhotos.forEach(photo -> photoService.delete(photo));
+
+    //Setting id to edit existing object
     editedRealEstate.setId(realEstateId);
 
+    //Adding new photos from RequestBody
     List<Photo> editedPhotos = editedRealEstate.getPhotos();
     editedPhotos.forEach(photo -> photo.setRealEstate(editedRealEstate));
 

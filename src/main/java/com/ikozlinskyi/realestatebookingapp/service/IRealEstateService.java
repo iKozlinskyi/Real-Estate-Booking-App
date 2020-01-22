@@ -13,4 +13,6 @@ public interface IRealEstateService {
   void save(RealEstate realEstate);
 
   void deleteById(int id);
+
+  void delete(RealEstate realEstate);
 }

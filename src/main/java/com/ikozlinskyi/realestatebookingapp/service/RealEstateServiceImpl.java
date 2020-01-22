@@ -47,4 +47,9 @@ public class RealEstateServiceImpl implements IRealEstateService {
   public void deleteById(int id) {
     realEstateRepository.deleteById(id);
   }
+
+  @Override
+  public void delete(RealEstate realEstate) {
+    realEstateRepository.delete(realEstate);
+  }
 }
