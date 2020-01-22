@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import "./RealEstateListPage.css"
-import {REAL_ESTATE_PAGE_DATA} from "../../utils/DataProvider";
 import MultiMarkerMap from "./../MultiMarkerMap/MultiMarkerMap";
 import "../Styles/Title.css"
 import FilterPanel from "../FilterPanel/FilterPanel";
 import "../Styles/Button.css"
 import RealEstateList from "../RealEstateList/RealEstateList";
+import axios from "axios";
+import {BASE_API_URL} from "../../utils/constants";
 
 
 class RealEstateListPage extends Component {
@@ -25,6 +26,8 @@ class RealEstateListPage extends Component {
         }
       },
       filteredData: [],
+      isLoading: true,
+      error: ""
     };
 
     this.toggleView = this.toggleView.bind(this);
@@ -35,16 +38,26 @@ class RealEstateListPage extends Component {
   }
 
   componentDidMount() {
-    const fetchedData = this.fetchRealEstateData();
-    this.setState(
-        {
-          realEstate: fetchedData,
-          filteredData: fetchedData
-        });
+    this.fetchRealEstateData();
   }
 
   fetchRealEstateData() {
-    return REAL_ESTATE_PAGE_DATA;
+    axios
+        .get(`${BASE_API_URL}/real-estate`)
+        .then(response => {
+          this.setState({
+            realEstate: response.data,
+            filteredData: response.data,
+            isLoading: false
+          })
+        })
+        .catch(err => {
+          console.log(err);
+          this.setState({
+            error: err,
+            isLoading: false
+          })
+        });
   }
 
   extractMarkerData() {
@@ -153,6 +166,20 @@ class RealEstateListPage extends Component {
   render() {
     const toggleButtonWord = this.state.isFilterPanelCollapsed ? "Show" : "Hide";
 
+    const resultData = this.state.isListOfCards ?
+          <RealEstateList
+              elementClassName="RealEstateListPage__RealEstateList"
+              data={this.state.filteredData}
+          /> :
+          <div className="map-wrapper">
+            <MultiMarkerMap markerData={this.extractMarkerData()}/>
+          </div>;
+
+    const requestResult = this.state.error ?
+        "An error occurred while processing your request. Please, try again later" :
+        resultData;
+
+
     // noinspection CheckTagEmptyBody
     return (
         <div className="RealEstateListPage">
@@ -193,15 +220,7 @@ class RealEstateListPage extends Component {
                           <><i className="fas fa-th"></i> Show As a List</>}
                     </button>
                   </div>
-                  {this.state.isListOfCards ?
-                      <RealEstateList
-                          elementClassName="RealEstateListPage__RealEstateList"
-                          data={this.state.filteredData}
-                      /> :
-                      <div className="map-wrapper">
-                        <MultiMarkerMap markerData={this.extractMarkerData()}/>
-                      </div>
-                  }
+                  {this.state.isLoading ? "Loading..." : requestResult}
                 </div>
               </div>
             </div>

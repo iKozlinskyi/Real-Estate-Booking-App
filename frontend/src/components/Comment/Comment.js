@@ -5,7 +5,7 @@ class Comment extends Component {
   render() {
     const {
       id,
-      author,
+      author: authorName,
       createdAt,
       text,
       elementClass
@@ -15,7 +15,7 @@ class Comment extends Component {
         <article className={`${elementClass} Comment`}>
           <div className="Comment__header">
             <div className="Comment__author">
-              <strong>{author}</strong>
+              <strong>{authorName}</strong>
             </div>
             <div className="Comment__timestamp">
               <sub>{createdAt}</sub>

@@ -3,6 +3,7 @@ import RealEstateCard from "../RealEstateCard/RealEstateCard";
 import {withElementClassName} from "../HOCs/withElementClassName";
 import "./RealEstateList.css"
 import {withPagination} from "../HOCs/withPagination";
+import {STUB_IMG_SRC} from "../../utils/constants";
 
 class RealEstateList extends Component {
   render() {
@@ -15,8 +16,17 @@ class RealEstateList extends Component {
       nextPage
     } = this.props;
 
-    const realEstateCards = data.map(item =>
-        <RealEstateCard key={item.id} {...item} elementClassName="RealEstateList__RealEstateCard"/>);
+    const realEstateCards = data.map(item =>{
+      const imgUrl = item.photos[0] !== undefined ? item.photos[0].imgSrc : STUB_IMG_SRC;
+      return  (
+          <RealEstateCard
+              key={item.id}
+              {...item}
+              imgUrl={imgUrl}
+              elementClassName="RealEstateList__RealEstateCard"
+          />
+      )});
+
     return (
         <>
           <ul className={`RealEstateList ${elementClassName}`}>

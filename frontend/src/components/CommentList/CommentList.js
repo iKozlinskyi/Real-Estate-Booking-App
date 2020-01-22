@@ -11,6 +11,7 @@ class CommentList extends Component {
             <Comment
               key={commentData.id}
               {...commentData}
+              author={commentData.author.userName}
               elementClass="CommentList__Comment"
             />
         );

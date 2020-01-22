@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import "./RealEstatePage.css"
-import {findRealEstateById} from "../../utils/DataProvider";
 import CommentList from "../CommentList/CommentList";
 import {Link, withRouter} from "react-router-dom";
 import PageMap from "../PageMap/PageMap";
 import "../Styles/Button.css"
 import RealEstateCarousel from "../RealEstateCarousel/RealEstateCarousel";
+import axios from "axios";
+import {BASE_API_URL} from "../../utils/constants";
 
 class RealEstatePage extends Component {
 
@@ -15,7 +16,9 @@ class RealEstatePage extends Component {
     this.state = {
       realEstateData: [],
       carouselFullScreen: false,
-      currentSlideNumber: 0
+      currentSlideNumber: 0,
+      isLoading: true,
+      error: ""
     };
 
     this.onClosePopupClick = this.onClosePopupClick.bind(this);
@@ -24,12 +27,25 @@ class RealEstatePage extends Component {
   }
 
   componentDidMount() {
-    this.setState({realEstateData: this.getRealEstateData()})
+    this.getRealEstateData();
   }
 
   getRealEstateData() {
     const id = parseInt(this.props.match.params.id);
-    return findRealEstateById(id);
+    axios
+        .get(`${BASE_API_URL}/real-estate/${id}`)
+        .then(response => {
+          this.setState({
+            realEstateData: response.data,
+            isLoading: false
+          })
+        })
+        .catch(err => {
+          this.setState({
+            error: err,
+            isLoading: false
+          })
+        });
   }
 
   onClosePopupClick() {
@@ -61,8 +77,8 @@ class RealEstatePage extends Component {
     const pagePathName = this.props.location.pathname;
     const {carouselFullScreen, currentSlideNumber} = this.state;
 
-    return (
-        <div className="RealEstatePage">
+    const loadedPage = (
+        <>
           <article className="RealEstate-card">
             <h2 className="title">{name}</h2>
             <div className="main">
@@ -115,6 +131,16 @@ class RealEstatePage extends Component {
             </div>
           </article>
           {comments && <CommentList comments={comments}/>}
+        </>
+    );
+
+    const requestResult = this.state.error ?
+        "An error occurred while processing your request. Please, try again later" :
+        loadedPage;
+
+    return (
+        <div className="RealEstatePage">
+          {this.state.isLoading ? "Loading..." : requestResult}
         </div>
     );
   }

@@ -4,7 +4,7 @@ const withPagination = WrappedComponent => {
   return class extends Component {
 
     static defaultProps = {
-      itemsPerPage: 4
+      itemsPerPage: 9
     };
 
     constructor() {

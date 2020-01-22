@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/real-estate/{realEstateId}/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommentRestController {
 
   private RealEstateServiceImpl realEstateService;
