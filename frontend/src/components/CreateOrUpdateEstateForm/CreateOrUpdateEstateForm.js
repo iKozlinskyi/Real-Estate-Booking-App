@@ -154,6 +154,14 @@ class CreateOrUpdateEstateForm extends Component {
     const realEstateData = this.extractRealEstateData();
 
     axios.post(`${BASE_API_URL}/real-estate`,{...realEstateData})
+        .then(() => {
+          this.props.history.push({
+            pathname: "/real-estate",
+            state: {
+              message: "Successfully added real estate!"
+            }
+          });
+        })
   }
 
   putData() {
@@ -161,6 +169,14 @@ class CreateOrUpdateEstateForm extends Component {
     const id = parseInt(this.props.match.params.id);
 
     axios.put(`${BASE_API_URL}/real-estate/${id}`,{...realEstateData})
+        .then(() => {
+          this.props.history.push({
+            pathname: "/real-estate",
+            state: {
+              message: "Successfully edited real estate!"
+            }
+          });
+        })
   }
 
   render() {
