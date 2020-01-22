@@ -24,6 +24,7 @@ class RealEstatePage extends Component {
     this.onClosePopupClick = this.onClosePopupClick.bind(this);
     this.onSlideClick = this.onSlideClick.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +59,26 @@ class RealEstatePage extends Component {
 
   handleSlideChange(slideNumber) {
     this.setState({currentSlideNumber: slideNumber})
+  }
+
+  handleDeleteClick() {
+    let confirmation = confirm(
+        "Are you sure that you want to delete this real estate? After deletion, there is no way to restore it."
+    );
+
+    if (!confirmation) return;
+
+    const id = parseInt(this.props.match.params.id);
+
+    axios.delete(`${BASE_API_URL}/real-estate/${id}`)
+        .then(() => {
+          this.props.history.push({
+            pathname: "/real-estate",
+            state: {
+              message: "Successfully deleted real estate!"
+            }
+          });
+        })
   }
 
   render() {
@@ -123,8 +144,12 @@ class RealEstatePage extends Component {
               <Link className="button RealEstate-card__button button--warning controls__EditButton"
                     to={pagePathName + "/edit"}
               >Edit</Link>
-              <Link className="button RealEstate-card__button button--danger controls__DeleteButton"
-                    to="/">Delete</Link>
+              <button
+                  className="button RealEstate-card__button button--danger controls__DeleteButton"
+                  onClick={this.handleDeleteClick}
+              >
+                Delete
+              </button>
             </div>
             <div className="map RealEstatePage__map">
               <PageMap position={position} name={name}/>

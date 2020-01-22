@@ -7,6 +7,8 @@ import "../Styles/Button.css"
 import RealEstateList from "../RealEstateList/RealEstateList";
 import axios from "axios";
 import {BASE_API_URL} from "../../utils/constants";
+import BlinkMessage from "../BlinkMessage/BlinkMessage";
+import {withRouter} from "react-router-dom";
 
 
 class RealEstateListPage extends Component {
@@ -179,11 +181,21 @@ class RealEstateListPage extends Component {
         "An error occurred while processing your request. Please, try again later" :
         resultData;
 
+    let blinkMessage;
+    if (this.props.location.state) {
+      blinkMessage = this.props.location.state.message;
+    }
 
     // noinspection CheckTagEmptyBody
     return (
         <div className="RealEstateListPage">
-          <h2 className="title">Available Real Estate</h2>
+
+          {blinkMessage &&
+          <BlinkMessage type="success" elementClassName="RealEstateListPage__BlinkMessage">
+            {blinkMessage}
+          </BlinkMessage>}
+
+          <h2 className="title RealEstateListPage__title">Available Real Estate</h2>
           <div className="button-wrapper">
             <button
                 className="toggle-filterList-button RealEstateListPage__toggle-filterList-button"
@@ -230,4 +242,4 @@ class RealEstateListPage extends Component {
   }
 }
 
-export default RealEstateListPage;
+export default withRouter(RealEstateListPage);

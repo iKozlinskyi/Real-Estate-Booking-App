@@ -50,6 +50,14 @@
     display: none;
 }
 
+.RealEstateListPage__BlinkMessage {
+    margin: 2em auto 1em auto;
+}
+
+.RealEstateListPage__title {
+    margin: 0;
+}
+
 @media all and (min-width: 576px) {
     .RealEstateListPage__RealEstateList {
         margin-top: 0.5rem;
@@ -84,6 +92,10 @@
     .RealEstateListPage__RealEstateList {
         max-height: 90vh;
         overflow: auto;
+    }
+
+    .RealEstateListPage__BlinkMessage {
+        width: 80%;
     }
 
     .map-wrapper {
