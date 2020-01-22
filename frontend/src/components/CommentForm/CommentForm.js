@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./CommentForm.css"
 import "../Styles/Button.css"
+import BlinkMessage from "../BlinkMessage/BlinkMessage";
 
 class CommentForm extends Component {
 
@@ -17,29 +18,18 @@ class CommentForm extends Component {
   }
 
   handleChange(evt) {
-    if (this.state.isWarningVisible) {
-      this.hideWarning();
-    }
-
     this.setState({
       [evt.target.name]: evt.target.value
-    })
+    });
+
+    this.props.handleCommentFormChange();
+
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (this.state.commentText === "") {
-      this.showWarning()
-    }
-  }
-
-  showWarning() {
-    this.setState({isWarningVisible: true})
-  }
-
-  hideWarning() {
-    this.setState({isWarningVisible: false})
+    this.props.handleCommentSend(this.state.commentText)
   }
 
   render() {
@@ -58,10 +48,10 @@ class CommentForm extends Component {
                     value={this.state.commentText}
           />
 
-          {this.state.isWarningVisible &&
-            <div className="form-message form-message--danger CommentForm__form-message">
-              Please, do not send empty comments
-            </div>}
+          {this.props.message &&
+          <BlinkMessage elementClassName="CommentForm__BlinkMessage" type={this.props.type}>
+            {this.props.message}
+          </BlinkMessage>}
 
           <input className="button button--link CommentForm__button" type="submit" value="Send Comment"/>
         </form>

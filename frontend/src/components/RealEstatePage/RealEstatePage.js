@@ -18,13 +18,21 @@ class RealEstatePage extends Component {
       carouselFullScreen: false,
       currentSlideNumber: 0,
       isLoading: true,
-      error: ""
+      error: "",
+      formMessage: {
+        message: "",
+        type: "",
+        duration: 0
+      }
     };
 
     this.onClosePopupClick = this.onClosePopupClick.bind(this);
     this.onSlideClick = this.onSlideClick.bind(this);
     this.handleSlideChange = this.handleSlideChange.bind(this);
-    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleRealEstateDelete = this.handleRealEstateDelete.bind(this);
+    this.onCommentSend = this.onCommentSend.bind(this);
+    this.resetMessage = this.resetMessage.bind(this);
+    this.handleCommentFormChange = this.handleCommentFormChange.bind(this);
   }
 
   componentDidMount() {
@@ -61,7 +69,7 @@ class RealEstatePage extends Component {
     this.setState({currentSlideNumber: slideNumber})
   }
 
-  handleDeleteClick() {
+  handleRealEstateDelete() {
     let confirmation = confirm(
         "Are you sure that you want to delete this real estate? After deletion, there is no way to restore it."
     );
@@ -81,6 +89,64 @@ class RealEstatePage extends Component {
         })
   }
 
+  onCommentSend(message) {
+    if (message === "") {
+      this.showFormMessage(
+          "Please, do not send empty comments",
+          "warning"
+          );
+    }
+
+    const id = parseInt(this.props.match.params.id);
+    axios.post(
+        `${BASE_API_URL}/real-estate/${id}/comments`,
+        {
+          text: message
+        })
+        .then(() => this.getRealEstateData())
+        .then(() => this.showTimedFormMessage(
+            "Successfully added your comment!",
+            "success"
+        ))
+  }
+
+  showFormMessage(message, type) {
+    this.setState({
+      formMessage : {
+        message,
+        type
+      }
+    })
+  }
+
+  showTimedFormMessage(message, type, duration = 5000) {
+    this.setState({
+      formMessage : {
+        message,
+        type
+      }
+    }, () => setTimeout( () => {
+      this.resetMessage()
+    }, duration))
+  }
+
+  handleCommentFormChange() {
+    if (this.state.formMessage.message !== "") {
+      this.resetMessage();
+    }
+  }
+
+  resetMessage() {
+    this.setState({
+      formMessage: {
+        message: "",
+        type: "",
+        duration: 0
+      }
+    });
+  }
+
+
   render() {
 
     const {
@@ -97,6 +163,7 @@ class RealEstatePage extends Component {
 
     const pagePathName = this.props.location.pathname;
     const {carouselFullScreen, currentSlideNumber} = this.state;
+    const {message, type} = this.state.formMessage;
 
     const loadedPage = (
         <>
@@ -146,7 +213,7 @@ class RealEstatePage extends Component {
               >Edit</Link>
               <button
                   className="button RealEstate-card__button button--danger controls__DeleteButton"
-                  onClick={this.handleDeleteClick}
+                  onClick={this.handleRealEstateDelete}
               >
                 Delete
               </button>
@@ -155,7 +222,16 @@ class RealEstatePage extends Component {
               <PageMap position={position} name={name}/>
             </div>
           </article>
-          {comments && <CommentList comments={comments}/>}
+
+          {comments &&
+          <CommentList
+              comments={comments}
+              handleCommentSend={this.onCommentSend}
+              message={message}
+              type={type}
+              handleCommentFormChange={this.handleCommentFormChange}
+          />}
+
         </>
     );
 

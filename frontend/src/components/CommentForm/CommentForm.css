@@ -17,19 +17,6 @@
     border-color: #f4b5b5;
 }
 
-.CommentForm__form-message {
+.CommentForm__BlinkMessage {
     margin-top: 0.5em;
-}
-
-.form-message {
-    background-color: #f4b5b5;
-    color: #cc5757;
-    text-align: center;
-    padding: 0.4em 0;
-    border-radius: 5px;
-}
-
-.form-message--danger {
-    background-color: #f4b5b5;
-    color: #cc5757;
 }

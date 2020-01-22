@@ -82,4 +82,15 @@ public class Comment {
   public void setRealEstate(RealEstate realEstate) {
     this.realEstate = realEstate;
   }
+
+  @Override
+  public String toString() {
+    return "Comment{" +
+        "id=" + id +
+        ", author=" + author +
+        ", text='" + text + '\'' +
+        ", createdAt=" + createdAt +
+        ", realEstate=" + realEstate +
+        '}';
+  }
 }

@@ -14,3 +14,8 @@
     background-color: #dafcc0;
     color: #7c7845;
 }
+
+.BlinkMessage--danger {
+    background-color: #f4b5b5;
+    color: #cc5757;
+}
