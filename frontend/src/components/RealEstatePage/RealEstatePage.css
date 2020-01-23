@@ -141,14 +141,14 @@
 }
 
 @media all and (min-width: 992px) {
-    .main {
+    .RealEstate-card__main {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
     }
-    .RealEstate-card__img-area {
-        min-width: 50%;
-        margin-right: 3%;
+
+    .RealEstate-card__img-area, .RealEstate-card__info-block{
+        flex-basis: calc(50% - 1em);
     }
 
     .info-block__info-item {

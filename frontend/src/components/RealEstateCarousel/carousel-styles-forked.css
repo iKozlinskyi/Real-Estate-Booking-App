@@ -230,28 +230,7 @@
 }
 
 .carousel .slide .legend {
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    margin-left: -45%;
-    width: 90%;
-    border-radius: 10px;
-    background: #000;
-    color: #fff;
-    padding: 10px;
-    font-size: 12px;
-    text-align: center;
-    opacity: .25;
-    -webkit-transition: opacity .35s ease-in-out;
-    -moz-transition: opacity .35s ease-in-out;
-    -ms-transition: opacity .35s ease-in-out;
-    -o-transition: opacity .35s ease-in-out;
-    transition: opacity .35s ease-in-out
+    display: none;
 }
 
 .carousel .control-dots {

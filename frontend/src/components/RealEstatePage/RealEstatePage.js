@@ -180,7 +180,7 @@ class RealEstatePage extends Component {
         <>
           <article className="RealEstate-card">
             <h2 className="title">{name}</h2>
-            <div className="main">
+            <div className="RealEstate-card__main">
               <div
                   className={`RealEstate-card__img-area img-area ${carouselFullScreen &&
                   "RealEstate-card__carousel-wrapper--full-screen"}`}
@@ -200,7 +200,7 @@ class RealEstatePage extends Component {
                 />}
 
               </div>
-              <div className="info-block">
+              <div className="RealEstate-card__info-block">
                 <div className="info-item info-block__info-item">
                   <div className="info-item__text">
                     Price per stay:
