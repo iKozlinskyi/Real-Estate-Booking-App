@@ -14,6 +14,19 @@ class Comment extends Component {
     this.props.handleCommentDelete(this.props.id);
   }
 
+  parseDate(milliseconds) {
+    const date = new Date(milliseconds);
+
+    const year = date.getFullYear(),
+          month = (date.getMonth() + 1).toString().padStart(2, "0"),
+          day = date.getDate().toString().padStart(2, "0"),
+          hour = date.getHours().toString().padStart(2, "0"),
+          minute = date.getMinutes().toString().padStart(2, "0"),
+          second = date.getSeconds().toString().padStart(2, "0");
+
+    return `${year}-${month}-${day}, ${hour}:${minute}:${second}`
+  }
+
   render() {
     const {
       id,
@@ -30,7 +43,7 @@ class Comment extends Component {
               <strong>{authorName}</strong>
             </div>
             <div className="Comment__timestamp">
-              <sub>{createdAt}</sub>
+              <sub>{this.parseDate(createdAt)}</sub>
             </div>
           </div>
           <div className="Comment__text">

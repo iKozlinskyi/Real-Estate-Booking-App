@@ -29,6 +29,10 @@ class CommentForm extends Component {
   handleSubmit(evt) {
     evt.preventDefault();
 
+    this.setState({
+      commentText: ""
+    });
+
     this.props.handleCommentSend(this.state.commentText)
   }
 

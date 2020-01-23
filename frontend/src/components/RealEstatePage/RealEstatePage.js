@@ -45,6 +45,12 @@ class RealEstatePage extends Component {
     axios
         .get(`${BASE_API_URL}/real-estate/${id}`)
         .then(response => {
+
+          //Transforming comment creation time to milliseconds, sorting them (newest first)
+          response.data.comments = response.data.comments
+              .map(comment => ({...comment, createdAt: Date.parse(comment.createdAt)}))
+              .sort((commentA, commentB) => commentB.createdAt - commentA.createdAt);
+
           this.setState({
             realEstateData: response.data,
             isLoading: false
