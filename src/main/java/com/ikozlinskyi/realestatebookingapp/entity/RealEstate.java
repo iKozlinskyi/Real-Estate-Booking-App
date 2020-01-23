@@ -40,7 +40,7 @@ public class RealEstate {
 
   @OneToMany(mappedBy = "realEstate",
       cascade = {CascadeType.DETACH, CascadeType.MERGE,
-              CascadeType.REFRESH, CascadeType.REMOVE})
+              CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST})
   private List<Photo> photos;
 
   public RealEstate() {
@@ -133,5 +133,26 @@ public class RealEstate {
 
     newComment.setRealEstate(this);
     comments.add(newComment);
+  }
+
+  public void refreshPhotos(List<Photo> newPhotos) {
+    newPhotos.forEach(photo -> photo.setRealEstate(this));
+
+    this.photos = newPhotos;
+  }
+
+  @Override
+  public String toString() {
+    return "RealEstate{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", price=" + price +
+        ", city='" + city + '\'' +
+        ", author=" + author +
+        ", description='" + description + '\'' +
+        ", position=" + position +
+        ", comments=" + comments +
+        ", photos=" + photos +
+        '}';
   }
 }

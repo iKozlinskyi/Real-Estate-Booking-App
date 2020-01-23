@@ -37,7 +37,7 @@ public class RealEstateRestController {
     newRealEstate.setId(0);
 
     List<Photo> newPhotos = newRealEstate.getPhotos();
-    newPhotos.forEach(photo -> photo.setRealEstate(newRealEstate));
+    newRealEstate.refreshPhotos(newPhotos);
 
     //This user is a stub for future Spring Security User
     User stubUser = new User("John", "john_donn", (byte) 1);

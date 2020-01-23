@@ -52,4 +52,11 @@ public class Photo {
   public void setRealEstate(RealEstate realEstate) {
     this.realEstate = realEstate;
   }
+
+  @Override
+  public String toString() {
+    return "Photo{" +
+        "id=" + id +
+        ", imgSrc='" + imgSrc + '\'';
+  }
 }
