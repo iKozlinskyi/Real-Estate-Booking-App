@@ -46,6 +46,10 @@
     margin-top: 1em;
 }
 
+.FilterPanel__sort-block {
+    margin-top: 1em;
+}
+
 @media all and (min-width: 576px) {
     .FilterPanel {
         -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);

@@ -9,6 +9,7 @@ import axios from "axios";
 import {BASE_API_URL} from "../../utils/constants";
 import BlinkMessage from "../BlinkMessage/BlinkMessage";
 import {withRouter} from "react-router-dom";
+import {sortService} from "../../utils/SortService";
 
 
 class RealEstateListPage extends Component {
@@ -27,6 +28,7 @@ class RealEstateListPage extends Component {
           to: ""
         }
       },
+      sortBy: 0,
       filteredData: [],
       isLoading: true,
       error: ""
@@ -37,6 +39,7 @@ class RealEstateListPage extends Component {
     this.onPriceFiltersChange = this.onPriceFiltersChange.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.toggleFilterPanel = this.toggleFilterPanel.bind(this);
+    this.onSortChange = this.onSortChange.bind(this);
   }
 
   componentDidMount() {
@@ -51,7 +54,7 @@ class RealEstateListPage extends Component {
             realEstate: response.data,
             filteredData: response.data,
             isLoading: false
-          })
+          },() => this.handleSortChange())
         })
         .catch(err => {
           console.log(err);
@@ -165,6 +168,22 @@ class RealEstateListPage extends Component {
     })
   }
 
+  onSortChange(sortFunctionIndex) {
+    this.setState({
+      sortBy: sortFunctionIndex
+    }, () => this.handleSortChange())
+  }
+
+  handleSortChange() {
+
+    const sortFunctionIndex = this.state.sortBy;
+
+    this.setState(curState => ({
+      filteredData: sortService.sortData(sortFunctionIndex, curState.filteredData),
+      sortBy: sortFunctionIndex
+    }))
+  }
+
   render() {
     const toggleButtonWord = this.state.isFilterPanelCollapsed ? "Show" : "Hide";
 
@@ -218,6 +237,7 @@ class RealEstateListPage extends Component {
                 priceFrom={this.state.filters.price.from}
                 priceTo={this.state.filters.price.to}
                 handleResetClick={this.resetForm}
+                onSortChange={this.onSortChange}
             />
             <div className="RealEstateListPage__result-block">
               <div className="centering-wrapper">

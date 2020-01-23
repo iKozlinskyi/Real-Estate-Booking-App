@@ -8,18 +8,10 @@ class FilterPanel extends Component {
   constructor() {
     super();
 
-    this.state = {
-      realEstateName: "",
-      city: "",
-      price: {
-        from: 0,
-        to: 0
-      }
-    };
-
     this.handleChange = this.handleChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   handleChange(evt) {
@@ -30,6 +22,11 @@ class FilterPanel extends Component {
   handlePriceChange(evt) {
     const {name, value} = evt.target;
     this.props.onPriceFiltersChange(name, value);
+  }
+
+  handleSortChange(evt) {
+    const {value} = evt.target;
+    this.props.onSortChange(value);
   }
 
   handleResetClick(evt) {
@@ -91,6 +88,20 @@ class FilterPanel extends Component {
                   onChange={this.handlePriceChange}
               />
             </div>
+          </div>
+          <div className="FilterPanel__sort-block">
+            Sort By:
+            <select
+                name="sortBy"
+                className="filter-input-field FilterPanel__filter-input-field"
+                value={this.props.sortBy}
+                onChange={this.handleSortChange}
+            >
+              <option value="0">Name - A to Z</option>
+              <option value="1">Name - Z to A</option>
+              <option value="2">Price (cheap first)</option>
+              <option value="3">Price (expensive first)</option>
+            </select>
           </div>
           <button
               className="button button--link FilterPanel__reset-button"
