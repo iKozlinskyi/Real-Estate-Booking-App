@@ -1,6 +1,7 @@
 package com.ikozlinskyi.realestatebookingapp.service;
 
 import com.ikozlinskyi.realestatebookingapp.entity.Comment;
+import com.ikozlinskyi.realestatebookingapp.exception.CommentNotFoundException;
 import com.ikozlinskyi.realestatebookingapp.repository.ICommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class CommentServiceImpl implements ICommentService {
     if (result.isPresent()) {
       foundComment = result.get();
     } else {
-      throw new RuntimeException("Could not find comment with given id" + id);
+      throw new CommentNotFoundException("Did not find comment with given id" + id);
     }
 
     return foundComment;

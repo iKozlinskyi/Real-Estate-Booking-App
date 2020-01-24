@@ -1,6 +1,7 @@
 package com.ikozlinskyi.realestatebookingapp.service;
 
 import com.ikozlinskyi.realestatebookingapp.entity.RealEstate;
+import com.ikozlinskyi.realestatebookingapp.exception.RealEstateNotFoundException;
 import com.ikozlinskyi.realestatebookingapp.repository.IRealEstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class RealEstateServiceImpl implements IRealEstateService {
     if (result.isPresent()) {
       foundRealEstate = result.get();
     } else {
-      throw new RuntimeException("Could not find real estate with given id" + id);
+      throw new RealEstateNotFoundException("Did not find real estate with given id: " + id);
     }
 
     return foundRealEstate;

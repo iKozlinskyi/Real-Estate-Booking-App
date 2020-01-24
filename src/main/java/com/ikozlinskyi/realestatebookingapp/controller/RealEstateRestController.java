@@ -29,10 +29,14 @@ public class RealEstateRestController {
 
   @GetMapping("/real-estate/{realEstateId}")
   public RealEstate findById(@PathVariable int realEstateId) {
-    return realEstateService.findById(realEstateId);
+
+    //Also performs check if RealEstate exists, throws RealEstateNotFoundException otherwise
+    RealEstate foundRealEstate = realEstateService.findById(realEstateId);
+
+    return foundRealEstate;
   }
 
-  @PostMapping("real-estate")
+  @PostMapping("/real-estate")
   public RealEstate addRealEstate(@RequestBody RealEstate newRealEstate) {
     newRealEstate.setId(0);
 
@@ -51,11 +55,9 @@ public class RealEstateRestController {
   @PutMapping("/real-estate/{realEstateId}")
   public RealEstate updateRealEstate(@PathVariable int realEstateId,
                                      @RequestBody RealEstate editedRealEstate) {
-    RealEstate storedRealEstate = this.realEstateService.findById(realEstateId);
 
-    if (storedRealEstate == null) {
-      throw new RuntimeException("Didn`t find real estate with given id: " + realEstateId);
-    }
+    //Also performs check if RealEstate exists, throws RealEstateNotFoundException otherwise
+    RealEstate storedRealEstate = this.realEstateService.findById(realEstateId);
 
     //Deleting saved photos
     List<Photo> storedPhotos = storedRealEstate.getPhotos();
@@ -81,11 +83,8 @@ public class RealEstateRestController {
   @DeleteMapping("/real-estate/{realEstateId}")
   public String deleteRealEstate(@PathVariable int realEstateId) {
 
-    RealEstate tempRealEstate = realEstateService.findById(realEstateId);
-
-    if (tempRealEstate == null) {
-      throw new RuntimeException("RealEstate id not found - " + realEstateId);
-    }
+    //Also performs check if RealEstate exists, throws RealEstateNotFoundException otherwise
+    RealEstate foundRealEstate = realEstateService.findById(realEstateId);
 
     realEstateService.deleteById(realEstateId);
 

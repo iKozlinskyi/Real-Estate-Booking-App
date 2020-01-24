@@ -43,11 +43,8 @@ public class CommentRestController {
   @DeleteMapping("/comments/{commentId}")
   public String removeComment(@PathVariable int commentId) {
 
-    Comment tempComment = commentService.findById(commentId);
-
-    if (tempComment == null) {
-      throw new RuntimeException("Comment id not found - " + commentId);
-    }
+    //Also performs check if comment exists, throws CommentNotFoundException otherwise
+    Comment foundComment = commentService.findById(commentId);
 
     commentService.deleteById(commentId);
 
