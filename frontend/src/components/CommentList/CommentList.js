@@ -13,9 +13,10 @@ class CommentList extends Component {
             <Comment
               key={commentData.id}
               {...commentData}
-              author={commentData.author.userName}
+              authorName={commentData.author.username}
               elementClass="CommentList__Comment"
               handleCommentDelete={this.props.handleCommentDelete}
+              currentUsername={this.props.currentUsername}
             />
         );
 

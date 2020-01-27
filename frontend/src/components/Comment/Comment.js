@@ -30,11 +30,13 @@ class Comment extends Component {
   render() {
     const {
       id,
-      author: authorName,
+      authorName,
       createdAt,
       text,
       elementClass
     } = this.props;
+
+    let showControls = authorName === this.props.currentUsername;
 
     return (
         <article className={`${elementClass} Comment`}>
@@ -50,12 +52,15 @@ class Comment extends Component {
             {text}
           </div>
           <div className="controls Comment__controls">
+
+            {showControls &&
             <button
                 className="button RealEstate-card__button button--danger"
                 onClick={this.onCommentDelete}
             >
               Delete
-            </button>
+            </button>}
+
           </div>
         </article>
     );

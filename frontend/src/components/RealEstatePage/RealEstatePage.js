@@ -182,6 +182,11 @@ class RealEstatePage extends Component {
     const {carouselFullScreen, currentSlideNumber} = this.state;
     const {message, type} = this.state.formMessage;
 
+    let showControls;
+    if (author) {
+      showControls = author.username === this.props.currentUsername;
+    }
+
     const loadedPage = (
         <>
           <article className="RealEstate-card">
@@ -224,6 +229,8 @@ class RealEstatePage extends Component {
                 </div>
               </div>
             </div>
+
+            {showControls &&
             <div className="controls RealEstate-card__controls">
               <Link className="button RealEstate-card__button button--warning controls__EditButton"
                     to={pagePathName + "/edit"}
@@ -234,7 +241,8 @@ class RealEstatePage extends Component {
               >
                 Delete
               </button>
-            </div>
+            </div>}
+
             <div className="map RealEstatePage__map">
               <PageMap position={position} name={name}/>
             </div>
@@ -246,6 +254,7 @@ class RealEstatePage extends Component {
               handleCommentSend={this.onCommentSend}
               message={message}
               type={type}
+              currentUsername={this.props.currentUsername}
               handleCommentFormChange={this.handleCommentFormChange}
               handleCommentDelete={this.handleCommentDelete}
           />}
