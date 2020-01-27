@@ -182,9 +182,10 @@ class RealEstatePage extends Component {
     const {carouselFullScreen, currentSlideNumber} = this.state;
     const {message, type} = this.state.formMessage;
 
-    let showControls;
+    let showControls, authorName;
     if (author) {
       showControls = author.username === this.props.currentUsername;
+      authorName = author.username;
     }
 
     const loadedPage = (
@@ -226,6 +227,14 @@ class RealEstatePage extends Component {
                 </div>
                 <div className="description-block">
                   <p className="description-block__text">{description}</p>
+                </div>
+                <div className="info-item info-block__info-item info-block__info-item--right-alignment">
+                  <div className="info-item__text">
+                    Posted by:
+                  </div>
+                  <div className="info-item__value">
+                    <Link to="#">{authorName}</Link>
+                  </div>
                 </div>
               </div>
             </div>

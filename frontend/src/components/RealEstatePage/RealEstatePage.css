@@ -69,6 +69,11 @@
     height: 400px;
 }
 
+.info-block__info-item--right-alignment {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .RealEstate-card__carousel-wrapper--full-screen {
     position: fixed;
     top: 0;
@@ -123,6 +128,10 @@
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.RealEstate-card__controls {
+    margin-top: 1em;
+}
+
 @media all and (min-width: 576px) {
     .info-item {
         justify-content: flex-start;
@@ -137,6 +146,10 @@
         width: 85vw;
         max-width: 85vw;
         transform: translate(-50%, -50%);
+    }
+
+    .info-block__info-item--right-alignment {
+        justify-content: flex-end;
     }
 }
 
@@ -153,10 +166,6 @@
 
     .info-block__info-item {
         margin-bottom: 0.3em;
-    }
-
-    .RealEstate-card__controls {
-        margin-top: 1em;
     }
 
     .RealEstate-card__RealEstateCarousel {
