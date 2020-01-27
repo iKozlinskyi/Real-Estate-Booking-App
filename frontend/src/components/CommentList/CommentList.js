@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Comment from "../Comment/Comment";
 import "./CommentList.css"
 import CommentForm from "../CommentForm/CommentForm";
+import {Link} from "react-router-dom";
 
 class CommentList extends Component {
 
@@ -20,16 +21,24 @@ class CommentList extends Component {
             />
         );
 
+    const isFormShown = !!this.props.currentUsername;
+
     // noinspection CheckTagEmptyBody
     return (
         <section className="CommentList" >
-          <CommentForm
-              elementClass="CommentList__CommentForm"
-              handleCommentSend={handleCommentSend}
-              message={message}
-              type={type}
-              handleCommentFormChange={this.props.handleCommentFormChange}
-          />
+          {isFormShown ?
+              <CommentForm
+                  elementClass="CommentList__CommentForm"
+                  handleCommentSend={handleCommentSend}
+                  message={message}
+                  type={type}
+                  handleCommentFormChange={this.props.handleCommentFormChange}
+              /> :
+          <div className="CommentList__message">
+            Please, <Link to="/login">Log In</Link> to leave a comment.
+          </div>
+          }
+
           {comments}
         </section>
     );
