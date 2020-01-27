@@ -37,6 +37,7 @@
 .NavBar__link {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .NavBar__item--always-visible {
@@ -79,6 +80,7 @@
 
     .NavBar__collapsible-block {
         display: flex;
+        align-items: center;
     }
 
     .NavBar__item--collapsible {

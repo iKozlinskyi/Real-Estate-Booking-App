@@ -36,26 +36,11 @@
     text-align: center;
 }
 
-.LogInForm-message {
-    text-align: center;
-    padding: 0.6em 0;
-    border-radius: 5px;
+.LogInForm__BlinkMessage {
+    margin-top: 0.5em;
+    padding: 0.4em 0.5em;
+    font-size: 16px;
 }
-
-.LogInForm-message--warning {
-    background-color: #fcf283;
-    color: #7c7845;
-}
-
-.LogInForm-message--success {
-    background-color: #dafcc0;
-    color: #7c7845;
-}
-
-.LogInForm--auth {
-    max-width: 450px;
-}
-
 
 @media all and (min-width: 500px) {
     .LogInForm {

@@ -33,13 +33,18 @@ class AuthService {
     return usernameAvailable;
   }
 
-  login(credentials, successCallback) {
+  login(credentials, successCallback, errorCallback) {
     axios.post(LOGIN_URL, {...credentials})
         .then(res => {
           this.saveToken(res.data.token);
           this.setAuthHeader();
         })
         .then(() => successCallback())
+        .catch((error) => {
+          if (error.response) {
+            errorCallback(error.response.data.status)
+          }
+        })
   }
 
   saveToken(authHeader) {
@@ -51,21 +56,43 @@ class AuthService {
   }
 
   getUsername() {
-    const userInfo = decode(this.getToken());
+    const token = this.getToken();
+
+    if (!token) return null;
+
+    const userInfo = decode(token);
     return userInfo.username;
   }
 
   getAuthHeader() {
-    return `Bearer ${this.getToken()}`;
+    const token = this.getToken();
+    if (!token) return null;
+
+    return `Bearer ${token}`
   }
+
 
   setAuthHeader() {
     axios.defaults.headers.common['Authorization'] = this.getAuthHeader();
   }
 
+  deleteAuthHeder() {
+    delete axios.defaults.headers.common['Authorization'];
+  }
+
   logOut() {
     localStorage.removeItem(`${APP_NAME}-token`);
     delete axios.defaults.headers.common['Authorization'];
+  }
+
+  refreshAuthHeader() {
+    const authHeader = this.getAuthHeader();
+
+    if (authHeader) {
+      this.setAuthHeader();
+    } else {
+      this.deleteAuthHeder();
+    }
   }
 }
 

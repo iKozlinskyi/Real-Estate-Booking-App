@@ -45,6 +45,8 @@ class SignUpForm extends Component {
       const username = this.state.username;
       const usernameAvailable = await authService.isUsernameAvailable(username);
 
+      if (usernameAvailable) return;
+
       this.setState({
         isLoading: false,
         isUsernameAvailable: usernameAvailable

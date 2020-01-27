@@ -9,20 +9,43 @@ import LandingPage from "./LandingPage/LandingPage";
 import SignUpForm from "./SignUpForm/SignUpForm";
 import LogInForm from "./LogInForm/LogInForm";
 import CreateOrUpdateEstateForm from "./CreateOrUpdateEstateForm/CreateOrUpdateEstateForm";
+import authService from "../Service/AuthService.js"
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      navBarCollapsed: true
+      navBarCollapsed: true,
+      currentUsername: ""
     };
 
     this.toggleNavBar = this.toggleNavBar.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  componentDidMount() {
+    authService.refreshAuthHeader();
+    this.handleLogin(authService.getUsername());
   }
 
   toggleNavBar() {
     this.setState(curState => ({navBarCollapsed: !curState.navBarCollapsed}));
+  }
+
+  handleLogin(username) {
+    this.setState({
+      currentUsername: username
+    })
+  }
+
+  handleLogout()  {
+    this.setState({
+      currentUsername: null
+    });
+
+    authService.logOut();
   }
 
   render() {
@@ -31,11 +54,16 @@ class App extends Component {
         <Switch>
           <Route exact path="/" children={<LandingPage/>} />
           <Route>
-            <NavBar isCollapsed={this.state.navBarCollapsed} toggleNavBar={this.toggleNavBar} isLoggedIn={false}/>
+            <NavBar
+                isCollapsed={this.state.navBarCollapsed}
+                toggleNavBar={this.toggleNavBar}
+                currentUsername={this.state.currentUsername}
+                handleLogout={this.handleLogout}
+            />
             <Main>
               <Switch>
                 <Route exact path="/real-estate" >
-                  <RealEstateListPage />
+                  <RealEstateListPage currentUsername={this.state.currentUsername}/>
                 </Route>
                 <Route exact path="/register" >
                   <div className="form-wrapper">
@@ -44,7 +72,11 @@ class App extends Component {
                 </Route>
                 <Route exact path="/login" >
                   <div className="form-wrapper">
-                    <LogInForm elementClassName="Main__LogInForm"/>
+                    <LogInForm
+                        elementClassName="Main__LogInForm"
+                        onLogin={this.handleLogin}
+                        onLogout={this.handleLogout}
+                    />
                   </div>
                 </Route>
                 <Route exact path="/real-estate/new" >
@@ -58,7 +90,13 @@ class App extends Component {
                   </div>
                 </Route>
                 <Route exact path="/real-estate/:id"
-                       children={(routerProps) => <RealEstatePage {...routerProps}/>}
+                       children={(routerProps) => {
+                         return (
+                             <RealEstatePage
+                                 {...routerProps}
+                                 currentUsername={this.state.currentUsername}
+                             />
+                         )}}
                 />
               </Switch>
             </Main>

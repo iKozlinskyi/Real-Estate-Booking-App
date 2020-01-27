@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import "./NavBar.css"
+import {withRouter} from "react-router-dom"
 
 class NavBar extends Component {
 
@@ -8,16 +9,29 @@ class NavBar extends Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
-
 
   handleClick() {
     this.props.toggleNavBar();
   }
 
+  handleLogout() {
+    this.props.handleLogout();
+
+    this.props.history.replace({
+      pathname: "/real-estate",
+      state: {
+        message: "You are logged out. Come back when you feel like it!"
+      }
+    });
+  }
+
   render() {
 
-    let {isLoggedIn} = this.props;
+    let {currentUsername} = this.props;
+
+    const isLoggedIn = !!currentUsername;
 
     // noinspection CheckTagEmptyBody
     return (
@@ -26,9 +40,10 @@ class NavBar extends Component {
             <div className="NavBar__logo">
               <Link to="/" className="NavBar__link"><i className="fas fa-home"></i> HouseFinder</Link>
             </div>
+            {isLoggedIn &&
             <div className="">
-              <Link to="#" className="NavBar__link">Logged in as "USERNAME"</Link>
-            </div>
+              <Link to="#" className="NavBar__link">Logged in as {currentUsername}</Link>
+            </div>}
             <button id="toggleBtn" className="NavBar__button" onClick={this.handleClick}>☰</button>
           </div>
 
@@ -37,7 +52,11 @@ class NavBar extends Component {
             {isLoggedIn ?
                 <>
                   <li className="NavBar__item NavBar__item--collapsible NavBar__item--third">
-                    <Link to="#" className="NavBar__link">Log Out</Link>
+                    <div
+                        className="NavBar__link"
+                        onClick={this.handleLogout}
+                    >Log Out
+                    </div>
                   </li>
                 </> :
                 <>
@@ -58,4 +77,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

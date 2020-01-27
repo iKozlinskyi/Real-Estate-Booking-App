@@ -191,6 +191,7 @@ class RealEstateListPage extends Component {
           <RealEstateList
               elementClassName="RealEstateListPage__RealEstateList"
               data={this.state.filteredData}
+              currentUsername={this.props.currentUsername}
           /> :
           <div className="map-wrapper">
             <MultiMarkerMap markerData={this.extractMarkerData()}/>

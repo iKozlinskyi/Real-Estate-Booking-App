@@ -4,6 +4,7 @@ import "./LogInForm.css"
 import {withElementClassName} from "../HOCs/withElementClassName";
 import "../Styles/Button.css"
 import authService from "../../Service/AuthService.js"
+import BlinkMessage from "../BlinkMessage/BlinkMessage";
 
 
 class LogInForm extends Component {
@@ -13,7 +14,8 @@ class LogInForm extends Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      errorStatus: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +24,7 @@ class LogInForm extends Component {
 
   handleChange(evt) {
     this.setState({
+      errorStatus: null,
       [evt.target.name]: evt.target.value
     });
   }
@@ -38,7 +41,9 @@ class LogInForm extends Component {
       password: this.state.password
     };
 
-    const redirect = () => {
+    const successCallback = () => {
+      this.props.onLogin(authService.getUsername());
+
       this.props.history.push({
         pathname: "/real-estate",
         state: {
@@ -47,12 +52,30 @@ class LogInForm extends Component {
       });
     };
 
-    authService.login(credentials, redirect);
+    const errorCallback = (status) => {
+      this.setState({
+        errorStatus: status
+      })
+    };
+
+    authService.login(credentials, successCallback, errorCallback);
   }
 
   render() {
 
     const elementClassName = this.props.elementClassName;
+
+    let errorMessage;
+    if (this.state.errorStatus === 403) {
+      errorMessage = (
+          <BlinkMessage
+              type="warning"
+              elementClassName="LogInForm__BlinkMessage"
+          >
+            Invalid username and/or password
+          </BlinkMessage>
+      )
+    }
 
     return (
         <form
@@ -64,6 +87,8 @@ class LogInForm extends Component {
           <div className="message">
             Don`t have an account? <Link to="/register">Sign Up here</Link>
           </div>
+
+          {errorMessage}
 
           <input type="text"
                  placeholder="Username"

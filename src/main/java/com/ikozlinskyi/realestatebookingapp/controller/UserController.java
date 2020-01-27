@@ -52,9 +52,9 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
 
-        User foundUser = userService.findByUsername(user.getUsername());
+        boolean usernameAvailable = userService.isUsernameAvailable(user.getUsername());
 
-        if (foundUser != null) {
+        if (!usernameAvailable) {
             throw new UsernameAlreadyExistsException("Username '" + user.getUsername() + "' already exists");
         }
 
