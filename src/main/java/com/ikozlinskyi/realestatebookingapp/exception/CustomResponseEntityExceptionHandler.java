@@ -29,4 +29,10 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         UsernameAlreadyExistsResponse exceptionResponse = new UsernameAlreadyExistsResponse(ex.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<UserDoesNotHavePermissionResponse> handleUserDoesNotHavePermission(UserDoesNotHavePermissionException ex){
+        UserDoesNotHavePermissionResponse exceptionResponse = new UserDoesNotHavePermissionResponse(ex.getMessage());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }
