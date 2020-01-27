@@ -2,9 +2,9 @@ package com.ikozlinskyi.realestatebookingapp.service;
 
 
 import com.ikozlinskyi.realestatebookingapp.entity.User;
-import com.ikozlinskyi.realestatebookingapp.exception.UsernameAlreadyExistsException;
 import com.ikozlinskyi.realestatebookingapp.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,9 +30,14 @@ public class UserServiceImpl implements IUserService {
     User foundUser = this.userRepository.findByUsername(username);
 
     if (foundUser == null) {
-      throw new UsernameAlreadyExistsException("Username '" + username + "' already exists");
+      throw new UsernameNotFoundException("Cannot find user with username '" + username + "'");
     }
 
     return foundUser;
+  }
+
+  @Override
+  public boolean isUsernameAvailable(String username) {
+    return this.userRepository.findByUsername(username) == null;
   }
 }

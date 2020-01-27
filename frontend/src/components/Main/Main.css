@@ -3,7 +3,7 @@
 /*    margin: 0 auto;*/
 /*}*/
 
-.Main__login-form {
+.Main__LogInForm, .Main__SignUpForm {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -12,6 +12,14 @@
 @media all and (min-width: 500px) {
     .Main {
         background-color: white;
+    }
+
+    .Main__LogInForm, .Main__SignUpForm {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
     }
 }
 

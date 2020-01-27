@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import "./SignUpForm.css"
-import {isUsernameAvailable} from "../../utils/DataProvider";
 import {withElementClassName} from "../HOCs/withElementClassName";
 import "../Styles/Button.css"
+import authService from "../../Service/AuthService.js"
+import BlinkMessage from "../BlinkMessage/BlinkMessage";
+import LoaderAnimation from "../LoaderAnimation/LoaderAnimation";
 
 class SignUpForm extends Component {
 
@@ -13,72 +15,85 @@ class SignUpForm extends Component {
     this.state = {
       username: "",
       password: "",
-      isWarningVisible: false,
-      isUsernameAvailable: true
+      isUsernameAvailable: true,
+      isLoading: false
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isUsernameAvailable = this.isUsernameAvailable.bind(this);
   }
 
   handleChange(evt) {
-    if (this.state.isWarningVisible) {
-      this.hideWarning();
-    }
-
     this.setState({
       [evt.target.name]: evt.target.value
-    }, () => this.setState({isUsernameAvailable: this.isUsernameAvailable()}));
+    });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
 
-    if (!this.state.isUsernameAvailable) {
-      return undefined
-    }
+    this.isUsernameAvailable();
+    this.register();
   }
 
   isUsernameAvailable() {
-    return isUsernameAvailable(this.state.username);
+
+    this.setState({
+      isLoading: true
+    }, async () => {
+      const username = this.state.username;
+      const usernameAvailable = await authService.isUsernameAvailable(username);
+
+      this.setState({
+        isLoading: false,
+        isUsernameAvailable: usernameAvailable
+      })
+    })
   }
 
-  showWarning() {
-    this.setState({isWarningVisible: true})
-  }
+  register() {
+    const credentials = {
+      username: this.state.username,
+      password: this.state.password
+    };
 
-  hideWarning() {
-    this.setState({isWarningVisible: false})
+    const redirect = () => {
+      this.props.history.push({
+        pathname: "/real-estate",
+        state: {
+          message: "You have successfully registered! Now you can Log In"
+        }
+      });
+    };
+
+    authService.register(credentials, redirect);
   }
 
   render() {
     const elementClassName = this.props.elementClassName;
 
-    const {isWarningVisible, isUsernameAvailable} = this.state;
-    const isUsernameAvailabilityMessageShown = this.state.username !== "";
+    const {isUsernameAvailable, isLoading} = this.state;
+    const isMessageShown = !isUsernameAvailable && this.state.username !== "";
 
-    const usernameAvailabilityMessage = isUsernameAvailable ?
-        <div className="form-message SignUpForm__form-message form-message--success">
-          Good, your username is unique!
-        </div>
-        :
-        <div className="form-message SignUpForm__form-message form-message--warning">
+    const usernameAvailabilityMessage = (
+        <BlinkMessage type="warning" elementClassName="SignUpForm__BlinkMessage">
           Looks like your username has been taken. Try another one!
-        </div>;
+        </BlinkMessage>
+    );
 
     return (
-        <form action="#" method="post" className={`SignUpForm ${elementClassName} SignUpForm--auth`}>
+        <form
+            action="#"
+            className={`SignUpForm ${elementClassName} SignUpForm--auth`}
+            onSubmit={this.handleSubmit}
+        >
           <h2 className="SignUpForm__title">Sign Up</h2>
-          <div className="message">
+          <div className="message SignUpForm__message">
             Already have an account? <Link to="/login">LogIn here</Link>
           </div>
 
-          {isWarningVisible &&
-          <div className="form-message SignUpForm__form-message">
-            Please, fill in all fields
-          </div>}
-
-          {isUsernameAvailabilityMessageShown && usernameAvailabilityMessage}
+          {!isLoading && isMessageShown && usernameAvailabilityMessage}
 
           <input type="text"
                  placeholder="Username"
@@ -95,13 +110,22 @@ class SignUpForm extends Component {
                  value={this.state.password}
                  required
           />
-          <input type="submit"
-                 className="button button--link SignUpForm__button"
-                 value="Submit"
-          />
+          <button type="submit"
+                  className="button button--link SignUpForm__button"
+                  disabled={isLoading}
+          >
+            {isLoading ?
+                <LoaderAnimation
+                    size={"20px"}
+                    borderWidth="5px"
+                    elementClassName="SignUpForm__LoaderAnimation"
+                /> :
+                "Submit"}
+          </button>
+
         </form>
     );
   }
 }
 
-export default withElementClassName(SignUpForm);
+export default withRouter(withElementClassName(SignUpForm));

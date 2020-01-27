@@ -1,6 +1,7 @@
 package com.ikozlinskyi.realestatebookingapp.controller;
 
 import com.ikozlinskyi.realestatebookingapp.entity.User;
+import com.ikozlinskyi.realestatebookingapp.exception.UsernameAlreadyExistsException;
 import com.ikozlinskyi.realestatebookingapp.payload.JWTLoginSucessReponse;
 import com.ikozlinskyi.realestatebookingapp.payload.LoginRequest;
 import com.ikozlinskyi.realestatebookingapp.security.JwtTokenProvider;
@@ -13,10 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import static com.ikozlinskyi.realestatebookingapp.security.SecurityConstants.TOKEN_PREFIX;
@@ -52,13 +50,25 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user){
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
 
-        //Also checks for existing user, throws UsernameAlreadyExistsException
-        User existingUser = userService.findByUsername(user.getUsername());
+        User foundUser = userService.findByUsername(user.getUsername());
+
+        if (foundUser != null) {
+            throw new UsernameAlreadyExistsException("Username '" + user.getUsername() + "' already exists");
+        }
 
         User newUser = userService.saveUser(user);
 
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> checkUsernameAvailability(@RequestParam String username) {
+        boolean isUsernameAvailable = this.userService.isUsernameAvailable(username);
+
+        HttpStatus responseStatus = isUsernameAvailable ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
+
+        return new ResponseEntity<>(responseStatus);
     }
 }

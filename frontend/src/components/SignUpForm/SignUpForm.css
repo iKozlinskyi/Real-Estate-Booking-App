@@ -26,35 +26,30 @@
     margin-top: 2em;
     width: 100%;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 .SignUpForm__SignUpForm-message {
     margin-top: 0.5em;
 }
 
-
 .message {
     text-align: center;
 }
 
-.SignUpForm-message {
-    text-align: center;
-    padding: 0.6em 0;
-    border-radius: 5px;
+.SignUpForm__message {
+    margin-bottom: 0.5em;
 }
 
-.SignUpForm-message--warning {
-    background-color: #fcf283;
-    color: #7c7845;
+.SignUpForm__BlinkMessage {
+    margin-top: 0.5em;
+    padding: 0.4em 0.5em;
+    font-size: 16px;
 }
 
-.SignUpForm-message--success {
-    background-color: #dafcc0;
-    color: #7c7845;
-}
-
-.SignUpForm--auth {
-    max-width: 450px;
+.SignUpForm__LoaderAnimation {
+    margin: 0 auto;
 }
 
 .centering-wrapper {

@@ -7,4 +7,6 @@ public interface IUserService {
   User saveUser (User newUser);
 
   User findByUsername(String username);
+
+  boolean isUsernameAvailable(String username);
 }

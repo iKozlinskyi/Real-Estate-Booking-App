@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import "./LogInForm.css"
 import {withElementClassName} from "../HOCs/withElementClassName";
 import "../Styles/Button.css"
+import authService from "../../Service/AuthService.js"
+
 
 class LogInForm extends Component {
 
@@ -26,6 +28,26 @@ class LogInForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+
+    this.login();
+  }
+
+  login() {
+    const credentials = {
+      username: this.state.username,
+      password: this.state.password
+    };
+
+    const redirect = () => {
+      this.props.history.push({
+        pathname: "/real-estate",
+        state: {
+          message: "You have successfully logged in! Now you can use the app at its full potential!"
+        }
+      });
+    };
+
+    authService.login(credentials, redirect);
   }
 
   render() {
@@ -33,7 +55,11 @@ class LogInForm extends Component {
     const elementClassName = this.props.elementClassName;
 
     return (
-        <form action="#" method="post" className={`LogInForm ${elementClassName} LogInForm--auth`}>
+        <form
+            action="#"
+            className={`LogInForm ${elementClassName} LogInForm--auth`}
+            onSubmit={this.handleSubmit}
+        >
           <h2 className="LogInForm__title">Log In</h2>
           <div className="message">
             Don`t have an account? <Link to="/register">Sign Up here</Link>
@@ -63,4 +89,4 @@ class LogInForm extends Component {
   }
 }
 
-export default withElementClassName(LogInForm);
+export default withRouter(withElementClassName(LogInForm));

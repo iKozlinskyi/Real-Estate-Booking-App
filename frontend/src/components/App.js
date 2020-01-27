@@ -39,12 +39,12 @@ class App extends Component {
                 </Route>
                 <Route exact path="/register" >
                   <div className="form-wrapper">
-                    <SignUpForm elementClassName="Main__login-form"/>
+                    <SignUpForm elementClassName="Main__SignUpForm"/>
                   </div>
                 </Route>
                 <Route exact path="/login" >
                   <div className="form-wrapper">
-                    <LogInForm elementClassName="Main__login-form"/>
+                    <LogInForm elementClassName="Main__LogInForm"/>
                   </div>
                 </Route>
                 <Route exact path="/real-estate/new" >
