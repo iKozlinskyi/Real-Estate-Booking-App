@@ -10,6 +10,7 @@ import {BASE_API_URL} from "../../utils/constants";
 import BlinkMessage from "../BlinkMessage/BlinkMessage";
 import {withRouter} from "react-router-dom";
 import {sortService} from "../../utils/SortService";
+import Sticky from 'react-stickynode';
 
 
 class RealEstateListPage extends Component {
@@ -54,7 +55,7 @@ class RealEstateListPage extends Component {
             realEstate: response.data,
             filteredData: response.data,
             isLoading: false
-          },() => this.handleSortChange())
+          }, () => this.handleSortChange())
         })
         .catch(err => {
           console.log(err);
@@ -137,9 +138,9 @@ class RealEstateListPage extends Component {
       realEstateName,
       city,
       price: {
-            from: priceFrom,
-            to: priceTo
-          }
+        from: priceFrom,
+        to: priceTo
+      }
     } = this.state.filters;
 
     if (realEstateName === "" && city === "") {
@@ -188,14 +189,14 @@ class RealEstateListPage extends Component {
     const toggleButtonWord = this.state.isFilterPanelCollapsed ? "Show" : "Hide";
 
     const resultData = this.state.isListOfCards ?
-          <RealEstateList
-              elementClassName="RealEstateListPage__RealEstateList"
-              data={this.state.filteredData}
-              currentUsername={this.props.currentUsername}
-          /> :
-          <div className="map-wrapper">
-            <MultiMarkerMap markerData={this.extractMarkerData()}/>
-          </div>;
+        <RealEstateList
+            elementClassName="RealEstateListPage__RealEstateList"
+            data={this.state.filteredData}
+            currentUsername={this.props.currentUsername}
+        /> :
+        <div className="map-wrapper">
+          <MultiMarkerMap markerData={this.extractMarkerData()}/>
+        </div>;
 
     const requestResult = this.state.error ?
         "An error occurred while processing your request. Please, try again later" :
@@ -226,20 +227,25 @@ class RealEstateListPage extends Component {
             </button>
           </div>
           <div className="flex-wrapper">
-            <FilterPanel
-                elementClassName={`RealEstateListPage__FilterPanel
-                 ${this.state.isFilterPanelCollapsed &&
-                "RealEstateListPage__FilterPanel--collapsed"}`}
+            <Sticky
+                top={20}
+                className="RealEstateListPage__FilterPanel"
+            >
+              <FilterPanel
+                  elementClassName={`${this.state.isFilterPanelCollapsed &&
+                  "RealEstateListPage__FilterPanel--collapsed"}`}
 
-                onFiltersChange={this.onFiltersChange}
-                onPriceFiltersChange={this.onPriceFiltersChange}
-                realEstateName={this.state.filters.realEstateName}
-                city={this.state.filters.city}
-                priceFrom={this.state.filters.price.from}
-                priceTo={this.state.filters.price.to}
-                handleResetClick={this.resetForm}
-                onSortChange={this.onSortChange}
-            />
+                  onFiltersChange={this.onFiltersChange}
+                  onPriceFiltersChange={this.onPriceFiltersChange}
+                  realEstateName={this.state.filters.realEstateName}
+                  city={this.state.filters.city}
+                  priceFrom={this.state.filters.price.from}
+                  priceTo={this.state.filters.price.to}
+                  handleResetClick={this.resetForm}
+                  onSortChange={this.onSortChange}
+              />
+            </Sticky>
+
             <div className="RealEstateListPage__result-block">
               <div className="centering-wrapper">
                 <div className="centering-wrapper__center">
