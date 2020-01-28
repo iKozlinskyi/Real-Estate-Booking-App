@@ -67,7 +67,7 @@ class RealEstateListPage extends Component {
   }
 
   extractMarkerData() {
-    return this.state.realEstate.map(data => ({
+    return this.state.filteredData.map(data => ({
       id: data.id,
       title: data.name,
       name: data.name,
@@ -156,7 +156,8 @@ class RealEstateListPage extends Component {
           .includes(realEstateName.toLocaleLowerCase()));
     }
     if (city !== "") {
-      filteredResult = filteredResult.filter(item => item.city === city)
+      filteredResult = filteredResult.filter(item => item.city.toLowerCase()
+          .includes(city.toLocaleLowerCase()));
     }
     if (priceFrom !== "" && priceTo !== "") {
       filteredResult = filteredResult.filter(

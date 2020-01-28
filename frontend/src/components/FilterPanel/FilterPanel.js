@@ -50,17 +50,14 @@ class FilterPanel extends Component {
               onChange={this.handleChange}
           />
           City:
-          <select
+          <input
+              type="text"
               name="city"
               className="filter-input-field FilterPanel__filter-input-field"
+              placeholder="Kyiv"
               value={this.props.city}
               onChange={this.handleChange}
-          >
-            <option value="">All Cities</option>
-            <option value="Kyiv">Kyiv</option>
-            <option value="Lviv">Lviv</option>
-            <option value="Odessa">Odessa</option>
-          </select>
+          />
           Price:
           <div className="price-group">
             <div className="price-group__price-from">

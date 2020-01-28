@@ -88,7 +88,8 @@
     max-width: 450px;
 }
 
-.CreateOrUpdateRealEstateForm__FormMap {
+/*Overwrites google-api wrapper style*/
+.CreateOrUpdateRealEstateForm__FormMap > div {
     height: 400px;
 }
 
@@ -140,5 +141,36 @@
 
     .CreateOrUpdateRealEstateForm__button {
         width: 300px;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    .CreateOrUpdateRealEstateForm__flex-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .CreateOrUpdateRealEstateForm__address-block,
+    .CreateOrUpdateRealEstateForm__input-group {
+        flex-basis: 48%;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    .CreateOrUpdateRealEstateForm__FormMap {
+        height: 100%;
+    }
+
+    /*Overwrites google-api wrapper style*/
+    .CreateOrUpdateRealEstateForm__FormMap > div {
+        height: 95%;
+    }
+
+    .CreateOrUpdateRealEstateForm__address-block {
+        margin-top: 0;
+    }
+
+    .CreateOrUpdateRealEstateForm__textarea {
+        margin-bottom: 0;
     }
 }

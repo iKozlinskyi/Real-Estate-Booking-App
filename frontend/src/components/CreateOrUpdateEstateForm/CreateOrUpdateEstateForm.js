@@ -225,55 +225,55 @@ class CreateOrUpdateEstateForm extends Component {
               onSubmit={this.handleSubmit}
         >
           <h2 className="CreateOrUpdateRealEstateForm__title">{titleVerb} Real Estate</h2>
-          <div className="CreateOrUpdateRealEstateForm__input-label">Real Estate Name</div>
-          <input type="text"
-                 placeholder="Historic House In Old Town"
-                 name="name"
-                 className="input-field CreateOrUpdateRealEstateForm__input-field"
-                 onChange={this.handleChange}
-                 value={this.state.name}
-                 required
-          />
-
-          <div className="CreateOrUpdateRealEstateForm__input-label">City:</div>
-          <select
-              name="city"
-              className="filter-input-field FilterPanel__filter-input-field"
-              value={this.props.city}
-              onChange={this.handleChange}
-          >
-            <option value="">All Cities</option>
-            <option value="Kyiv">Kyiv</option>
-            <option value="Lviv">Lviv</option>
-            <option value="Odessa">Odessa</option>
-          </select>
-
-          {imageLinkInputFields}
-
-          <div className="CreateOrUpdateRealEstateForm__input-label">Price Per Night</div>
-          <input type="number"
-                 placeholder="12"
-                 name="price"
-                 className="input-field CreateOrUpdateRealEstateForm__input-field"
-                 onChange={this.handlePriceChange}
-                 value={this.state.price ||""}
-                 required
-          />
-          <div className="CreateOrUpdateRealEstateForm__input-label">Description</div>
-          <textarea name="description"
-                    className="textarea CreateOrUpdateRealEstateForm__textarea"
-                    placeholder="Put the short description here"
-                    onChange={this.handleChange}
-                    value={this.state.description}
-          />
-          <div className="CreateOrUpdateRealEstateForm__address-block address-block">
-            <div className="CreateOrUpdateRealEstateForm__input-label">Address:</div>
-            <div className="CreateOrUpdateRealEstateForm__FormMap">
-              <FormMap
-                  handleClick={this.setMarker}
-                  markerCoords={this.state.markerCoords}
-
+          <div className="CreateOrUpdateRealEstateForm__flex-wrapper">
+            <div className="CreateOrUpdateRealEstateForm__input-group">
+              <div className="CreateOrUpdateRealEstateForm__input-label">Real Estate Name</div>
+              <input type="text"
+                     placeholder="Historic House In Old Town"
+                     name="name"
+                     className="input-field CreateOrUpdateRealEstateForm__input-field"
+                     onChange={this.handleChange}
+                     value={this.state.name}
+                     required
               />
+
+              <div className="CreateOrUpdateRealEstateForm__input-label">City:</div>
+              <input type="text"
+                     placeholder="Kyiv"
+                     name="city"
+                     className="input-field CreateOrUpdateRealEstateForm__input-field"
+                     onChange={this.handleChange}
+                     value={this.state.city}
+                     required
+              />
+
+              {imageLinkInputFields}
+
+              <div className="CreateOrUpdateRealEstateForm__input-label">Price Per Night</div>
+              <input type="number"
+                     placeholder="12"
+                     name="price"
+                     className="input-field CreateOrUpdateRealEstateForm__input-field"
+                     onChange={this.handlePriceChange}
+                     value={this.state.price ||""}
+                     required
+              />
+              <div className="CreateOrUpdateRealEstateForm__input-label">Description</div>
+              <textarea name="description"
+                        className="textarea CreateOrUpdateRealEstateForm__textarea"
+                        placeholder="Put the short description here"
+                        onChange={this.handleChange}
+                        value={this.state.description}
+              />
+            </div>
+            <div className="CreateOrUpdateRealEstateForm__address-block address-block">
+              <div className="CreateOrUpdateRealEstateForm__input-label">Address:</div>
+              <div className="CreateOrUpdateRealEstateForm__FormMap">
+                <FormMap
+                    handleClick={this.setMarker}
+                    markerCoords={this.state.markerCoords}
+                />
+              </div>
             </div>
           </div>
           <input type="submit"
