@@ -1,5 +1,7 @@
 package com.ikozlinskyi.realestatebookingapp.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.ikozlinskyi.realestatebookingapp.JSONView.ReservationViews;
 import com.ikozlinskyi.realestatebookingapp.entity.*;
 import com.ikozlinskyi.realestatebookingapp.exception.UserDoesNotHavePermissionException;
 import com.ikozlinskyi.realestatebookingapp.service.PhotoServiceImpl;
@@ -31,11 +33,13 @@ public class RealEstateRestController {
   }
 
   @GetMapping("/real-estate")
+  @JsonView(ReservationViews.ByRealEstate.class)
   public List<RealEstate> findAll() {
     return this.realEstateService.findAll();
   }
 
   @GetMapping("/real-estate/{realEstateId}")
+  @JsonView(ReservationViews.ByRealEstate.class)
   public RealEstate findById(@PathVariable int realEstateId) {
     //Also performs check if RealEstate exists, throws RealEstateNotFoundException otherwise
     return realEstateService.findById(realEstateId);

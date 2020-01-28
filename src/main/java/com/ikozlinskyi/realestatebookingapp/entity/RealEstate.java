@@ -43,6 +43,11 @@ public class RealEstate {
               CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST})
   private List<Photo> photos;
 
+  @OneToMany(mappedBy = "bookedRealEstate",
+      cascade = {CascadeType.DETACH, CascadeType.MERGE,
+          CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST})
+  private List<Reservation> reservations;
+
   public RealEstate() {
   }
 
@@ -139,6 +144,23 @@ public class RealEstate {
     newPhotos.forEach(photo -> photo.setRealEstate(this));
 
     this.photos = newPhotos;
+  }
+
+  public List<Reservation> getReservations() {
+    return reservations;
+  }
+
+  public void setReservations(List<Reservation> reservations) {
+    this.reservations = reservations;
+  }
+
+  public void addReservation(Reservation newReservation) {
+    if (this.reservations == null) {
+      reservations = new ArrayList<>();
+    }
+
+    newReservation.setBookedRealEstate(this);
+    reservations.add(newReservation);
   }
 
   @Override

@@ -35,4 +35,10 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         UserDoesNotHavePermissionResponse exceptionResponse = new UserDoesNotHavePermissionResponse(ex.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public final ResponseEntity<ReservationNotFoundResponse> handleReservationNotFound(ReservationNotFoundException ex){
+        ReservationNotFoundResponse exceptionResponse = new ReservationNotFoundResponse(ex.getMessage());
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }
