@@ -55,6 +55,10 @@
     text-align: right;
 }
 
+.RealEstate-card__DateRangePickerWrapper {
+    margin-top: 1em;
+}
+
 .RealEstatePage__map {
     margin-top: 3em;
 }

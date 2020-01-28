@@ -7,6 +7,7 @@ import "../Styles/Button.css"
 import RealEstateCarousel from "../RealEstateCarousel/RealEstateCarousel";
 import axios from "axios";
 import {BASE_API_URL} from "../../utils/constants";
+import DateRangePickerWrapper from "../DateRangePickerWrapper/DateRangePickerWrapper";
 
 class RealEstatePage extends Component {
 
@@ -34,6 +35,7 @@ class RealEstatePage extends Component {
     this.resetMessage = this.resetMessage.bind(this);
     this.handleCommentFormChange = this.handleCommentFormChange.bind(this);
     this.handleCommentDelete = this.handleCommentDelete.bind(this);
+    this.handleReservation = this.handleReservation.bind(this);
   }
 
   componentDidMount() {
@@ -164,10 +166,35 @@ class RealEstatePage extends Component {
         ))
   }
 
+  handleReservation(momentStartDate, momentEndDate) {
+    const id = this.state.realEstateData.id;
+
+    const startDate = momentStartDate.toISOString();
+    const endDate = momentEndDate.toISOString();
+
+    const payload = {
+      reservationStart: startDate,
+      reservationEnd: endDate
+    };
+
+
+    axios.post(`${BASE_API_URL}/real-estate/${id}/reservations`, {...payload})
+        .then(() => {
+          this.props.history.push({
+            pathname: "/real-estate",
+            state: {
+              message: "Successfully booked real estate!"
+            }
+          });
+        })
+        .catch(err => {
+          console.log(err.response);
+        })
+  }
+
   render() {
 
     const {
-      id,
       name,
       price,
       author,
@@ -175,7 +202,8 @@ class RealEstatePage extends Component {
       description,
       comments,
       position,
-      photos
+      photos,
+      reservations
     } = this.state.realEstateData;
 
     const pagePathName = this.props.location.pathname;
@@ -198,7 +226,7 @@ class RealEstatePage extends Component {
                   "RealEstate-card__carousel-wrapper--full-screen"}`}
               >
                 {carouselFullScreen &&
-                <button className="popup__exit" onClick={this.onClosePopupClick}></button>
+                <button className="popup__exit" onClick={this.onClosePopupClick}/>
                 }
 
                 {photos &&
@@ -238,6 +266,12 @@ class RealEstatePage extends Component {
                 </div>
               </div>
             </div>
+
+            <DateRangePickerWrapper
+                reservations={reservations}
+                onReservation={this.handleReservation}
+                elementClassName="RealEstate-card__DateRangePickerWrapper"
+            />
 
             {showControls &&
             <div className="controls RealEstate-card__controls">

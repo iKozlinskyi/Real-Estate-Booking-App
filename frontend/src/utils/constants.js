@@ -13,3 +13,9 @@ export const REGISTER_URL = BASE_API_URL + "/users/register";
 export const USERNAME_AVAILABLE_BASE_URL = BASE_API_URL + "/users/";
 
 export const APP_NAME = "real-estate-booking-app";
+
+export const START_DATE = "startDate";
+
+export const END_DATE = "endDate";
+
+export const RESERVATION_DATE_FORMAT = "YYYY-MM-DD";
