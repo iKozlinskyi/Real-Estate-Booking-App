@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 
 import "./CreateOrUpdateEstateForm.css"
 import FormMap from "../FormMap/FormMap";
-import {withRouter} from "react-router-dom";
+import {withRouter, Redirect} from "react-router-dom";
 import {withElementClassName} from "../HOCs/withElementClassName.js";
 import axios from "axios";
 import "../Styles/Button.css"
 import {BASE_API_URL} from "../../utils/constants";
+import authService from "../../Service/AuthService"
 
 class CreateOrUpdateEstateForm extends Component {
   constructor(props) {
@@ -225,6 +226,7 @@ class CreateOrUpdateEstateForm extends Component {
               className={`CreateOrUpdateRealEstateForm ${elementClassName}`}
               onSubmit={this.handleSubmit}
         >
+            {!authService.isLoggedIn() && <Redirect to="/login" />}
           <h2 className="CreateOrUpdateRealEstateForm__title">{titleVerb} Real Estate</h2>
           <div className="CreateOrUpdateRealEstateForm__flex-wrapper">
             <div className="CreateOrUpdateRealEstateForm__input-group">

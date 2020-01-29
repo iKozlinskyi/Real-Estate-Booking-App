@@ -76,7 +76,7 @@ class AuthService {
     axios.defaults.headers.common['Authorization'] = this.getAuthHeader();
   }
 
-  deleteAuthHeder() {
+  deleteAuthHeader() {
     delete axios.defaults.headers.common['Authorization'];
   }
 
@@ -91,8 +91,12 @@ class AuthService {
     if (authHeader) {
       this.setAuthHeader();
     } else {
-      this.deleteAuthHeder();
+      this.deleteAuthHeader();
     }
+  }
+
+  isLoggedIn() {
+    return !!this.getToken();
   }
 }
 
