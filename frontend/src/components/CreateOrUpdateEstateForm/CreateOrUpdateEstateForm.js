@@ -85,6 +85,7 @@ class CreateOrUpdateEstateForm extends Component {
         .then(fetchedData => {
           this.setState({
             name: fetchedData.name,
+            city: fetchedData.city,
             imgLinks: fetchedData.photos.map(p => p.imgSrc),
             price: fetchedData.price,
             description: fetchedData.description,
