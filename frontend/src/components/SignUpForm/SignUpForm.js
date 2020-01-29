@@ -15,8 +15,12 @@ class SignUpForm extends Component {
     this.state = {
       username: "",
       password: "",
-      isUsernameAvailable: true,
-      isLoading: false
+      confirmationPassword: "",
+      isLoading: false,
+      message: {
+        text: "",
+        type: ""
+      }
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,14 +30,32 @@ class SignUpForm extends Component {
 
   handleChange(evt) {
     this.setState({
-      [evt.target.name]: evt.target.value
+      [evt.target.name]: evt.target.value,
+      message: {
+        text: "",
+        type: ""
+      }
     });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
 
+    if (!this.passwordsMatch()) {
+      this.setState({
+        message: {
+          text: "Passwords don`t match",
+          type: "danger"
+        }
+      });
+
+      return
+    }
+
     this.isUsernameAvailable();
+
+    if (this.state.message.text !== "") return;
+
     this.register();
   }
 
@@ -49,7 +71,10 @@ class SignUpForm extends Component {
 
       this.setState({
         isLoading: false,
-        isUsernameAvailable: usernameAvailable
+        message: {
+          type: "warning",
+          text: "Looks like your username has been taken. Try another one!"
+        }
       })
     })
   }
@@ -72,17 +97,24 @@ class SignUpForm extends Component {
     authService.register(credentials, redirect);
   }
 
+    passwordsMatch() {
+      return this.state.password === this.state.confirmationPassword;
+    }
+
   render() {
     const elementClassName = this.props.elementClassName;
 
-    const {isUsernameAvailable, isLoading} = this.state;
-    const isMessageShown = !isUsernameAvailable && this.state.username !== "";
+    const {isLoading, message} = this.state;
 
-    const usernameAvailabilityMessage = (
-        <BlinkMessage type="warning" elementClassName="SignUpForm__BlinkMessage">
-          Looks like your username has been taken. Try another one!
-        </BlinkMessage>
-    );
+    let blinkMessage;
+    if (message.text) {
+      blinkMessage = (
+          <BlinkMessage type={message.type} elementClassName="SignUpForm__BlinkMessage">
+            {message.text}
+          </BlinkMessage>
+      );
+    }
+
 
     return (
         <form
@@ -95,7 +127,7 @@ class SignUpForm extends Component {
             Already have an account? <Link to="/login">LogIn here</Link>
           </div>
 
-          {!isLoading && isMessageShown && usernameAvailabilityMessage}
+          {!isLoading && blinkMessage}
 
           <input type="text"
                  placeholder="Username"
@@ -110,6 +142,14 @@ class SignUpForm extends Component {
                  className="input-field SignUpForm__input-field"
                  onChange={this.handleChange}
                  value={this.state.password}
+                 required
+          />
+          <input type="password"
+                 placeholder="Confirm password"
+                 name="confirmationPassword"
+                 className="input-field SignUpForm__input-field"
+                 onChange={this.handleChange}
+                 value={this.state.confirmationPassword}
                  required
           />
           <button type="submit"
