@@ -67,14 +67,29 @@ class RealEstatePage extends Component {
         });
   }
 
+  onClosePopupClick() {
+    this.setState({
+      carouselFullScreen: false
+    }, () => this.changeSlideForwardBackward())
+  }
+
+  onSlideClick() {
+    this.setState({
+      carouselFullScreen: true
+    }, () => this.changeSlideForwardBackward())
+  }
+
+  handleSlideChange(slideNumber) {
+    this.setState({currentSlideNumber: slideNumber})
+  }
+
   /**This is really ugly, but it solves problem with black stripes in carousel,
    * which appears when carousel has photos of various height.
    */
-  onClosePopupClick() {
+  changeSlideForwardBackward() {
     this.setState(curState => {
       const isFirstSlide = curState.currentSlideNumber === 0;
       return {
-        carouselFullScreen: false,
         currentSlideNumber: curState.currentSlideNumber - 1,
         isFirstSlide: isFirstSlide
       }
@@ -86,14 +101,6 @@ class RealEstatePage extends Component {
         }
       })
     })
-  }
-
-  onSlideClick() {
-    this.setState({carouselFullScreen: true})
-  }
-
-  handleSlideChange(slideNumber) {
-    this.setState({currentSlideNumber: slideNumber})
   }
 
   handleRealEstateDelete() {
