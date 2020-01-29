@@ -8,6 +8,7 @@ import RealEstateCarousel from "../RealEstateCarousel/RealEstateCarousel";
 import axios from "axios";
 import {BASE_API_URL} from "../../utils/constants";
 import DateRangePickerWrapper from "../DateRangePickerWrapper/DateRangePickerWrapper";
+import authService from "../../Service/AuthService"
 
 class RealEstatePage extends Component {
 
@@ -291,12 +292,16 @@ class RealEstatePage extends Component {
                 </div>
               </div>
             </div>
+            {authService.isLoggedIn() ?
+                <DateRangePickerWrapper
+                    reservations={reservations}
+                    onReservation={this.handleReservation}
+                    elementClassName="RealEstate-card__DateRangePickerWrapper"
+                /> :
+                <div className="RealEstate-card__message">
+                  Please, <Link to="/login">Log In</Link> to book this real estate.
+                </div>}
 
-            <DateRangePickerWrapper
-                reservations={reservations}
-                onReservation={this.handleReservation}
-                elementClassName="RealEstate-card__DateRangePickerWrapper"
-            />
 
             {showControls &&
             <div className="controls RealEstate-card__controls">
