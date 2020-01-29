@@ -188,6 +188,7 @@ class RealEstateListPage extends Component {
 
   render() {
     const toggleButtonWord = this.state.isFilterPanelCollapsed ? "Show" : "Hide";
+    const arrowDirection = this.state.isFilterPanelCollapsed ? "down" : "up";
 
     const resultData = this.state.isListOfCards ?
         <RealEstateList
@@ -223,17 +224,18 @@ class RealEstateListPage extends Component {
                 className="toggle-filterList-button RealEstateListPage__toggle-filterList-button"
                 onClick={this.toggleFilterPanel}
             >
-
               {`${toggleButtonWord} Filters`}
+              <i className={`fas fa-chevron-${arrowDirection} toggle-filterList-button__fa-chevron-down`}></i>
             </button>
           </div>
           <div className="flex-wrapper">
             <Sticky
                 top={20}
-                className="RealEstateListPage__FilterPanel"
+                className="RealEstateListPage__FilterPanel-sticky-wrapper"
             >
               <FilterPanel
-                  elementClassName={`${this.state.isFilterPanelCollapsed &&
+                  elementClassName={`RealEstateListPage__FilterPanel
+                  ${this.state.isFilterPanelCollapsed &&
                   "RealEstateListPage__FilterPanel--collapsed"}`}
 
                   onFiltersChange={this.onFiltersChange}

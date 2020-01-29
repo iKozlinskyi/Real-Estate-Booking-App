@@ -101,7 +101,7 @@ class FilterPanel extends Component {
             </select>
           </div>
           <button
-              className="button button--link FilterPanel__reset-button"
+              className="button FilterPanel__reset-button"
               onClick={this.handleResetClick}
           >
             Reset

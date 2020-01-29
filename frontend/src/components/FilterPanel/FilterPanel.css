@@ -1,5 +1,7 @@
 .FilterPanel {
     padding: 1em;
+    background-color: #f2f2f2;
+    width: calc(100% - 1em);
 }
 
 .FilterPanel__title {
@@ -44,6 +46,14 @@
 
 .FilterPanel__reset-button {
     margin-top: 1em;
+    width: 100%;
+    background-color: #67aef0;
+    border-radius: 3px;
+    color: white;
+}
+
+.button.FilterPanel__reset-button {
+    padding: 0.5em 2em;
 }
 
 .FilterPanel__sort-block {
@@ -51,13 +61,24 @@
 }
 
 @media all and (min-width: 576px) {
+    .FilterPanel__button {
+        width: 300px;
+    }
+
+    .FilterPanel__reset-button {
+        width: 20%;
+    }
+}
+
+@media all and (min-width: 800px) {
     .FilterPanel {
+        background-color: transparent;
         -webkit-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         -moz-box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
         box-shadow: 0 4px 7px 2px rgba(199, 199, 199, 0.49);
     }
 
-    .FilterPanel__button {
-        width: 300px;
+    .FilterPanel__reset-button {
+        width: 100%;
     }
 }

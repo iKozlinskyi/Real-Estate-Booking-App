@@ -16,12 +16,12 @@ class RealEstateList extends Component {
       nextPage
     } = this.props;
 
-    const realEstateCards = data.map(item =>{
-      const imgUrl = item.photos[0] !== undefined ? item.photos[0].imgSrc : STUB_IMG_SRC;
+    const realEstateCards = data.map(itemData =>{
+      const imgUrl = itemData.photos[0] !== undefined ? itemData.photos[0].imgSrc : STUB_IMG_SRC;
       return  (
           <RealEstateCard
-              key={item.id}
-              {...item}
+              key={itemData.id}
+              {...itemData}
               imgUrl={imgUrl}
               elementClassName="RealEstateList__RealEstateCard"
           />
