@@ -40,7 +40,7 @@ public class RealEstate {
 
   @OneToMany(mappedBy = "realEstate",
       cascade = {CascadeType.DETACH, CascadeType.MERGE,
-              CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST})
+              CascadeType.REFRESH, CascadeType.REMOVE})
   private List<Photo> photos;
 
   @OneToMany(mappedBy = "bookedRealEstate",
