@@ -18,6 +18,7 @@ class RealEstatePage extends Component {
       realEstateData: [],
       carouselFullScreen: false,
       currentSlideNumber: 0,
+      isFirstSlide: true,
       isLoading: true,
       error: "",
       formMessage: {
@@ -66,8 +67,25 @@ class RealEstatePage extends Component {
         });
   }
 
+  /**This is really ugly, but it solves problem with black stripes in carousel,
+   * which appears when carousel has photos of various height.
+   */
   onClosePopupClick() {
-    this.setState({carouselFullScreen: false})
+    this.setState(curState => {
+      const isFirstSlide = curState.currentSlideNumber === 0;
+      return {
+        carouselFullScreen: false,
+        currentSlideNumber: curState.currentSlideNumber - 1,
+        isFirstSlide: isFirstSlide
+      }
+    }, () => {
+      this.setState(curState => {
+        let nextSlideNumber = curState.isFirstSlide ? 0 : curState.currentSlideNumber + 1;
+        return {
+          currentSlideNumber: nextSlideNumber
+        }
+      })
+    })
   }
 
   onSlideClick() {

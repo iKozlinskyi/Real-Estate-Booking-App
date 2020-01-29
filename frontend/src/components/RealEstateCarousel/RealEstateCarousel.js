@@ -24,6 +24,7 @@ class RealEstateCarousel extends Component {
               onClickItem={this.props.onSlideClick}
               onChange={this.handleSliderChange}
               selectedItem={this.props.slideNumber}
+              dynamicHeight
           >
             {this.props.slides.map(slide => (
                 <div key={slide.id}>
