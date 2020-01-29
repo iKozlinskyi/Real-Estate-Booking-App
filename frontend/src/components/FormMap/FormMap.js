@@ -22,7 +22,7 @@ class FormMap extends Component {
 
   render() {
 
-    const {name, markerCoords} = this.props;
+    const {markerCoords} = this.props;
     const initialCenterCoords = (markerCoords.lat && markerCoords.lng) ?
         markerCoords :
         KYIV_CENTER_COORDS;

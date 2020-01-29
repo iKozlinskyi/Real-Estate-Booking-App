@@ -73,7 +73,6 @@
 
     .NavBar {
         display: flex;
-        /*background-color: #c6def7;*/
         justify-content: space-between;
         padding: 0 1em;
     }
