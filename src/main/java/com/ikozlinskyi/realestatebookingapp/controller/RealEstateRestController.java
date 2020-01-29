@@ -72,10 +72,6 @@ public class RealEstateRestController {
 
     checkPermission(principal, storedRealEstate);
 
-    //Deleting saved photos
-    List<Photo> storedPhotos = storedRealEstate.getPhotos();
-    storedPhotos.forEach(photo -> photoService.delete(photo));
-
     //Setting id to edit existing object
     editedRealEstate.setId(realEstateId);
 
@@ -83,7 +79,7 @@ public class RealEstateRestController {
 
     //Adding new photos from RequestBody
     List<Photo> editedPhotos = editedRealEstate.getPhotos();
-    editedPhotos.forEach(photo -> photo.setRealEstate(editedRealEstate));
+    editedRealEstate.refreshPhotos(editedPhotos);
 
     realEstateService.save(editedRealEstate);
 

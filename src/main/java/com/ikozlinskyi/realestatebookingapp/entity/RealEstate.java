@@ -39,8 +39,9 @@ public class RealEstate {
   private List<Comment> comments;
 
   @OneToMany(mappedBy = "realEstate",
+      orphanRemoval = true,
       cascade = {CascadeType.DETACH, CascadeType.MERGE,
-              CascadeType.REFRESH, CascadeType.REMOVE})
+              CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST})
   private List<Photo> photos;
 
   @OneToMany(mappedBy = "bookedRealEstate",
