@@ -17,6 +17,8 @@
 
 SET FOREIGN_KEY_CHECKS=0;
 
+CREATE DATABASE IF NOT EXISTS "real-estate-booking-app";
+
 --
 -- Table structure for table `comments`
 --
