@@ -25,7 +25,7 @@ To run this app locally, you need:
 - node and npm
 - MySQL database up and running - initial data will be loaded automatically
 
-##Running executable *fat-jar*
+## Running executable *fat-jar*
 
 - Clone this repo
 - `cd ./Real-Estate-Booking-App/frontend/` to get to front end folder
@@ -40,4 +40,4 @@ Now the app is running on http://localhost:8080
 
 You can also use your favourite IDE and start the project with its tools.
 
-To tun the front-end in dev mode, use `npm run`, which starts local server on http://localhost:3000. **But** you need the Java server running as a data source.
+To run the front-end in dev mode, use `npm run`, which starts local server on http://localhost:3000. **But** you need the Java server running as a data source.
