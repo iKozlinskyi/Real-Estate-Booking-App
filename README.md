@@ -31,7 +31,9 @@ To run this app locally, you need:
 - `cd ./Real-Estate-Booking-App/frontend/` to get to front end folder
 - `npm install` to install all req'd dependencies
 - `npm run build` to generate client resources
-- `cd ../`
+- Open `../src/main/resources/application.proterties`
+- Add your username and password to config file to use database
+- `cd ../../../`
 - `mvn clean install` - this will generate the executable *fat-jar*
 - `cd target/`
 - `java -jar real-estate-booking-app-0.0.1-SNAPSHOT.jar`
