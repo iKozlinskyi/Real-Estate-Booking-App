@@ -2,10 +2,11 @@
 
 #### Brief description:
 
+**App is available on https://real-estate-booking-app.herokuapp.com/**
+
 A user can browse available real estate, filter it by name, price, location, see result of search on a map.
 
 available features:
-
 
 - Filtering of results (by name, city, price)
 - Sorting (alphabetically, by price) - ASC and DESC
