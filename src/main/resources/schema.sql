@@ -39,7 +39,7 @@ CREATE TABLE `comments` (
                             CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
+ALTER TABLE comments CONVERT TO CHARACTER SET utf8;
 --
 -- Table structure for table `photos`
 --
@@ -94,6 +94,7 @@ CREATE TABLE `real_estate` (
                                CONSTRAINT `real_estate_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+ALTER TABLE real_estate CONVERT TO CHARACTER SET utf8;
 
 --
 -- Table structure for table `reservations`
@@ -130,6 +131,8 @@ CREATE TABLE `users` (
                          `enabled` tinyint(1) NOT NULL DEFAULT (1),
                          PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ALTER TABLE users CONVERT TO CHARACTER SET utf8;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
