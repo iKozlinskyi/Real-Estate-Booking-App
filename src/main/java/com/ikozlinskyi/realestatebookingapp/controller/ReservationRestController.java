@@ -6,9 +6,7 @@ import com.ikozlinskyi.realestatebookingapp.entity.RealEstate;
 import com.ikozlinskyi.realestatebookingapp.entity.Reservation;
 import com.ikozlinskyi.realestatebookingapp.entity.User;
 import com.ikozlinskyi.realestatebookingapp.exception.UserDoesNotHavePermissionException;
-import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
-import com.ikozlinskyi.realestatebookingapp.service.ReservationServiceImpl;
-import com.ikozlinskyi.realestatebookingapp.service.UserServiceImpl;
+import com.ikozlinskyi.realestatebookingapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +22,13 @@ import java.util.List;
 public class ReservationRestController {
 
   @Autowired
-  private ReservationServiceImpl reservationService;
+  private IReservationService reservationService;
 
   @Autowired
-  private UserServiceImpl userService;
+  private IUserService userService;
 
   @Autowired
-  private RealEstateServiceImpl realEstateService;
+  private IRealEstateService realEstateService;
 
   @GetMapping("/reservations")
   @JsonView(ReservationViews.ByRealEstate.class)

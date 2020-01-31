@@ -4,9 +4,7 @@ import com.ikozlinskyi.realestatebookingapp.entity.Comment;
 import com.ikozlinskyi.realestatebookingapp.entity.RealEstate;
 import com.ikozlinskyi.realestatebookingapp.entity.User;
 import com.ikozlinskyi.realestatebookingapp.exception.UserDoesNotHavePermissionException;
-import com.ikozlinskyi.realestatebookingapp.service.CommentServiceImpl;
-import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
-import com.ikozlinskyi.realestatebookingapp.service.UserServiceImpl;
+import com.ikozlinskyi.realestatebookingapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +15,14 @@ import java.security.Principal;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CommentRestController {
 
-  private RealEstateServiceImpl realEstateService;
+  private IRealEstateService realEstateService;
 
-  private CommentServiceImpl commentService;
+  private ICommentService commentService;
 
-  private UserServiceImpl userService;
+  private IUserService userService;
 
   @Autowired
-  public CommentRestController(RealEstateServiceImpl realEstateService, CommentServiceImpl commentService, UserServiceImpl userService) {
+  public CommentRestController(IRealEstateService realEstateService, ICommentService commentService, IUserService userService) {
     this.realEstateService = realEstateService;
     this.commentService = commentService;
     this.userService = userService;

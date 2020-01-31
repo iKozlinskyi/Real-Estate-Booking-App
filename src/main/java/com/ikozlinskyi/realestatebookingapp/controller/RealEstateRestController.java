@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.ikozlinskyi.realestatebookingapp.JSONView.ReservationViews;
 import com.ikozlinskyi.realestatebookingapp.entity.*;
 import com.ikozlinskyi.realestatebookingapp.exception.UserDoesNotHavePermissionException;
-import com.ikozlinskyi.realestatebookingapp.service.RealEstateServiceImpl;
-import com.ikozlinskyi.realestatebookingapp.service.UserServiceImpl;
+import com.ikozlinskyi.realestatebookingapp.service.IRealEstateService;
+import com.ikozlinskyi.realestatebookingapp.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +18,12 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RealEstateRestController {
 
-  private RealEstateServiceImpl realEstateService;
+  private IRealEstateService realEstateService;
 
-  private UserServiceImpl userService;
+  private IUserService userService;
 
   @Autowired
-  public RealEstateRestController(RealEstateServiceImpl realEstateService, UserServiceImpl userService) {
+  public RealEstateRestController(IRealEstateService realEstateService, IUserService userService) {
     this.realEstateService = realEstateService;
     this.userService = userService;
   }
