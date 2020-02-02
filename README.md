@@ -4,6 +4,8 @@
 
 **App is available on https://real-estate-booking-app.herokuapp.com/**
 
+Please, allow up to 2 minutes for application start. Due to Heroku policy, app goes to sleep after 30 minutes without any activity. Since app is started, pages should be loaded in normal time.
+
 #### Brief description
 
 This is a full-stack app, which serves as a booking platform for real estate.
