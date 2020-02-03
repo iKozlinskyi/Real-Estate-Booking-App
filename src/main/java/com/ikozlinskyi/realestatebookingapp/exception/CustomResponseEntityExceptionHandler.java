@@ -41,4 +41,15 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
         ReservationNotFoundResponse exceptionResponse = new ReservationNotFoundResponse(ex.getMessage());
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<GenericExceptionResponse> handleException(Exception ex) {
+
+        GenericExceptionResponse exceptionResponse = new GenericExceptionResponse(
+            HttpStatus.BAD_REQUEST.value(),
+            ex.toString(),
+            System.currentTimeMillis());
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
 }
