@@ -18,7 +18,7 @@ public class Comment {
 
   @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,
       CascadeType.MERGE, CascadeType.REFRESH})
-  @JoinColumn(name="author_id")
+  @JoinColumn(name="user_id")
   private User author;
 
   @Column(name="text")
@@ -26,7 +26,7 @@ public class Comment {
 
   @CreationTimestamp
   @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "createdAt")
+  @Column(name = "created_at")
   private Date createdAt;
 
   @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,

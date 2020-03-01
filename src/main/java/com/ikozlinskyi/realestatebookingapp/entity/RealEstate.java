@@ -24,7 +24,7 @@ public class RealEstate {
 
   @ManyToOne(cascade={CascadeType.PERSIST, CascadeType.DETACH,
       CascadeType.MERGE, CascadeType.REFRESH})
-  @JoinColumn(name="author_id")
+  @JoinColumn(name="user_id")
   private User author;
 
   @Column(name = "description")

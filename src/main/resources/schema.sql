@@ -30,13 +30,13 @@ CREATE TABLE `comments` (
                             `id` int(11) NOT NULL AUTO_INCREMENT,
                             `text` text,
                             `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-                            `author_id` int(11) NOT NULL,
+                            `user_id` int(11) NOT NULL,
                             `real_estate_id` int(11) NOT NULL,
                             PRIMARY KEY (`id`),
                             KEY `real_estate_id` (`real_estate_id`),
-                            KEY `author_id` (`author_id`),
+                            KEY `author_id` (`user_id`),
                             CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`real_estate_id`) REFERENCES `real_estate` (`id`),
-                            CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`)
+                            CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ALTER TABLE comments CONVERT TO CHARACTER SET utf8;
@@ -86,12 +86,12 @@ CREATE TABLE `real_estate` (
                                `city` varchar(255) DEFAULT NULL,
                                `description` text,
                                `position_id` int(11) DEFAULT NULL,
-                               `author_id` int(11) NOT NULL,
+                               `user_id` int(11) NOT NULL,
                                PRIMARY KEY (`id`),
                                KEY `position_id` (`position_id`),
-                               KEY `author_id` (`author_id`),
+                               KEY `author_id` (`user_id`),
                                CONSTRAINT `real_estate_ibfk_1` FOREIGN KEY (`position_id`) REFERENCES `positions` (`id`),
-                               CONSTRAINT `real_estate_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`)
+                               CONSTRAINT `real_estate_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 ALTER TABLE real_estate CONVERT TO CHARACTER SET utf8;
