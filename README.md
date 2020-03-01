@@ -53,4 +53,4 @@ Now the app is running on http://localhost:8080
 
 You can also use your favourite IDE and start the project with its tools.
 
-To run the front-end in dev mode, use `npm run`, which starts local server on http://localhost:3000. **But** you need the Java server running as a data source.
+To run the front-end in dev mode, use `npm start`, which starts local server on http://localhost:3000. **But** you need the Java server running as a data source.
