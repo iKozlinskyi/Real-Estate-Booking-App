@@ -64,7 +64,7 @@ task yarnBuild(type: YarnTask) {
     args = ['run', 'build', '--prod']
 }
 
-//processResources {
-//    dependsOn yarnBuild
-//}
+bootRun {
+    dependsOn yarnBuild
+}
 
